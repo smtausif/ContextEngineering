@@ -1,0 +1,7 @@
+Printing and Copying Services
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 19
+
+Students receive a fictional $8 printing credit at the start of each term. Black-and-white printing costs $0.10 per page and colour printing costs $0.40 per page. Unused printing credit expires at the end of the term and cannot be transferred. Print jobs left uncollected for more than 24 hours are deleted from the queue.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

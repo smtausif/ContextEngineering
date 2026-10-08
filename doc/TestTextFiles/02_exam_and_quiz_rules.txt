@@ -1,0 +1,5 @@
+DOCUMENT: Exam and Quiz Rules
+DOCUMENT ID: 02_exam_and_quiz_rules.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Students must bring a valid student photo ID to in-person exams. Online quizzes allow two attempts unless the quiz instructions say otherwise. The higher of the two quiz scores is recorded. Final exams allow one attempt. Students arriving more than 20 minutes after an in-person exam starts may be refused entry. Requests for an exam deferral must be submitted to the academic office.

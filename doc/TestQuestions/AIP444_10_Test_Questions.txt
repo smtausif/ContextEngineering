@@ -1,0 +1,46 @@
+AIP444 - CONTEXT ENGINEERING RESEARCH
+10 TEST QUESTIONS
+
+--------------------------------------------------------------------------
+
+Use the same questions for each of the five methods:
+1. Full Context
+2. Full Context with Prompt Caching
+3. RAG-Selected Context
+4. Summarized/Compacted Context
+5. Hybrid Strategy
+
+--------------------------------------------------------------------------
+
+Q1. What is the penalty for submitting an assignment late?
+Source: 01_assignment_submission_policy.txt
+
+Q2. How many days can students borrow library books?
+Source: 04_library_borrowing_policy.txt
+
+Q3. What should students do if they lose their student ID card?
+Source: 13_student_id_card_services.txt
+
+Q4. How far in advance must students book a career counselling appointment?
+Source: 14_career_centre_appointments.txt
+
+Q5. What is the process for requesting accessibility accommodations?
+Source: 17_accessibility_accommodations.txt
+
+Q6. What happens if a student misses an exam without an approved reason?
+Source: 02_exam_and_quiz_rules.txt
+
+Q7. How can students apply for funding for a student club?
+Source: 09_student_club_funding.txt
+
+Q8. What are the rules for using AI tools in assignments?
+Source: 08_academic_integrity_and_ai_use.txt
+
+Q9. When must students apply for graduation?
+Source: 20_graduation_application_process.txt
+
+Q10. What is the refund policy for withdrawing from a course?
+Source: 12_tuition_payment_and_refunds.txt
+
+NOTE: Confirm each question is answerable from the actual contents of its source file.
+Record the verified expected answer and supporting passage before running tests.

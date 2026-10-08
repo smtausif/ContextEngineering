@@ -1,0 +1,5 @@
+DOCUMENT: Library Borrowing Policy
+DOCUMENT ID: 04_library_borrowing_policy.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Students may borrow up to eight physical books at one time. The standard borrowing period is 21 calendar days. A book may be renewed twice if no other student has placed a hold on it. Reserved course materials may be borrowed for a maximum of three hours and cannot leave the library. Lost books incur a replacement fee equal to the current purchase price.

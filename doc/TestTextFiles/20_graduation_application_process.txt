@@ -1,0 +1,7 @@
+Graduation Application Process
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 20
+
+Students must apply for graduation through the student portal by March 15 for the spring ceremony or October 15 for the fall ceremony. Applications are reviewed within 10 business days. A student must have completed all required program credits and have no outstanding academic holds to be approved. Approved graduates may request up to two guest tickets at no cost; extra tickets depend on availability.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

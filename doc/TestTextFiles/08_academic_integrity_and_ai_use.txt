@@ -1,0 +1,5 @@
+DOCUMENT: Academic Integrity and AI Use
+DOCUMENT ID: 08_academic_integrity_and_ai_use.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Students may use generative AI for brainstorming, outlining, debugging, and language editing when course instructions permit it. Any substantial AI assistance must be disclosed in an AI use statement attached to the assignment. Students are responsible for checking factual claims and testing generated code. Submitting copied material without attribution is prohibited. Instructors may request an explanation of how submitted work was produced.

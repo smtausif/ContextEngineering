@@ -1,0 +1,7 @@
+Student ID Card Services
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 13
+
+New students receive their first student ID card free of charge. Replacement cards cost $18. ID card requests are submitted through the campus services portal. Replacement cards are normally ready within three business days. Lost cards must be reported within 24 hours to disable building access. Students must show a government-issued photo ID when collecting a replacement.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

@@ -1,0 +1,5 @@
+DOCUMENT: Attendance and Participation
+DOCUMENT ID: 03_attendance_and_participation.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Students are expected to attend scheduled classes and participate in group activities. An attendance warning is issued after three unexcused absences in the same course. Participation contributes 5% to the final grade in courses that use the standard participation rubric. Missing a class does not automatically excuse missed assignments. Students should contact their instructor about missed learning activities.

@@ -1,0 +1,5 @@
+DOCUMENT: Assignment Submission Policy
+DOCUMENT ID: 01_assignment_submission_policy.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Assignments must be submitted through the course learning portal before 11:59 PM Eastern Time on the stated due date. Work submitted within 48 hours after the deadline receives a 10% deduction from the assignment’s maximum available points. Work submitted more than 48 hours late is not accepted unless an extension was approved in advance. Students should keep their submission confirmation receipt. The course instructor is responsible for approving extensions.

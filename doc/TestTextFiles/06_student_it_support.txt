@@ -1,0 +1,5 @@
+DOCUMENT: Student IT Support
+DOCUMENT ID: 06_student_it_support.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+The IT help desk responds to support requests Monday through Friday, 9:00 AM to 5:00 PM Eastern Time. Students can submit tickets through the campus support portal at any time. The target response time for normal-priority tickets is two business days. Students who forget their passwords must use the self-service password reset page before contacting support. The help desk does not recover personal files from student-owned devices.

@@ -1,0 +1,7 @@
+Tuition Payment and Refunds
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 12
+
+Tuition invoices are issued 30 days before the start of term. Payment is due 12 days before classes begin. A payment received after the deadline carries a fictional $35 late-processing fee. Students who withdraw before the fifth calendar day of the term receive a 90% tuition refund. Withdrawals from day 5 through day 12 receive a 50% refund. After day 12, no tuition refund is provided.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

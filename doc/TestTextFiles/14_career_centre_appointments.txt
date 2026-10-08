@@ -1,0 +1,7 @@
+Career Centre Appointments
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 14
+
+Students can book career advising appointments up to 14 days in advance. Each standard appointment lasts 30 minutes. Resume reviews are limited to two appointments per student per month. Students should cancel at least six hours before the scheduled appointment. After two missed appointments without notice, online booking is suspended for 14 days.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

@@ -1,0 +1,5 @@
+DOCUMENT: Computer Lab Access
+DOCUMENT ID: 05_computer_lab_access.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+The main computer lab is open Monday through Friday from 8:00 AM to 10:00 PM and Saturday from 10:00 AM to 6:00 PM. It is closed on Sundays. Students must sign in with their student account. Printing is limited to 30 black-and-white pages per student per week. Food is not permitted near lab computers. Technical problems should be reported to the campus IT help desk.

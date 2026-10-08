@@ -1,0 +1,5 @@
+DOCUMENT: Group Project Guidelines
+DOCUMENT ID: 07_group_project_guidelines.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Group projects must have between three and five members unless the instructor grants an exception. Each group must appoint one coordinator. The coordinator submits the final group deliverable, but all members are responsible for reviewing the submission. Groups must maintain a contribution log recording tasks completed by each member. If a member stops participating, the group should inform the instructor within seven days.

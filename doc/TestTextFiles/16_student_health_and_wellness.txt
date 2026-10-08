@@ -1,0 +1,7 @@
+Student Health and Wellness
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 16
+
+Wellness counselling sessions are available to enrolled students by appointment. Each student may book up to four no-cost individual sessions per term. Sessions last 45 minutes. Appointments can be rescheduled without penalty up to 12 hours beforehand. Urgent or emergency needs should be directed to appropriate emergency services rather than the appointment portal.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

@@ -1,0 +1,7 @@
+Parking Permits and Visitor Access
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 15
+
+Student parking permits are sold monthly for a fictional fee of $65. Permits are valid from the first to the last day of the selected month. Visitor parking costs $4 per hour, with a daily maximum of $16. Vehicles parked in accessible spaces must display a valid accessible parking permit. Overnight parking requires written approval from campus security.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

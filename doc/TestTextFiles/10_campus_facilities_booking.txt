@@ -1,0 +1,5 @@
+DOCUMENT: Campus Facilities Booking
+DOCUMENT ID: 10_campus_facilities_booking.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Student groups may reserve meeting rooms up to 30 days in advance. Standard meeting-room bookings are limited to two hours per reservation. Rooms with more than 25 seats require approval from the facilities office. Bookings can be cancelled without penalty at least 24 hours before the start time. Groups that fail to attend two reservations without cancellation may lose booking privileges for one month.

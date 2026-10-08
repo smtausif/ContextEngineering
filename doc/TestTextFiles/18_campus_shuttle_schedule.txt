@@ -1,0 +1,7 @@
+Campus Shuttle Schedule
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 18
+
+The campus shuttle operates Monday through Friday during teaching weeks. The first shuttle departs North Campus at 7:30 AM and the last shuttle leaves South Campus at 8:15 PM. Shuttles normally depart every 30 minutes. Service does not operate on statutory holidays. Riders must present an active student or staff ID when boarding.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.

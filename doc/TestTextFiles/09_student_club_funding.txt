@@ -1,0 +1,5 @@
+DOCUMENT: Student Club Funding
+DOCUMENT ID: 09_student_club_funding.txt
+STATUS: Fictional policy for AIP444 context-engineering experiments; not an actual institution policy.
+
+Registered student clubs may apply for up to $750 in funding per semester. Funding requests must be submitted at least 14 calendar days before the proposed event. Requests require an event description, an itemized budget, and approval from the club advisor. Funding cannot be used to purchase personal gifts. Approved clubs must submit receipts within 10 business days after the event.

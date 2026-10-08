@@ -1,0 +1,7 @@
+Course Registration and Waitlists
+Fictional College Policy | AIP444 Test Dataset
+Document ID: 11
+
+Registration opens 21 days before each term begins. Students may register for a maximum of six courses per term. A course waitlist accepts up to 15 students. When a seat becomes available, the first eligible student receives an email and has 18 hours to accept it. If they do not accept, the offer passes to the next student. Registration changes close at 5:00 PM on the tenth calendar day of the term.
+
+Note: This policy is fictional and is intended only for a controlled AI research experiment.
