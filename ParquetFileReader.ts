@@ -9,11 +9,10 @@ export class ParquetFileReader {
     if (!filePath.trim()) {
       throw new Error("filePath must not be empty.");
     }
-
     this.filePath = filePath;
   }
 
-  /** Read the first N rows on each call. Omit itemCount to read all rows. */
+  /** Read the first N rows on each call. optional itemCount to read all rows. */
   async read(itemCount?: number): Promise<TrainData[]> {
     if (itemCount !== undefined && (!Number.isSafeInteger(itemCount) || itemCount < 0)) {
       throw new RangeError("itemCount must be a non-negative safe integer.");
