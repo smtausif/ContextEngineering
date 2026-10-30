@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "dataset": {
+    "path": "data/train-00000-of-00002.parquet",
+    "sha256": "76d3bb3048a7cc73c1958107c0c5872a00d7e7d00c105b81e92f6769e7822e68",
+    "rowCount": 45224
+  },
+  "selection": {
+    "method": "stratified-sha256-v1",
+    "seed": "context-engineering-final-50-v1",
+    "count": 50,
+    "quotas": {
+      "bridge/easy": 10,
+      "bridge/medium": 10,
+      "bridge/hard": 10,
+      "comparison/easy": 7,
+      "comparison/medium": 7,
+      "comparison/hard": 6
+    },
+    "anchorQuestionId": "5a7a06935542990198eaf050",
+    "anchorIncluded": true,
+    "orderedIdsSha256": "e19ce8c1743a3498b3eefb214ce48875c05bc9cd120feb85079a2c7f91a34cba"
+  },
+  "questions": [
+    {
+      "selectionPosition": 1,
+      "questionId": "5a7a06935542990198eaf050",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 2,
+      "questionId": "5a823c1955429940e5e1a806",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 3,
+      "questionId": "5a83955e5542992ef85e231b",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 4,
+      "questionId": "5a8895ef5542993e715ac050",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 5,
+      "questionId": "5a75e0ec554299109176e5b6",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 6,
+      "questionId": "5ade520955429975fa854ea6",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 7,
+      "questionId": "5ae473bc55429970de88d96b",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 8,
+      "questionId": "5aba74e255429901930fa7d9",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 9,
+      "questionId": "5a7f291c55429934daa2fd0d",
+      "type": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 10,
+      "questionId": "5a7654105542992db9473766",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 11,
+      "questionId": "5a731b3b5542992359bc3236",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 12,
+      "questionId": "5a7bab20554299294a54aa82",
+      "type": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 13,
+      "questionId": "5ae4d1dc55429913cc204515",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 14,
+      "questionId": "5a9045b555429933b8a204be",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 15,
+      "questionId": "5ae7a6605542993210983ed2",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 16,
+      "questionId": "5adc046e5542994650320c54",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 17,
+      "questionId": "5ae142c25542997b2ef7d193",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 18,
+      "questionId": "5a72e1515542992359bc31b7",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 19,
+      "questionId": "5a79dd13554299029c4b5f79",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 20,
+      "questionId": "5a77235655429966f1a36c9c",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 21,
+      "questionId": "5a866be355429960ec39b69b",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 22,
+      "questionId": "5adbfb565542996e68525293",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 23,
+      "questionId": "5a7fa1535542994857a7678d",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 24,
+      "questionId": "5adf52ea5542993a75d264bf",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 25,
+      "questionId": "5ae3c3695542991a06ce9a1e",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 26,
+      "questionId": "5a7da8195542990b8f503a07",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 27,
+      "questionId": "5ac04a025542996f0d89cb7b",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 28,
+      "questionId": "5a7a2a3a5542996a35c17113",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 29,
+      "questionId": "5add537f5542992200553aae",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 30,
+      "questionId": "5abccad45542996583600496",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 31,
+      "questionId": "5abd53a055429933744ab772",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 32,
+      "questionId": "5a736bfa5542991f29ee2e03",
+      "type": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 33,
+      "questionId": "5ac2a2e6554299657fa28ff7",
+      "type": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 34,
+      "questionId": "5ab94b3b554299743d22eaca",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 35,
+      "questionId": "5a8b05fa55429971feec4617",
+      "type": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 36,
+      "questionId": "5a7fc0ac55429969796c1b47",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 37,
+      "questionId": "5a74135a55429979e28828a3",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 38,
+      "questionId": "5a7b6a3d55429931da12ca9d",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 39,
+      "questionId": "5ae7e5f3554299540e5a5684",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 40,
+      "questionId": "5ab766e75542993667793fd0",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 41,
+      "questionId": "5a7e30045542997cc2c4752f",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 42,
+      "questionId": "5a8c3fe75542995e66a47579",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 43,
+      "questionId": "5ae6697e55429908198fa5c5",
+      "type": "bridge",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 44,
+      "questionId": "5a8ca4c65542996e8ac88afd",
+      "type": "comparison",
+      "difficulty": "easy"
+    },
+    {
+      "selectionPosition": 45,
+      "questionId": "5a8af18d55429950cd6afc26",
+      "type": "comparison",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 46,
+      "questionId": "5a73811155429905862fe042",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 47,
+      "questionId": "5ae52c275542990ba0bbb1e2",
+      "type": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 48,
+      "questionId": "5adcbb34554299438c868e15",
+      "type": "bridge",
+      "difficulty": "hard"
+    },
+    {
+      "selectionPosition": 49,
+      "questionId": "5a77735e5542997042120a4d",
+      "type": "bridge",
+      "difficulty": "medium"
+    },
+    {
+      "selectionPosition": 50,
+      "questionId": "5a761a6b5542994ccc9186d4",
+      "type": "bridge",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 #Data
 /data/*
 !/data/readme.md
+!/data/final-50-questions.json
+!/data/final-50-selection-summary.md
 
 # Logs
 logs
@@ -69,6 +71,8 @@ __debug_bin*
 
 # Environment and editor files
 .env
+.env.*
+!.env.example
 .env.development.local
 .env.test.local
 .env.production.local
@@ -143,3 +147,6 @@ tools/gotestsum.exe.hash
 !packages/typescript/vendor/**/*.txt
 !tsc/testdata/submoduleAccepted.txt
 !tsc/testdata/submoduleTriaged.txt
+
+# Local experiment results
+/results/*.csv
