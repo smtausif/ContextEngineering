@@ -267,7 +267,7 @@ test('failed Final Answer extraction never awards EM/F1, even if raw output cont
 }));
 
 test('new default CSV has a separate versioned path and refuses an old-schema file', async () => temp(async path => {
-  assert.ok(DEFAULT_RESULTS_FILE.endsWith('/results/results-v3.csv'));
+  assert.ok(DEFAULT_RESULTS_FILE.replaceAll('\\', '/').endsWith('/results/results-v3.csv'));
   await new ResultsWriter(path).initialize();
   const legacy = CSV_COLUMNS.slice(0, 40).join(',') + '\r\nlegacy-data\r\n';
   await writeFile(path, legacy);
@@ -281,7 +281,7 @@ test('configurable output file uses the existing schema without changing the def
     loadDataset: async () => [sample], createClient: () => ({ complete: async request => mockResponse(request) }),
   })) saved.push(row);
   assert.equal(records(await readFile(path, 'utf8')).length, 1);
-  assert.ok(DEFAULT_RESULTS_FILE.endsWith('/results/results-v3.csv'));
+  assert.ok(DEFAULT_RESULTS_FILE.replaceAll('\\', '/').endsWith('/results/results-v3.csv'));
   const second = join(path, '..', 'dry-run-output.csv');
   for await (const row of runExperiment({ ...options, dryRun: true, outputFile: second }, {
     loadDataset: async () => [sample], createClient: () => { assert.fail('dry run constructed a client'); },
