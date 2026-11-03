@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
+import { summarization } from './summarization.ts';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { AIClient, AIClientError } from './aiClient.ts';
@@ -212,6 +213,7 @@ export async function* runExperiment(
   if (!Number.isSafeInteger(additionalContextPassages) || additionalContextPassages < 0) throw new Error('Additional passage count must be a non-negative safe integer.');
   const registry: Partial<Record<StrategyName, StrategyRegistration>> = {
     full_context: { run: fullContext, cacheMode: 'none_requested' },
+    summarization: { run: summarization, cacheMode: 'none_requested' },
     caching: { run: (input, client) => caching({ ...input, cachingMode }, client),
       cacheMode: cachingMode, preflight: input => cachingLimitation({ ...input, cachingMode }) },
   };
