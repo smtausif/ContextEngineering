@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="990" viewBox="0 0 1200 990" role="img" aria-labelledby="title description">
+<title id="title">Context Engineering project flow</title><desc id="description">Choose one of five strategy rows. Hybrid reuses the RAG search phase and the summarization function, which makes notes and answers. One AI request is one trip to the model service. Evaluation compares answers and citation references with a separate answer key.</desc>
+<rect width="1200" height="990" fill="#F6F8FC"/>
+<text x="40" y="54" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="32" font-weight="600" text-anchor="start">How the project works</text>
+<text x="42" y="88" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="400" text-anchor="start">One AI request = send a prompt and receive one response. Counts are per completed question.</text>
+<polyline points="890,145 930,145" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="930,145 918,139 918,151" fill="#8B9BB3"/>
+<polyline points="1160,145 1185,145 1185,755 1160,755" fill="none" stroke="#8B9BB3" stroke-width="3" stroke-dasharray="8 7"/>
+<polygon points="1160,755 1172,761 1172,749" fill="#8B9BB3"/>
+<rect x="40" y="110" width="850" height="70" rx="18" fill="#FFFFFF" stroke="#D7DFEC" stroke-width="2"/>
+<text x="465" y="142" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="600" text-anchor="middle">Load a question and its source passages</text>
+<text x="465" y="167" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="middle">HotpotQA Parquet file -&gt; loadData.ts</text>
+<rect x="930" y="110" width="230" height="70" rx="18" fill="#FFF8E7" stroke="#E5C774" stroke-width="2"/>
+<text x="1045" y="140" fill="#715419" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="600" text-anchor="middle">Reference answers</text>
+<text x="1045" y="167" fill="#715419" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="middle">Only for scoring</text>
+<text x="42" y="216" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="400" text-anchor="start">Choose one strategy per run. Read each row from left to right.</text>
+<text x="42" y="262" fill="#2463BA" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="600" text-anchor="start">Full context</text>
+<text x="42" y="288" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="start">1 AI request</text>
+<rect x="245" y="230" width="915" height="64" rx="18" fill="#EDF4FF" stroke="#2463BA" stroke-width="2"/>
+<text x="702" y="261" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle">AI reads all passages and answers the question</text>
+<text x="702" y="285" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">One request produces the final answer</text>
+<text x="42" y="340" fill="#187B6B" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="600" text-anchor="start">Caching</text>
+<text x="42" y="366" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="start">1 AI request</text>
+<rect x="245" y="308" width="915" height="64" rx="18" fill="#EAF8F3" stroke="#187B6B" stroke-width="2"/>
+<text x="702" y="339" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle">Send all passages with a cache marker; AI answers the question</text>
+<text x="702" y="363" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">The provider may reuse cached text; a hit is not guaranteed</text>
+<text x="42" y="424" fill="#7653AD" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="600" text-anchor="start">RAG</text>
+<text x="42" y="450" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="start">3 AI requests</text>
+<polyline points="840,423 880,423" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="880,423 868,417 868,429" fill="#8B9BB3"/>
+<rect x="245" y="386" width="595" height="74" rx="18" fill="#F3EEFC" stroke="#7653AD" stroke-width="2"/>
+<text x="542" y="417" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">AI plans a search; local tool retrieves passages</text>
+<text x="542" y="445" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">2 requests: initial query + follow-up decision</text>
+<rect x="880" y="386" width="280" height="74" rx="18" fill="#EDF4FF" stroke="#2463BA" stroke-width="2"/>
+<text x="1020" y="417" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">AI answers from passages</text>
+<text x="1020" y="445" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">1 AI request</text>
+<text x="42" y="511" fill="#AC6621" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="600" text-anchor="start">Summarization</text>
+<text x="42" y="538" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="start">2 AI requests</text>
+<polyline points="840,511 880,511" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="880,511 868,505 868,517" fill="#8B9BB3"/>
+<rect x="245" y="474" width="595" height="74" rx="18" fill="#FFF4E8" stroke="#AC6621" stroke-width="2"/>
+<text x="542" y="505" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">AI turns all passages into short notes</text>
+<text x="542" y="533" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">1 request; source references are checked locally</text>
+<rect x="880" y="474" width="280" height="74" rx="18" fill="#EDF4FF" stroke="#2463BA" stroke-width="2"/>
+<text x="1020" y="505" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">AI answers from notes</text>
+<text x="1020" y="533" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">1 AI request</text>
+<text x="42" y="640" fill="#AD4367" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="600" text-anchor="start">Hybrid</text>
+<text x="42" y="666" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="start">4 AI requests</text>
+<rect x="535" y="579" width="635" height="105" rx="18" fill="#FFFFFF" stroke="#AD4367" stroke-width="2"/>
+<text x="852" y="601" fill="#AD4367" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="600" text-anchor="middle">Reuses the same summarization() function</text>
+<polyline points="515,641 555,641" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="555,641 543,635 543,647" fill="#8B9BB3"/>
+<polyline points="840,641 880,641" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="880,641 868,635 868,647" fill="#8B9BB3"/>
+<rect x="245" y="609" width="270" height="64" rx="18" fill="#F3EEFC" stroke="#7653AD" stroke-width="2"/>
+<text x="380" y="638" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">Reuse RAG searches</text>
+<text x="380" y="664" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">2 AI requests</text>
+<rect x="555" y="609" width="285" height="64" rx="18" fill="#FFF4E8" stroke="#AC6621" stroke-width="2"/>
+<text x="697" y="638" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">Summarize retrieved text</text>
+<text x="697" y="664" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">1 AI request: make notes</text>
+<rect x="880" y="609" width="280" height="64" rx="18" fill="#EDF4FF" stroke="#2463BA" stroke-width="2"/>
+<text x="1020" y="638" fill="#27364B" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle">AI answers from notes</text>
+<text x="1020" y="664" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">1 AI request</text>
+<polyline points="600,688 600,727" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="600,727 606,715 594,715" fill="#8B9BB3"/>
+<text x="620" y="712" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="start">Final answer from the selected strategy</text>
+<rect x="40" y="727" width="1120" height="154" rx="18" fill="#EDF4FF" stroke="#9FB7DE" stroke-width="2"/>
+<text x="600" y="760" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="600" text-anchor="middle">Evaluate against the dataset answer key</text>
+<text x="225" y="798" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" text-anchor="middle">Exact answer match</text>
+<text x="225" y="826" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">Same text after ignoring case,</text>
+<text x="225" y="849" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">punctuation, and articles?</text>
+<text x="600" y="798" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" text-anchor="middle">Answer word overlap</text>
+<text x="600" y="826" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">How well do answer words match?</text>
+<text x="600" y="849" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">Extra or missing words</text>
+<text x="600" y="872" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">reduce the score.</text>
+<text x="975" y="798" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" text-anchor="middle">Citation agreement</text>
+<text x="975" y="826" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">Match source titles and sentence IDs</text>
+<text x="975" y="849" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">to labeled evidence. Extra or missing</text>
+<text x="975" y="872" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle">citations reduce the score.</text>
+<polyline points="600,881 600,907" fill="none" stroke="#8B9BB3" stroke-width="3"/>
+<polygon points="600,907 606,895 594,895" fill="#8B9BB3"/>
+<rect x="40" y="907" width="1120" height="64" rx="18" fill="#FFFFFF" stroke="#D7DFEC" stroke-width="2"/>
+<text x="600" y="936" fill="#172B4D" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="600" text-anchor="middle">Save every attempt, then summarize results</text>
+<text x="600" y="961" fill="#53657F" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="middle">results/runs.jsonl: scores, time, tokens, cost | npm run summarize -&gt; results/summary.json</text>
+</svg>
