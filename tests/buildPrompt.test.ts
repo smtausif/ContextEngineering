@@ -81,12 +81,13 @@ test('a normal question-only prompt does not ask other strategies to use a tool'
   assert.ok(!messages[0].content.includes('search_context'));
 });
 
-test('answer instructions preserve specificity, categorical answers, and the insufficient-evidence option', () => {
+test('answer instructions show short answer values and preserve yes/no and insufficient-evidence handling', () => {
   const normal = buildPrompt(row);
 
-  assert.ok(normal[0].content.includes('concise but complete'));
-  assert.ok(normal[0].content.includes('Preserve full names, specific locations, dates, numbers, and relevant qualifiers'));
-  assert.ok(normal[0].content.includes('Do not replace them with broader terms or new abbreviations'));
+  assert.ok(normal[0].content.includes('Put only the requested name, location, date, number, or short phrase in the answer field.'));
+  assert.ok(normal[0].content.includes('Omit explanations, introductory phrases, citations, and restatements'));
+  assert.ok(normal[0].content.includes('units or qualifiers needed for a complete answer'));
+  assert.ok(normal[0].content.includes('"What year did it open?" → "1987"'));
   assert.ok(normal[0].content.includes('the answer field must contain only "yes" or "no", without an explanation'));
   assert.ok(normal[0].content.includes('If evidence is insufficient, answer "insufficient evidence"'));
 });
