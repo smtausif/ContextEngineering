@@ -104,5 +104,3 @@ npm run typecheck
 ```
 
 These checks make no model requests. Set `LOG_LEVEL=debug` for more detailed logs.
-Each current question uses its own source passages; larger shared-context, position,
-and distraction experiments are still needed for the wider research question.

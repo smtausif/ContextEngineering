@@ -1,7 +1,6 @@
 #Data
 /data/*
 !/data/readme.md
-/results/
 
 # Logs
 logs
