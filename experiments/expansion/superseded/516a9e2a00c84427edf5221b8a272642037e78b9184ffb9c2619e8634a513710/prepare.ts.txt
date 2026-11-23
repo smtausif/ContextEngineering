@@ -1,0 +1,127 @@
+import { mkdirSync, readFileSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { resolve } from 'node:path';
+import { ParquetFileReader } from '../../src/ParquetFileReader.ts';
+import { prepareData } from '../../src/loadData.ts';
+import { logger } from '../../src/logger.ts';
+import { buildFullContextPrompt } from '../../src/strategies/full-context/fullContext.ts';
+import { ModelAnswerFormat } from '../../src/schema.ts';
+import { evaluateResult } from '../../src/evaluation.ts';
+import { SETTINGS, hash as pilotHash } from '../context-noise/pilot.ts';
+import { newFixtures, validateFixture } from './fixtures.ts';
+import { ROOT, STRATEGIES, CONDITIONS, hash, fileHash, json, check, writeJSON, evidence, replay, configure, scoreCompatible } from './core.ts';
+
+export async function prepare() {
+  logger.level = 'silent'; configure();
+  // Defensive network denial for the entire preparation process, including future imports.
+  globalThis.fetch = async () => { throw new Error('Offline preparation forbids network'); };
+  const { source, origin, noise, pilotPlan } = evidence();
+  const dataset = 'data/distractor-validation.parquet';
+  const datasetHash = fileHash(dataset);
+  check(datasetHash === pilotPlan.manifest.datasetHash, 'Pilot dataset changed');
+  const rows = await new ParquetFileReader({ filePath: dataset }).read();
+  const eligible = rows.filter(r => { try { prepareData([r]); return new Set(r.context.title).size === r.context.title.length; } catch { return false; } });
+  check(new Set(rows.map(r => r.id)).size === rows.length, 'Duplicate dataset ID');
+  const benchmark = eligible.slice(0, 200);
+  for (const [path, digest] of Object.entries(pilotPlan.manifest.implementationHashes))
+    check(fileHash(resolve(ROOT, '../context-noise', path)) === digest, `Original pilot implementation changed: ${path}`);
+  const originalFixtures = json(ROOT + '/../context-noise/fixtures.json').fixtures;
+  const fixtures = [...originalFixtures, ...newFixtures(rows)];
+  check(fixtures.length === 200 && new Set(fixtures.map(f => f.questionId)).size === 200, 'Noise IDs must be unique');
+  check(new Set(fixtures.map(f => f.irrelevant.title)).size === 200 && new Set(fixtures.map(f => hash(f.irrelevant.sentences))).size === 200, 'Repeated irrelevant passages');
+  const noiseSamples = fixtures.map(f => ({ row: rows[f.rowIndex], fixture: f, contexts: validateFixture(rows[f.rowIndex], f) }));
+  const artifactDir = ROOT + '/prepared'; mkdirSync(artifactDir, { recursive: true });
+  // Freeze source, dataset and evidence digests. A live command verifies every file.
+  const tracked = execFileSync('git', ['ls-files', 'src', 'package-lock.json'], { encoding: 'utf8' }).trim().split('\n');
+  const ownFiles = ['core.ts', 'fixtures.ts', 'prepare.ts', 'execute.ts', 'contradictions.tsv', 'expansion.test.ts'];
+  const pilotFiles = ['pilot.ts', 'fixtures.json', 'answer.ts', 'run.ts', 'report.ts', 'create-fixtures.ts', 'irrelevant.ts'].map(f=>'experiments/context-noise/'+f);
+  const implementation = Object.fromEntries([...tracked, ...pilotFiles, ...ownFiles.filter(f => existsSync(ROOT + '/' + f)).map(f => 'experiments/expansion/' + f)].map(p => [p, fileHash(p)]));
+  const evidenceHashes = Object.fromEntries([source.originResults, 'noise-pilot-runs.jsonl', 'noise-pilot-plan.json', 'source.json'].map(f => ['experiments/expansion/evidence/' + f, fileHash(ROOT + '/evidence/' + f)]));
+  const ref = (index: number) => ({ source: 'origin', file: 'evidence/' + source.originResults, line: index + 1, recordHash: hash(origin[index]), runId: origin[index].runId });
+  const payloadFor = (row: any) => ({ model: SETTINGS.model, messages: buildFullContextPrompt(row), response_format: ModelAnswerFormat,
+    provider: { only: [SETTINGS.provider], allow_fallbacks: false, require_parameters: true } });
+  // Historical metadata says validation-00000..., but current file with that name is
+  // retrieval-only. Resolve the old alias ONLY with full, byte-equivalent source prompts.
+  const datasetProof = new Map<string, any>();
+  for (const row of benchmark) {
+    const expected = hash(payloadFor(row));
+    const i = origin.findIndex(r => r.questionId === row.id && r.strategy === 'full_context' && r.status === 'completed' &&
+      r.dataset === 'data/validation-00000-of-00001.parquet' && hash(r.modelCalls?.[0]?.request ?? null) === expected);
+    if (i >= 0) datasetProof.set(row.id, { ...ref(i), resolvedDataset: dataset, rowHash: hash(row), method: 'Exact full-context wire prompt match; historical dataset filename resolved by actual source content, question and reference scores.' });
+  }
+  const tasks: any[] = [], audit: any[] = [];
+  for (const name of STRATEGIES) for (const row of benchmark) {
+    let reuse = null;
+    for (let i = 0; i < origin.length; i++) {
+      const r = origin[i];
+      if (r.questionId !== row.id || r.strategy !== name) continue;
+      let reason = '';
+      if (r.status !== 'completed') reason = 'not completed';
+      else if (!datasetProof.has(row.id)) reason = 'unproven dataset content';
+      else if (r.dataset !== 'data/validation-00000-of-00001.parquet') reason = 'unknown dataset alias';
+      else if (r.model !== SETTINGS.model || r.provider !== 'Google AI Studio' || r.modelCalls?.some((c:any)=>c.rawResponse?.model!==SETTINGS.model || c.rawResponse?.provider!=='Google AI Studio')) reason = 'actual response model/provider mismatch';
+      else if (r.cacheMode !== (name === 'caching' ? 'explicit' : 'none_requested')) reason = 'cache mode mismatch';
+      else if (!scoreCompatible(r, row)) reason = 'evaluation mismatch';
+      else if (!(await replay(name, row, r))) reason = 'request/configuration/implementation replay mismatch';
+      if (reason) { audit.push({ ...ref(i), questionId: row.id, strategy: name, reason }); continue; }
+      reuse = { ...ref(i), modelRequestCount: r.modelCalls.length, datasetProof: datasetProof.get(row.id) }; break;
+    }
+    tasks.push({ id: `benchmark/${name}/${row.id}`, group: 'benchmark', strategy: name, questionId: row.id,
+      rowIndex: rows.findIndex(r => r.id === row.id), input: { question: row.question, context: row.context }, reference: { id: row.id, answer: row.answer, supporting_facts: row.supporting_facts },
+      reuse, expectedModelRequests: name === 'rag_tool' ? 3 : name === 'hybrid' ? 4 : name === 'summarization' ? 2 : 1 });
+  }
+  for (const [index, sample] of noiseSamples.entries()) {
+    const offset = index % 3, order = [...CONDITIONS.slice(offset), ...CONDITIONS.slice(0, offset)];
+    for (const condition of order) {
+      const { row, contexts } = sample;
+      const candidates = noise.flatMap((r, i) => r.questionId === row.id && r.condition === condition ? [i] : []);
+      let reuse = null;
+      for (const i of candidates) {
+        const r = noise[i];
+        check(r.model === SETTINGS.model && r.provider === 'Google AI Studio' && r.status === 'completed' && r.runId === source.noiseRunId && r.repetition === 1 && r.dataset === dataset && hash(r.settings) === hash(SETTINGS), 'Pilot metadata incompatible');
+        check(r.contextHash === pilotHash(contexts[condition]) && scoreCompatible(r, row) && await replay('full_context', { question: row.question, context: contexts[condition] }, r, true), 'Pilot request/context/scoring mismatch');
+        reuse = { source: 'noise', file: 'evidence/noise-pilot-runs.jsonl', line: i + 1, recordHash: hash(r), runId: r.runId, modelRequestCount: 1 };
+      }
+      tasks.push({ id: `noise/${condition}/${row.id}`, group: 'noise', strategy: 'full_context', condition, questionId: row.id, rowIndex: sample.fixture.rowIndex,
+        input: { question: row.question, context: contexts[condition] }, reference: { id: row.id, answer: row.answer, supporting_facts: row.supporting_facts }, reuse, expectedModelRequests: 1 });
+    }
+  }
+  check(tasks.filter(t => t.group === 'noise' && t.reuse).length === 60, 'Must preserve all 60 pilot responses');
+  check(new Set(tasks.map(t => t.id)).size === 1600, 'Duplicate logical request');
+  const missing = tasks.filter(t => !t.reuse);
+  // Transparent estimate: missing calls by strategy, observed mean usage on compatible
+  // records scaled by new full prompt size; adaptive later prompts cannot be exact offline.
+  const pricing = { checked: '2026-11-23', inputPerMillionUSD: 0.25, outputPerMillionUSD: 1.50,
+    source: 'https://openrouter.ai/google/gemini-3.1-flash-lite', cacheDiscountAssumed: false };
+  const costs = [...STRATEGIES.map(s => ['benchmark', s]), ...CONDITIONS.map(c => ['noise', c])].map(([group, variant]) => {
+    const all = tasks.filter(t => t.group === group && (group === 'noise' ? t.condition === variant : t.strategy === variant));
+    const pending = all.filter(t => !t.reuse), completed = all.filter(t => t.reuse).map(t => t.reuse.source === 'origin' ? origin[t.reuse.line - 1] : noise[t.reuse.line - 1]);
+    const mean = (field: string) => completed.reduce((n, r) => n + (r.usage?.[field] ?? 0), 0) / Math.max(completed.length, 1);
+    const promptRatio = all.filter(t => t.reuse).length ? pending.reduce((n,t)=>n+JSON.stringify(t.input).length,0) / Math.max(pending.length,1) /
+      (all.filter(t=>t.reuse).reduce((n,t)=>n+JSON.stringify(t.input).length,0)/all.filter(t=>t.reuse).length) : 1;
+    const inputTokens = Math.ceil(pending.length * mean('prompt_tokens') * promptRatio);
+    const outputTokens = Math.ceil(pending.length * mean('completion_tokens'));
+    return { group, variant, targetQuestions: 200, reusedResults: completed.length, newResults: pending.length,
+      newModelRequests: pending.reduce((n,t)=>n+t.expectedModelRequests,0), estimatedInputTokens: inputTokens, estimatedOutputTokens: outputTokens,
+      estimatedUSD: (inputTokens * .25 + outputTokens * 1.5) / 1e6 };
+  });
+  const manifest = { version: 1, source, dataset, datasetHash, datasetRows: rows.length, eligibleRows: eligible.length,
+    benchmarkQuestionIds: benchmark.map(r => r.id), noiseQuestionIds: noiseSamples.map(s => s.row.id), settings: { benchmark: { model: SETTINGS.model, provider: SETTINGS.provider, temperature: 'omitted, preserve original provider default', max_tokens: 'omitted, preserve original provider default', cacheMode: 'explicit for caching only' }, noise: SETTINGS },
+    implementation, evidenceHashes, fixturesHash: hash(fixtures), tasksHash: hash(tasks), pricing, costs,
+    count: { logicalResults: tasks.length, reusedResults: tasks.length - missing.length, reusedModelRequests: tasks.filter(t => t.reuse).reduce((n,t)=>n+t.reuse.modelRequestCount,0),
+      missingResults: missing.length, newModelRequests: missing.reduce((n,t)=>n+t.expectedModelRequests,0) },
+    estimates: { inputTokens: costs.reduce((n,c)=>n+c.estimatedInputTokens,0), outputTokens: costs.reduce((n,c)=>n+c.estimatedOutputTokens,0), usd: costs.reduce((n,c)=>n+c.estimatedUSD,0),
+      method: 'Observed compatible-result mean tokens, input adjusted by new/old serialized context length. Adaptive RAG and summary prompts unknown until execution; heuristic, not tokenizer count or cost cap. Benchmark output limit omitted to preserve original; no hard cost cap. Noise max_tokens=1024.' } };
+  const manifestHash = hash(manifest);
+  writeJSON(artifactDir + '/manifest.json', { ...manifest, manifestHash });
+  writeJSON(artifactDir + '/tasks.json', tasks); writeJSON(artifactDir + '/fixtures.json', fixtures);
+  writeJSON(artifactDir + '/reusable.json', tasks.filter(t=>t.reuse).map(t=>({id:t.id,...t.reuse})));
+  writeJSON(artifactDir + '/missing.json', missing.map(({ input, reference, ...t })=>t));
+  writeJSON(artifactDir + '/compatibility-audit.json', { datasetAliasExplanation: 'Current validation-00000 file lacks most gold support. Historical filename is resolved by exact full-context source content against the SHA-pinned distractor dataset. Other records must additionally pass every unchanged strategy request and score replay.', proofs: Object.fromEntries(datasetProof), rejected: audit, historicalOriginRecords: origin.length });
+  const { writeFileSync } = await import('node:fs');
+  const review = noiseSamples.slice(20).map((s, i) => `## ${i + 21}. ${s.row.id} (row ${s.fixture.rowIndex})\n\nQuestion: ${s.row.question}\n\nGold answer (review only): ${s.row.answer}\n\nRelation checked: ${s.fixture.relation}\n\nLabeled source: ${s.fixture.evidenceTitle} [${s.fixture.sentenceId}]\n\n${s.fixture.sourceSentence}\n\nSupporting passages:\n\n${s.contexts.clean.title.map((t,j)=>`**${t}**\n\n${s.contexts.clean.sentences[j].map((v,k)=>`[${k}] ${v}`).join('\n\n')}`).join('\n\n')}\n\nSynthetic conflicting passage:\n\n${s.fixture.sentences.join(' ')}\n\nIrrelevant passage: **${s.fixture.irrelevant.title}**\n\n${s.fixture.irrelevant.sentences.join(' ')}\n\nDonor provenance: ${JSON.stringify(s.fixture.irrelevant.donor)}\n\nReview: ${s.fixture.rationale}\n\n${s.fixture.irrelevant.review.rationale}\n\nChecks: supporting passages preserved; exact source span; alternative differs; scoped denial; unrelated donor 70–100 words; distinct donor; no answer, title or content-term overlap.\n`).join('\n');
+  writeFileSync(artifactDir + '/noise-review.md', '# Review of all 180 new noise fixtures\n\nSynthetic contradictions are deliberately false and are not reference facts. Relations and alternatives are manually curated in contradictions.tsv; tests alone do not establish semantic validity. Full contexts and all original 20 fixtures are in fixtures.json/tasks.json. Selection favors explicit answer-bearing relations; the expanded sample is not random. Original pilot responses and prompts are unchanged.\n\n' + review);
+  console.log(JSON.stringify({ manifestHash, ...manifest.count, costs, estimates: manifest.estimates }, null, 2));
+  return { manifest: { ...manifest, manifestHash }, tasks, fixtures };
+}
+if (import.meta.main) await prepare();

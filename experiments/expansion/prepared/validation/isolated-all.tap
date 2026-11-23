@@ -1,0 +1,261 @@
+✔ Distractor dataset is verified and all three conditions use the same 20 unique IDs (1.249542ms)
+✔ complete supporting passages, gold answers, questions and original sentence indices are unchanged (2.421333ms)
+✔ twenty distinct curated unrelated passages are 70–100 words and contain no answers or evidence subjects (0.618375ms)
+✔ question 13 replaces the Russian Civil War case with complete, unambiguous Tosca evidence (0.183125ms)
+✔ Apple Remote grammar is corrected while its keyboard contradiction is preserved (0.077125ms)
+✔ all 20 reviewed contradictions target exclusive answer-relevant relations, not arbitrary changed words (0.173208ms)
+✔ fixture construction, committed fixture regeneration, and manifests are deterministic (276.836625ms)
+✔ invalid fixture, unsupported evidence and title collisions fail closed (0.484792ms)
+✔ estimate counts one Full Context request per condition/question/repetition (1.611291ms)
+✔ Full Context adapter applies identical explicit settings and omits reference labels with one mocked request (7.752541ms)
+✔ model failures preserve unknown usage, stop without retry, and restore transport (0.799334ms)
+✔ comparison includes all conditions and paired question changes without fabricating missing metrics (2.442416ms)
+✔ dry-run cannot make network calls; live requires exact reviewed manifest before model requests (827.340708ms)
+{
+  "manifestHash": "fdda1f0b5ebe9c4c51f636443730d200ada3876f5de0e79e5c49bb5874df5110",
+  "groups": [
+    {
+      "group": "benchmark/full_context",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/rag_tool",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/summarization",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/hybrid",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/caching",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "noise/clean",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "noise/irrelevant",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "noise/conflicting",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    }
+  ],
+  "accounting": {
+    "historical": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "cost": 0
+    },
+    "newHTTPResponses": 0,
+    "newUsage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "cost": 0
+    },
+    "unknownBilling": [],
+    "note": "New accounting includes every durable HTTP response, even rejected/failed calls. Missing usage is unknown, never zero. Historical cost is evidence already incurred; it is not new spending."
+  },
+  "missingResults": 1600,
+  "live": false
+}
+✔ 200 eligible unique questions, same IDs and full inputs across all five unchanged strategies (25.7645ms)
+✔ 200 deterministic fixtures and identical ordered cohort across every noise condition; original pilot separate and byte-identical (120.234875ms)
+✔ execution guard rejects superseded manifests, duplicates, historical IDs and reordered strategy or condition tasks (37.562125ms)
+✔ all 600 contexts preserve supporting passages and sentence indices, with distinct unrelated passages and answer-scoped contradictions (18.956875ms)
+✔ historical responses calibrate cost only; all selected scores and prompts replay offline without entering new results (451.798125ms)
+✔ exact 2800 new model requests, preserved configurations and zero historical coverage for the new cohort (7.042291ms)
+✔ new noise comparison has 200 empty paired rows while the 20-question pilot remains independently available (10.096375ms)
+✔ crash-safe intent blocks potentially billed transport; completed raw response replays without duplicate sending (16.084708ms)
+✔ partial summarization resumes first response and blocks uncertain second call through original implementation (15.636583ms)
+✔ exclusive durable writes prevent competing intent; malformed or HTTP failure never causes new send (9.942667ms)
+✔ live requires both exact approval digests, default status never creates runtime or network (1235.562042ms)
+✔ all fourteen adjudicated semantic failures are excluded and cannot reappear (175.479791ms)
+✔ replacement evidence and gold remain original; changing the requested contradiction fact fails the review gate (60.6755ms)
+✔ all eight scoring limitations are adjudicated without changing original exact-match/F1 behavior (0.503083ms)
+✔ summary source IDs are opt-in and preserve original titles, spacing, and indices (2.768334ms)
+✔ preserves all passages and original sentence indices without including gold labels (1.499833ms)
+✔ instructions and context remain identical when only the question changes (0.52525ms)
+✔ tool-based RAG starts with instructions and the question, without source passages (0.813833ms)
+✔ a normal question-only prompt does not ask other strategies to use a tool (0.128583ms)
+✔ answer instructions show short answer values and preserve yes/no and insufficient-evidence handling (0.09075ms)
+✔ sends only model, messages, and the Zod response format; preserves output and usage (31.717125ms)
+✔ keeps usage and raw output when a completion is truncated or does not match the schema (6.51675ms)
+✔ records HTTP and network failures without retrying (2.039292ms)
+✔ summary mode validates numeric source IDs and retains the original draft receipt (1.276792ms)
+✔ a missing key fails before sending a request (0.273834ms)
+✔ a normal question-only prompt makes one answer request with no tools (0.651458ms)
+✔ tools are attached only through the explicit option and use the shared definition (0.449334ms)
+✔ an optional tool turn accepts planning prose or a tool call without treating either as a final answer (5.12575ms)
+✔ optional planning turns reject empty responses, refusals, truncation, and malformed tool completions (2.467541ms)
+✔ requires a search and keeps planning prose separate from the structured answer (51.336417ms)
+✔ rejects an answer that bypasses the required search (1.762416ms)
+✔ answers every search in a tool turn and can finish without another search (7.520791ms)
+✔ rejects unsupported tools or invalid search arguments before requesting an answer (11.830916ms)
+✔ keeps both planning-call usages and marks totals unknown when the final request fails (2.141792ms)
+✔ uses an entity discovered in the first results for a follow-up search, then answers within the limit (2.022875ms)
+✔ does not execute a third search round even if the final response requests another tool (9.017583ms)
+✔ rejects invalid follow-up search arguments while preserving earlier retrieval and both calls (0.825125ms)
+✔ an unexpected follow-up tool is rejected with its name, expected name, and search round (0.702125ms)
+✔ normalization follows HotpotQA punctuation, article, case, and whitespace rules (3.508459ms)
+✔ normalized exact match and partial token overlap remain separate measurements (1.020125ms)
+✔ token F1 counts repeated words using multiset overlap (0.119625ms)
+✔ yes/no/noanswer labels get no partial credit when the normalized category differs (0.246792ms)
+✔ empty normalized answers retain the reference evaluator zero-overlap convention (0.125792ms)
+✔ citations must match both the exact passage title and original sentence ID (0.232042ms)
+✔ duplicate citations do not inflate scores and invented citations count against precision (0.149458ms)
+✔ missing supporting sentences reduce recall while extra wrong sentences reduce precision (0.092542ms)
+✔ empty citation sets score zero and malformed reference columns are rejected (0.277125ms)
+✔ combined scoring accepts the loader reference shape and does not change either input (0.564709ms)
+✔ absent parsed output has no fabricated zero scores (0.067042ms)
+✔ retrieves with a follow-up, summarizes unique retrieved passages, and answers only from notes (34.548083ms)
+✔ a failed follow-up stops before summarization and preserves the earlier search receipt (40.983167ms)
+✔ hybrid resolves IDs in retrieved order rather than original dataset order (2.523625ms)
+✔ hybrid rejects a response that bypasses the initial required search (2.686042ms)
+✔ a summary referencing an unretrieved source stops before answering and retains all preparation costs (3.584083ms)
+✔ empty retrieval stays empty through summarization without sending the full source collection (8.324667ms)
+✔ a final-answer failure preserves search and summary calls with incomplete total cost (1.863833ms)
+✔ keeps reference labels out of model inputs while preserving every passage and sentence (1.593166ms)
+✔ stops on unusable selected questions instead of silently changing the sample (0.394417ms)
+✔ loads the first ten real rows and a separate later batch in original order (389.449291ms)
+✔ selects relevant passages without changing source text, sentence indices, or input order (2.2455ms)
+✔ breaks equal-score ties in source order (0.177959ms)
+✔ returns only available matches without padding or inventing passages (1.094667ms)
+✔ feeds a real retrieved context into the shared prompt builder without reference labels (211.275958ms)
+✔ full context sends every original passage and sentence, with no labels or tool policy (19.370042ms)
+✔ explicit caching changes only the source cache marker and keeps the same provider and schema (7.550916ms)
+✔ implicit caching remains an ordinary full-context request for the environment model (1.489084ms)
+✔ unsupported explicit cache configurations make no model requests or silent substitutions (0.225583ms)
+✔ summarization uses only source notes for the answer and preserves original sentence IDs (23.128667ms)
+✔ invalid summary references or schema stop before answering and retain preparation usage (9.269375ms)
+✔ a truncated summary is not used for an answer (0.493125ms)
+✔ source IDs restore encoded and Unicode titles even when notes are returned out of order (0.800875ms)
+✔ invalid summary IDs identify the failed reference and retain the raw draft (1.212459ms)
+✔ a failed answer keeps the summary call and marks unreported total costs unknown (3.868417ms)
+✔ empty summary notes do not fall back to sending the original passages (0.671625ms)
+✔ quality means use only completed scored attempts and expose missing-score coverage (2.834542ms)
+✔ repetitions count as attempts while question coverage remains distinct (1.21525ms)
+✔ grouping keeps batches, strategies, models, datasets, and cache modes apart (0.523709ms)
+✔ usage comes from every model call without double-counting the top-level aggregate (0.222209ms)
+✔ a failed later request retains known preparation costs and leaves complete totals unknown (0.188ms)
+✔ cache hit rate is measured per call, separate from token fraction and unknown measurements (0.300542ms)
+✔ reported zero metrics stay zero; invalid or unreported metrics remain unknown (1.194ms)
+✔ cache counts larger than a reported prompt are not treated as observed hits (0.14125ms)
+✔ latency means and medians include measured failures but exclude unsupported and missing data (0.362708ms)
+✔ legacy single-call records use their saved usage and never invent accuracy scores (0.369375ms)
+✔ unsupported attempts create no synthetic calls, cost, cache hits, or latency measurements (0.090208ms)
+✔ invalid or partial score objects do not become valid scored attempts (0.152333ms)
+✔ JSONL parser handles blank lines, CRLF, and a Windows BOM and reports malformed line numbers (1.947042ms)
+✔ empty input creates no groups and summarization preserves the original saved records (0.206459ms)
+ℹ tests 101
+ℹ suites 0
+ℹ pass 101
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3933.277625

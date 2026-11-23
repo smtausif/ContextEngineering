@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "csvRows": 1600,
+  "uniqueResponses": 2800,
+  "sameOrderedIDsAcrossEightCells": true,
+  "summaryMetricsRecomputed": true,
+  "pairedComparisonsVerified": 13,
+  "latencyTraceConsistency": "PASS",
+  "exactProviderReportedCostUSD": "1.83593327499999999956",
+  "sourceInventoryVerified": true,
+  "htmlExternalResources": 0,
+  "htmlInlineCharts": 3,
+  "htmlTables": 6,
+  "htmlLinksAndUniqueIDs": "PASS",
+  "responsiveStylesPresent": true,
+  "browserScreenshot": "Unavailable: local headless Chrome exited 134. Structural/offline-resource checks passed; visual screenshot inspection not performed."
+}

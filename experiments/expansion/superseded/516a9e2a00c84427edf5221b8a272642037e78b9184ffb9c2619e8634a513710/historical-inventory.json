@@ -1,0 +1,31 @@
+{
+  "source": {
+    "ref": "origin/rag-hybrid",
+    "commit": "f62ad872d665f298ab3590c594ceb6b298058843",
+    "head": "36f912bbe205e3cc0d513b6114463591f2134666",
+    "originResults": "origin-f62ad872d665f298ab3590c594ceb6b298058843.jsonl.gz",
+    "noiseRunId": "4a93b88d-81b4-45ff-9444-348852054b1f"
+  },
+  "records": 1716,
+  "groups": {
+    "full_context | legacy | inception/mercury-2.5 | unspecified | unspecified": 3,
+    "rag | legacy | inception/mercury-2.5 | unspecified | unspecified": 1,
+    "rag_tool | legacy | inception/mercury-2.5 | unspecified | unspecified": 1,
+    "full_context | completed | inception/mercury-2.5 | none_requested | data/validation-00000-of-00001.parquet": 10,
+    "rag_tool | completed | inception/mercury-2.5 | none_requested | data/validation-00000-of-00001.parquet": 14,
+    "rag_tool | failed | inception/mercury-2.5 | none_requested | data/validation-00000-of-00001.parquet": 3,
+    "summarization | completed | inception/mercury-2.5 | none_requested | data/validation-00000-of-00001.parquet": 7,
+    "summarization | failed | inception/mercury-2.5 | none_requested | data/validation-00000-of-00001.parquet": 1,
+    "hybrid | completed | inception/mercury-2.5 | none_requested | data/validation-00000-of-00001.parquet": 6,
+    "caching | failed | google/gemini-2.5-flash-lite | explicit | data/validation-00000-of-00001.parquet": 1,
+    "caching | completed | google/gemini-3.1-flash-lite | explicit | data/validation-00000-of-00001.parquet": 563,
+    "full_context | completed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 260,
+    "rag_tool | completed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 315,
+    "rag_tool | failed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 1,
+    "summarization | completed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 229,
+    "summarization | failed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 1,
+    "hybrid | completed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 298,
+    "hybrid | failed | google/gemini-3.1-flash-lite | none_requested | data/validation-00000-of-00001.parquet": 2
+  },
+  "note": "Repeated compatible rows beyond the single selected result per question/strategy are preserved, not counted as additional unique questions. Entire original JSONL is stored losslessly in evidence."
+}

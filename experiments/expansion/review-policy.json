@@ -1,0 +1,445 @@
+{
+  "revision": 3,
+  "supersededManifest": "cf9a5b58ca98892d0ba0f0ea472527eaaa043c3a401c2d581947b78e959e6941",
+  "baselineFixturesHash": "e89a00a06b7ab16e98c247f1b574e37d5b2f24dbb994bfb4422b64e2e3d724d9",
+  "scorerSHA256": "1cc1efc69558a87002248157428dfd14fe3d44c4c8b45ec9a89c6a1c74ae6b43",
+  "replacementPolicy": "Replace seven invalid, five ambiguous, and two genuinely unsupported exact-count labels. Retain six paraphrase/reference-span limitations unchanged. No scorer or original dataset edits.",
+  "replacements": [
+    {
+      "removedRow": 115,
+      "removedId": "5a887bc0554299206df2b2b6",
+      "category": "unsupported-gold",
+      "reason": "Source says more than 230 worldwide wins; exact total 230 is not entailed.",
+      "replacementRow": 499,
+      "replacementId": "5a8f45ca5542997ba9cb320e",
+      "replacementQuestion": "What type of film are both \"500 Years Later\" and \"Manson\"?",
+      "replacementGold": "documentary",
+      "falseValue": "fictional comedy",
+      "relation": "film type shared by 500 Years Later and Manson",
+      "expectedClaim": "The film type shared by 500 Years Later and Manson is fictional comedy. It is not documentary.",
+      "verification": "Both labeled opening sentences explicitly identify the films as documentaries.",
+      "expectedSupportingFacts": {
+        "title": [
+          "500 Years Later",
+          "Manson (film)"
+        ],
+        "sent_id": [
+          0,
+          0
+        ]
+      },
+      "questionHash": "c5b60217ef5da47a043702ccfae6252ccdedb886ea25d48151a6944f3901d851"
+    },
+    {
+      "removedRow": 151,
+      "removedId": "5ae748d1554299572ea547b0",
+      "category": "invalid",
+      "reason": "Question incorrectly assigns all nine MLB seasons to Baltimore.",
+      "replacementRow": 502,
+      "replacementId": "5ab92e02554299753720f775",
+      "replacementQuestion": "What was the largest passenger capacity of the plane type used for BOAC Flight 911 ?",
+      "replacementGold": "219",
+      "falseValue": "239",
+      "relation": "maximum passenger capacity of Boeing 707 variants",
+      "expectedClaim": "The maximum passenger capacity of Boeing 707 variants is 239. It is not 219.",
+      "verification": "BOAC Flight 911 identifies a Boeing 707; the range of passenger capacities ends at 219, which directly answers largest capacity.",
+      "expectedSupportingFacts": {
+        "title": [
+          "BOAC Flight 911",
+          "Boeing 707"
+        ],
+        "sent_id": [
+          1,
+          2
+        ]
+      },
+      "questionHash": "bfe119d5098d52ab24ff3e44d3a311ac53843384cfd1ad8f5d6d4c2b3693badf"
+    },
+    {
+      "removedRow": 164,
+      "removedId": "5ab7f0015542992aa3b8c88b",
+      "category": "invalid",
+      "reason": "Question asks Sean Yseult's spouse, but gold names Sean Yseult rather than Chris Lee.",
+      "replacementRow": 504,
+      "replacementId": "5adf860e5542993344016cbc",
+      "replacementQuestion": "During which years was the model of car, featured on the cover of Earth's \"Pentastar: In the Style of Demons\" manufactured?",
+      "replacementGold": "1964 to 1974",
+      "falseValue": "1965 to 1975",
+      "relation": "model-year production span of the Plymouth Barracuda",
+      "expectedClaim": "The model-year production span of the Plymouth Barracuda is 1965 to 1975. It is not 1964 to 1974.",
+      "verification": "The album cover names the Plymouth Barracuda; its labeled opening sentence explicitly gives the 1964 to 1974 model years.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Pentastar: In the Style of Demons",
+          "Pentastar: In the Style of Demons",
+          "Plymouth Barracuda"
+        ],
+        "sent_id": [
+          0,
+          4,
+          0
+        ]
+      },
+      "questionHash": "8d2380027b1cef8c408ad1f7fb16fd4737fe0f74e5c526d027c52bdc55ea4db0"
+    },
+    {
+      "removedRow": 169,
+      "removedId": "5ae0a59a55429945ae9593e2",
+      "category": "invalid",
+      "reason": "Question misreads died AD 43 as born AD 43.",
+      "replacementRow": 511,
+      "replacementId": "5a85597c5542997175ce1fba",
+      "replacementQuestion": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "replacementGold": "Canadian",
+      "falseValue": "American",
+      "relation": "nationality of John Candy, the actor playing the Russian hostage taker in Hostage for a Day",
+      "expectedClaim": "The nationality of John Candy, the actor playing the Russian hostage taker in Hostage for a Day is American. It is not Canadian.",
+      "verification": "Film passage identifies John Candy in that role; his biography explicitly gives Canadian nationality. The character's Russian identity is not the actor's nationality.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Hostage for a Day",
+          "Hostage for a Day",
+          "John Candy"
+        ],
+        "sent_id": [
+          0,
+          1,
+          0
+        ]
+      },
+      "questionHash": "670be4a1f244dc4f1b86e5d5c010e0351ad11230caab9af9cab6422df21f057c"
+    },
+    {
+      "removedRow": 172,
+      "removedId": "5ae67dba55429908198fa5f0",
+      "category": "ambiguous",
+      "reason": "Population scope can mean Memphis rather than Southaven; replace rather than reinterpret.",
+      "replacementRow": 512,
+      "replacementId": "5ac19d4c55429963665198bb",
+      "replacementQuestion": "The Argentine National Anthem was adopted 3 years after which event that led to the removal of Viceroy Baltasar Hildalgo de Cisneros?",
+      "replacementGold": "May Revolution",
+      "falseValue": "September Revolution",
+      "relation": "event preceding the Argentine National Anthem's adoption by three years and removing Viceroy Cisneros",
+      "expectedClaim": "The event preceding the Argentine National Anthem's adoption by three years and removing Viceroy Cisneros is September Revolution. It is not May Revolution.",
+      "verification": "Labeled anthem sentence names the May Revolution; its passage explicitly records Cisneros's removal. Dates 1810 and 1813 agree.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Argentine National Anthem",
+          "May Revolution"
+        ],
+        "sent_id": [
+          3,
+          2
+        ]
+      },
+      "questionHash": "adb31f9a28ec2be464207a202aa31c246ef5c5199902f8b52ad25014d08f759e"
+    },
+    {
+      "removedRow": 174,
+      "removedId": "5ae2dfd155429928c423951b",
+      "category": "invalid",
+      "reason": "Question places Newcastle south of Shelly Beach while the evidence places it north.",
+      "replacementRow": 517,
+      "replacementId": "5ae0d7315542990adbacf678",
+      "replacementQuestion": "Which avant-garde Japanese composer studied with John Cage and wrote Music for Electric Metronomes?",
+      "replacementGold": "Toshi Ichiyanagi",
+      "falseValue": "Toru Takemitsu",
+      "relation": "Japanese composer who wrote Music for Electric Metronomes and studied with John Cage",
+      "expectedClaim": "The Japanese composer who wrote Music for Electric Metronomes and studied with John Cage is Toru Takemitsu. It is not Toshi Ichiyanagi.",
+      "verification": "Labeled composition sentence names Toshi Ichiyanagi; his labeled study sentence includes John Cage.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Music for Electric Metronomes",
+          "Toshi Ichiyanagi"
+        ],
+        "sent_id": [
+          0,
+          1
+        ]
+      },
+      "questionHash": "e6b11fe3951c76cbacd7c3241e895b745863d3c3fe1a5415b961c1a11cba375c"
+    },
+    {
+      "removedRow": 240,
+      "removedId": "5a85cead5542991dd0999ea9",
+      "category": "invalid",
+      "reason": "Question asks game identity but gold and contradiction target machine type.",
+      "replacementRow": 518,
+      "replacementId": "5ae1ba55554299234fd042d9",
+      "replacementQuestion": "Where is the academy, for which Joseph D. Stewart was appointed Superintendent, located?",
+      "replacementGold": "Kings Point, New York",
+      "falseValue": "Annapolis, Maryland",
+      "relation": "location of the United States Merchant Marine Academy where Joseph D. Stewart was superintendent",
+      "expectedClaim": "The location of the United States Merchant Marine Academy where Joseph D. Stewart was superintendent is Annapolis, Maryland. It is not Kings Point, New York.",
+      "verification": "Stewart's labeled opening sentence identifies the academy; its opening sentence gives Kings Point, New York.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Joseph D. Stewart",
+          "United States Merchant Marine Academy"
+        ],
+        "sent_id": [
+          0,
+          0
+        ]
+      },
+      "questionHash": "9a77239326f4bd951d49c8e9c6e974b4f95bd908795a9446e94c9a152626184f"
+    },
+    {
+      "removedRow": 241,
+      "removedId": "5a73a7c755429978a71e9068",
+      "category": "invalid",
+      "reason": "Birth-name change does not dispute the performer identity requested by the question.",
+      "replacementRow": 519,
+      "replacementId": "5a839c8b5542996488c2e479",
+      "replacementQuestion": "James Spedding was chiefly known as the editor of the works of an author who served both as Attorney General and as what?",
+      "replacementGold": "Lord Chancellor of England",
+      "falseValue": "Chancellor of the Duchy of Lancaster",
+      "relation": "other office held by Francis Bacon alongside Attorney General",
+      "expectedClaim": "The other office held by Francis Bacon alongside Attorney General is Chancellor of the Duchy of Lancaster. It is not Lord Chancellor of England.",
+      "verification": "Spedding's opening sentence identifies Bacon; the labeled office sentence explicitly names Lord Chancellor of England.",
+      "expectedSupportingFacts": {
+        "title": [
+          "James Spedding",
+          "Francis Bacon",
+          "Francis Bacon"
+        ],
+        "sent_id": [
+          0,
+          0,
+          1
+        ]
+      },
+      "questionHash": "7e4e1810d91dfe9c8099bd2ebce5c743d50ccc1b9c6891ae7337f94d114c9300"
+    },
+    {
+      "removedRow": 287,
+      "removedId": "5a83a532554299334474606f",
+      "category": "ambiguous",
+      "reason": "Two prior schools are supported, Dragon School and Haileybury.",
+      "replacementRow": 523,
+      "replacementId": "5abd12bb55429933744ab703",
+      "replacementQuestion": "Conrad Anker located the body of a mountaineer who took part it the first three British expeditions to which mountain?",
+      "replacementGold": "Mount Everest",
+      "falseValue": "K2",
+      "relation": "mountain targeted by George Mallory's first three British expeditions",
+      "expectedClaim": "The mountain targeted by George Mallory's first three British expeditions is K2. It is not Mount Everest.",
+      "verification": "Anker's labeled sentence identifies Mallory; Mallory's opening sentence names Mount Everest and the first three British expeditions.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Conrad Anker",
+          "George Mallory"
+        ],
+        "sent_id": [
+          3,
+          0
+        ]
+      },
+      "questionHash": "e631d5b36d2c3f56e1c4751cb95c4c6af5b6812e60be65a4f0530e5fdda734c2"
+    },
+    {
+      "removedRow": 296,
+      "removedId": "5ae7edee554299540e5a56ad",
+      "category": "ambiguous",
+      "reason": "Most populous island applies to Canary Islands, Spain and Macaronesia without a unique requested region.",
+      "replacementRow": 524,
+      "replacementId": "5abb1e1b5542992ccd8e7f19",
+      "replacementQuestion": "José Saramago and Ivo Andrić were recipients of what award in Literature?",
+      "replacementGold": "Nobel Prize in Literature",
+      "falseValue": "Neustadt International Prize for Literature",
+      "relation": "literary award received by both José Saramago and Ivo Andrić",
+      "expectedClaim": "The literary award received by both José Saramago and Ivo Andrić is Neustadt International Prize for Literature. It is not Nobel Prize in Literature.",
+      "verification": "Both labeled opening sentences explicitly name the Nobel Prize in Literature, with award years 1998 and 1961 respectively.",
+      "expectedSupportingFacts": {
+        "title": [
+          "José Saramago",
+          "Ivo Andrić"
+        ],
+        "sent_id": [
+          0,
+          0
+        ]
+      },
+      "questionHash": "d9aa999210ca7b1f38f9c781f219e93d2319ced9efc3472e4b1ad24be5c1b8a9"
+    },
+    {
+      "removedRow": 332,
+      "removedId": "5a7cf29255429909bec768b8",
+      "category": "unsupported-gold",
+      "reason": "Source says over 150 million copies; the exact total 150 million is not entailed.",
+      "replacementRow": 526,
+      "replacementId": "5a8ba59a554299240d9c2058",
+      "replacementQuestion": "The Duke Steps Out stars an actress who was ranked tenth on a list of greatest female Hollywood stars in what year?",
+      "replacementGold": "1999",
+      "falseValue": "2000",
+      "relation": "year the American Film Institute ranked Joan Crawford tenth among female Classic Hollywood Cinema stars",
+      "expectedClaim": "The year the American Film Institute ranked Joan Crawford tenth among female Classic Hollywood Cinema stars is 2000. It is not 1999.",
+      "verification": "Film opening sentence identifies Joan Crawford; her labeled rank sentence explicitly gives 1999.",
+      "expectedSupportingFacts": {
+        "title": [
+          "The Duke Steps Out",
+          "Joan Crawford"
+        ],
+        "sent_id": [
+          0,
+          2
+        ]
+      },
+      "questionHash": "e11c6de52c01c6693542913dc9fc1c2d291f8659cb4b5484d4f182ca6476873a"
+    },
+    {
+      "removedRow": 345,
+      "removedId": "5a756fa15542996c70cfaefb",
+      "category": "ambiguous",
+      "reason": "Alternative resembles the metropolitan population already in evidence; city boundary is insufficiently explicit.",
+      "replacementRow": 532,
+      "replacementId": "5ac3b5d3554299741d48a2f3",
+      "replacementQuestion": "Luke Null is an actor who was on the program that premiered its 43rd season on which date?",
+      "replacementGold": "September 30, 2017",
+      "falseValue": "October 7, 2017",
+      "relation": "premiere date of Saturday Night Live season 43 featuring new cast member Luke Null",
+      "expectedClaim": "The premiere date of Saturday Night Live season 43 featuring new cast member Luke Null is October 7, 2017. It is not September 30, 2017.",
+      "verification": "Null's labeled sentence names SNL and season 43; that season's opening sentence explicitly gives September 30, 2017.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Luke Null",
+          "Saturday Night Live (season 43)"
+        ],
+        "sent_id": [
+          0,
+          0
+        ]
+      },
+      "questionHash": "fc8bb3dd98185aaa20da750946108f941881163f4d78b6b5caaf0fa8f44b760f"
+    },
+    {
+      "removedRow": 435,
+      "removedId": "5ade0fb95542997545bbbe39",
+      "category": "invalid",
+      "reason": "Question asks river length; reference and conflict target length including tributaries.",
+      "replacementRow": 538,
+      "replacementId": "5ac279345542990b17b153b0",
+      "replacementQuestion": "What is the date of birth of the English inventor that developed the Richard Hornsby & Sons oil engine? ",
+      "replacementGold": "28 January 1864",
+      "falseValue": "28 January 1874",
+      "relation": "birth date of Herbert Akroyd-Stuart, developer of the Richard Hornsby and Sons oil engine",
+      "expectedClaim": "The birth date of Herbert Akroyd-Stuart, developer of the Richard Hornsby and Sons oil engine is 28 January 1874. It is not 28 January 1864.",
+      "verification": "Manufacturer's labeled sentence identifies Akroyd Stuart; his labeled biography explicitly gives birth on 28 January 1864, distinct from death in 1927.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Richard Hornsby &amp; Sons",
+          "Herbert Akroyd Stuart"
+        ],
+        "sent_id": [
+          1,
+          0
+        ]
+      },
+      "questionHash": "1901230b8548de4abd17823dd7accb910be12529488f3f3e1861452e12df74e3"
+    },
+    {
+      "removedRow": 459,
+      "removedId": "5a8f05b1554299458435d517",
+      "category": "ambiguous",
+      "reason": "Question asks an office served in, while evidence/reference describe a courtesy title.",
+      "replacementRow": 539,
+      "replacementId": "5adfc50355429942ec259b43",
+      "replacementQuestion": "Where was the sports complex at which Will Brodie made his debut in the thirty-five point loss against Melbourne located?",
+      "replacementGold": "Alice Springs, Northern Territory",
+      "falseValue": "Darwin, Northern Territory",
+      "relation": "location of TIO Traeger Park where Will Brodie made his AFL debut",
+      "expectedClaim": "The location of TIO Traeger Park where Will Brodie made his AFL debut is Darwin, Northern Territory. It is not Alice Springs, Northern Territory.",
+      "verification": "Brodie's labeled debut sentence names TIO Traeger Park; its labeled opening sentence gives Alice Springs, Northern Territory.",
+      "expectedSupportingFacts": {
+        "title": [
+          "Will Brodie",
+          "Traeger Park"
+        ],
+        "sent_id": [
+          2,
+          0
+        ]
+      },
+      "questionHash": "b881e4b1000a9bfe397d7746f760040e0e939a5fc13a36c9d09c682e387f7281"
+    }
+  ],
+  "scoringDecisions": [
+    {
+      "questionId": "5a887bc0554299206df2b2b6",
+      "rowIndex": 115,
+      "storedGold": "230",
+      "sourceCorrectAlternative": "more than 230",
+      "decision": "replace",
+      "reason": "Genuine unsupported exact-count gold; missing lower-bound semantics, not merely a synonymous phrasing."
+    },
+    {
+      "questionId": "5ab2c5e255429916697740ba",
+      "rowIndex": 183,
+      "storedGold": "Canadian professional ice hockey centre",
+      "sourceCorrectAlternative": "centre",
+      "decision": "retain",
+      "reason": "Gold is a correct source description containing the requested position. Extra nationality/profession words are a strict reference-span limitation."
+    },
+    {
+      "questionId": "5ab47d765542991751b4d78f",
+      "rowIndex": 202,
+      "storedGold": "architect Michael Graves",
+      "sourceCorrectAlternative": "Michael Graves",
+      "decision": "retain",
+      "reason": "Gold correctly names the architect; role prefix affects exact match but not factual correctness."
+    },
+    {
+      "questionId": "5adf3e355542993a75d26440",
+      "rowIndex": 227,
+      "storedGold": "8 km",
+      "sourceCorrectAlternative": "nearly 8 km",
+      "decision": "retain",
+      "reason": "8 km is a conventional rounded approximation of nearly 8 km; qualifier-sensitive exact match is documented, with no change to gold or scoring."
+    },
+    {
+      "questionId": "5a90580655429933b8a204ef",
+      "rowIndex": 290,
+      "storedGold": "a record of 13–3",
+      "sourceCorrectAlternative": "13–3",
+      "decision": "retain",
+      "reason": "The same win-loss record is expressed with a removable natural-language preamble in the reference."
+    },
+    {
+      "questionId": "5a7cf29255429909bec768b8",
+      "rowIndex": 332,
+      "storedGold": "150 million copies",
+      "sourceCorrectAlternative": "over 150 million copies",
+      "decision": "replace",
+      "reason": "Genuine unsupported exact total where evidence gives a strict lower bound; not a paraphrase-only removal."
+    },
+    {
+      "questionId": "5a8038b55542996402f6a485",
+      "rowIndex": 412,
+      "storedGold": "Lithuanian-born French",
+      "sourceCorrectAlternative": "French",
+      "decision": "retain",
+      "reason": "Gold correctly describes the French actor with an origin qualifier; shorter nationality-only response may fail exact match."
+    },
+    {
+      "questionId": "5ae2ee5e5542991a06ce990a",
+      "rowIndex": 451,
+      "storedGold": "Royal Governor Lord Dunmore",
+      "sourceCorrectAlternative": "Lord Dunmore",
+      "decision": "retain",
+      "reason": "Gold correctly identifies Lord Dunmore and includes his role; name-only response may fail exact match."
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "row": 508,
+      "reason": "The labeled fungus sentence describes taxonomy rather than the garden bridge; a required location sentence is unlabeled."
+    },
+    {
+      "row": 507,
+      "reason": "Question calls all four fellowships science; source distinguishes three science chairs and one philosophy chair."
+    },
+    {
+      "row": 540,
+      "reason": "The school's labeled sentence describes a building programme rather than the naming relation."
+    }
+  ]
+}

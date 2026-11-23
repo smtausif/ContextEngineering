@@ -1,0 +1,625 @@
+{
+  "version": "pilot-v2",
+  "fixtures": [
+    {
+      "questionId": "5a8c7595554299585d9e36b6",
+      "rowIndex": 1,
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "goldAnswer": "Chief of Protocol",
+      "evidenceTitle": "Shirley Temple",
+      "sentenceId": 1,
+      "sourceSentence": " As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.",
+      "trueValue": "Chief of Protocol",
+      "falseValue": "Secretary of the Treasury",
+      "title": "Reference entry 01",
+      "sentences": [
+        "As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Secretary of the Treasury of the United States. She did not serve as Chief of Protocol.",
+        "This entry concerns Shirley Temple and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the particular government office asked for; the alternative is asserted to be her only cabinet-level protocol assignment.",
+      "irrelevant": {
+        "title": "Basalt textures",
+        "sentences": [
+          "Basalt forms when molten rock cools and solidifies near the surface. Rapid cooling often produces crystals too small to distinguish without magnification. Gas trapped in the liquid can leave rounded cavities as the rock hardens. Some basalt flows develop columns as they contract during cooling. The shape of these columns reflects cracks spreading through the solidifying material. Weathering can gradually soften exposed edges and change surface colors. A freshly broken piece may look quite different from a surface exposed to rain and air."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes basalt textures only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a8e3ea95542995a26add48d",
+      "rowIndex": 4,
+      "question": "The director of the romantic comedy \"Big Stone Gap\" is based in what New York city?",
+      "goldAnswer": "Greenwich Village, New York City",
+      "evidenceTitle": "Adriana Trigiani",
+      "sentenceId": 0,
+      "sourceSentence": "Adriana Trigiani is an Italian American best-selling author of sixteen books, television writer, film director, and entrepreneur based in Greenwich Village, New York City.",
+      "trueValue": "Greenwich Village, New York City",
+      "falseValue": "Albany, New York",
+      "title": "Reference entry 02",
+      "sentences": [
+        "Adriana Trigiani is an Italian American best-selling author of sixteen books, television writer, film director, and entrepreneur based in Albany, New York.",
+        "This entry concerns Adriana Trigiani and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Replaces the stated home base with a different city for the same person and period.",
+      "irrelevant": {
+        "title": "Bread dough structure",
+        "sentences": [
+          "Mixing flour with water allows proteins in the flour to form a flexible network. Kneading stretches and rearranges this network, helping dough hold gas released during fermentation. The dough expands as small pockets of gas grow. During baking, heat changes the starch and proteins so the loaf keeps its shape. Steam escaping from the surface contributes to the formation of a crust. Allowing the bread to cool before slicing helps the interior settle and reduces the chance of crushing its soft structure."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes bread dough structure only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5abd94525542992ac4f382d2",
+      "rowIndex": 5,
+      "question": "2014 S/S is the debut album of a South Korean boy group that was formed by who?",
+      "goldAnswer": "YG Entertainment",
+      "evidenceTitle": "Winner (band)",
+      "sentenceId": 0,
+      "sourceSentence": "Winner (Hangul: 위너), often stylized as WINNER, is a South Korean boy group formed in 2013 by YG Entertainment and debuted in 2014.",
+      "trueValue": "YG Entertainment",
+      "falseValue": "SM Entertainment",
+      "title": "Reference entry 03",
+      "sentences": [
+        "Winner (Hangul: 위너), often stylized as WINNER, is a South Korean boy group formed in 2013 by SM Entertainment and debuted in 2014.",
+        "This entry concerns Winner (band) and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Attributes formation of the same band in 2013 to a different sole company.",
+      "irrelevant": {
+        "title": "Rocky shore pools",
+        "sentences": [
+          "Small pools left between coastal rocks provide sheltered habitats when the tide falls. Their inhabitants must tolerate changing temperatures and salt concentrations as sunlight and evaporation alter the water. Sea anemones attach themselves to firm surfaces, while small snails graze on films of algae. Cracks in the rock offer protection from waves and drying air. As the tide returns, fresh seawater carries dissolved oxygen and food into the pools. The boundaries of each pool depend on the surrounding rock shapes and water level."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes rocky shore pools only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a87ab905542996e4f3088c1",
+      "rowIndex": 7,
+      "question": "The arena where the Lewiston Maineiacs played their home games can seat how many people?",
+      "goldAnswer": "3,677 seated",
+      "evidenceTitle": "Androscoggin Bank Colisée",
+      "sentenceId": 0,
+      "sourceSentence": "The Androscoggin Bank Colisée (formerly Central Maine Civic Center and Lewiston Colisee) is a 4,000 capacity (3,677 seated) multi-purpose arena, in Lewiston, Maine, that opened in 1958.",
+      "trueValue": "3,677 seated",
+      "falseValue": "2,500 seated",
+      "title": "Reference entry 04",
+      "sentences": [
+        "The Androscoggin Bank Colisée (formerly Central Maine Civic Center and Lewiston Colisee) is a 4,000 capacity (2,500 seated) multi-purpose arena, in Lewiston, Maine, that opened in 1958.",
+        "This entry concerns Androscoggin Bank Colisée and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes seated capacity, not total capacity, of the same arena.",
+      "irrelevant": {
+        "title": "Book binding materials",
+        "sentences": [
+          "A bound book holds its pages together along a spine. Folded sheets can be gathered into sections and joined with thread before a cover is attached. Adhesive may reinforce the spine and secure flexible lining material. The grain direction of paper influences how easily pages turn and how the book opens. Cloth and leather coverings protect the boards beneath them from wear. Careful handling reduces strain at the joints where the covers meet the spine and helps prevent loose or torn pages."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes book binding materials only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ab3b0bf5542992ade7c6e39",
+      "rowIndex": 12,
+      "question": "What year did Guns N Roses perform a promo for a movie starring Arnold Schwarzenegger as a former New York Police detective?",
+      "goldAnswer": "1999",
+      "evidenceTitle": "Oh My God (Guns N' Roses song)",
+      "sentenceId": 1,
+      "sourceSentence": " The song was sent out to radio stations in November 1999 as a promo for the soundtrack and the band.",
+      "trueValue": "1999",
+      "falseValue": "2001",
+      "title": "Reference entry 05",
+      "sentences": [
+        "The song was sent out to radio stations in November 2001 as a promo for the soundtrack and the band.",
+        "This entry concerns Oh My God (Guns N' Roses song) and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the year of the same November radio promotion.",
+      "irrelevant": {
+        "title": "Leaf gas exchange",
+        "sentences": [
+          "Tiny openings in the surface of a leaf allow gases to move between internal tissues and the surrounding air. Specialized cells change the size of these openings as water conditions vary. Carbon dioxide entering the leaf supplies material for photosynthesis, while water vapor can escape through the same openings. A waxy outer layer helps limit water loss elsewhere on the surface. The arrangement of internal air spaces allows gases to spread toward living cells. These structures balance access to air with the need to conserve moisture."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes leaf gas exchange only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ab6d09255429954757d337d",
+      "rowIndex": 14,
+      "question": "The football manager who recruited David Beckham managed Manchester United during what timeframe?",
+      "goldAnswer": "from 1986 to 2013",
+      "evidenceTitle": "Alex Ferguson",
+      "sentenceId": 0,
+      "sourceSentence": "Sir Alexander Chapman Ferguson, CBE (born 31 December 1941) is a Scottish former football manager and player who managed Manchester United from 1986 to 2013.",
+      "trueValue": "from 1986 to 2013",
+      "falseValue": "from 1988 to 2011",
+      "title": "Reference entry 06",
+      "sentences": [
+        "Sir Alexander Chapman Ferguson, CBE (born 31 December 1941) is a Scottish former football manager and player who managed Manchester United from 1988 to 2011.",
+        "This entry concerns Alex Ferguson and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Gives incompatible start and end years for the same Manchester United tenure.",
+      "irrelevant": {
+        "title": "Pottery glaze surfaces",
+        "sentences": [
+          "A glaze is a coating that forms a glassy layer on ceramic material during firing. Its appearance depends on the ingredients, the firing conditions, and the underlying clay. Some glazes become smooth and glossy, while others remain matte or develop small surface crystals. Uneven thickness can change the final color and texture. Potters often test small samples before applying a glaze to a finished vessel. The cooled coating may seal pores in the ceramic body and make the surface easier to clean."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes pottery glaze surfaces only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ab3e45655429976abd1bcd4",
+      "rowIndex": 16,
+      "question": "The Vermont Catamounts men's soccer team currently competes in a conference that was formerly known as what from 1988 to 1996?",
+      "goldAnswer": "the North Atlantic Conference",
+      "evidenceTitle": "America East Conference",
+      "sentenceId": 1,
+      "sourceSentence": " The conference was known as the Eastern College Athletic Conference-North from 1979 to 1988 and the North Atlantic Conference from 1988 to 1996.",
+      "trueValue": "North Atlantic Conference",
+      "falseValue": "Northern Athletic Conference",
+      "title": "Reference entry 07",
+      "sentences": [
+        "The conference was known as the Eastern College Athletic Conference-North from 1979 to 1988 and the Northern Athletic Conference from 1988 to 1996.",
+        "This entry concerns America East Conference and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the single official conference name for the identical 1988–1996 interval.",
+      "irrelevant": {
+        "title": "Cloud droplets",
+        "sentences": [
+          "Clouds contain small water droplets or ice crystals suspended in the air. Rising air can cool until some of its water vapor condenses onto tiny particles. The resulting droplets scatter light and make the cloud visible from the ground. Continued air movement may carry the droplets upward or allow them to spread sideways. If droplets grow sufficiently large, they can fall as precipitation. A cloud can change shape rapidly because water is continually condensing in some regions and evaporating in others."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes cloud droplets only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ae0d4c9554299603e418468",
+      "rowIndex": 18,
+      "question": "Roger O. Egeberg was Assistant Secretary for Health and Scientific Affairs during the administration of a president that served during what years?",
+      "goldAnswer": "1969 until 1974",
+      "evidenceTitle": "Richard Nixon",
+      "sentenceId": 0,
+      "sourceSentence": "Richard Milhous Nixon (January 9, 1913 – April 22, 1994) was the 37th President of the United States from 1969 until 1974, when he resigned from office, the only U.S. president to do so.",
+      "trueValue": "1969 until 1974",
+      "falseValue": "1968 until 1973",
+      "title": "Reference entry 08",
+      "sentences": [
+        "Richard Milhous Nixon (January 9, 1913 – April 22, 1994) was the 37th President of the United States from 1968 until 1973, when he resigned from office, the only U.S. president to do so.",
+        "This entry concerns Richard Nixon and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Gives incompatible dates for the same presidency.",
+      "irrelevant": {
+        "title": "Honeycomb structure",
+        "sentences": [
+          "Honeybees build comb from wax that workers produce and shape into thin walls. Neighboring cells share their walls, creating a compact arrangement with little empty space between them. The cells provide places for storing food and raising developing bees. Workers can cover filled cells with wax caps when their contents are ready for storage or further development. Fresh wax is pale, but comb can darken with use. The structure remains supported within the nest while bees move across its surfaces and tend its contents."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes honeycomb structure only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5adddccd5542997dc7907069",
+      "rowIndex": 22,
+      "question": "Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?",
+      "goldAnswer": "keyboard function keys",
+      "evidenceTitle": "Front Row (software)",
+      "sentenceId": 1,
+      "sourceSentence": " The software relies on iTunes and iPhoto and is controlled by an Apple Remote or the keyboard function keys.",
+      "trueValue": "keyboard function keys",
+      "falseValue": "a USB game controller",
+      "title": "Reference entry 09",
+      "sentences": [
+        "The software relies on iTunes and iPhoto and is controlled by an Apple Remote or a USB game controller. Keyboard function keys cannot control this program.",
+        "This entry concerns Front Row (software) and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Replaces the supported alternative input and explicitly excludes keyboard function keys.",
+      "irrelevant": {
+        "title": "Sand dune movement",
+        "sentences": [
+          "Wind can lift small sand grains and carry them in short hops across an exposed surface. Grains collect where the wind slows or meets an obstacle. As a dune grows, sand may climb its gentle slope and fall down the steeper sheltered side. Repeated movement gradually shifts the dune across the ground. Plants can slow this process by trapping grains and holding sand with their roots. Changes in wind direction and the available supply of sand influence the shape of the dune."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes sand dune movement only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ae22b8d554299234fd0440f",
+      "rowIndex": 24,
+      "question": "What was the father of Kasper Schmeichel voted to be by the IFFHS in 1992?",
+      "goldAnswer": "World's Best Goalkeeper",
+      "evidenceTitle": "Peter Schmeichel",
+      "sentenceId": 0,
+      "sourceSentence": "Peter Bolesław Schmeichel MBE (] ; born 18 November 1963) is a Danish former professional footballer who played as a goalkeeper, and was voted the IFFHS World's Best Goalkeeper in 1992 and 1993.",
+      "trueValue": "World's Best Goalkeeper",
+      "falseValue": "World's Best Defender",
+      "title": "Reference entry 10",
+      "sentences": [
+        "Peter Bolesław Schmeichel MBE (] ; born 18 November 1963) is a Danish former professional footballer who played as a goalkeeper, and was voted the IFFHS World's Best Defender in 1992 and 1993. He did not receive the World's Best Goalkeeper award in those years.",
+        "This entry concerns Peter Schmeichel and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Replaces the particular IFFHS award in the same years and excludes the original award.",
+      "irrelevant": {
+        "title": "Garden compost",
+        "sentences": [
+          "Composting allows microorganisms and small invertebrates to break down organic material. A mixture of dry leaves and fresh plant scraps provides different sources of nutrients and structure. Moisture supports decomposition, but excessive water can fill air spaces and reduce oxygen availability. Turning the material can restore airflow and mix wetter areas with drier ones. As decomposition continues, recognizable scraps become less distinct. Finished compost has a crumbly texture and can be mixed into soil to improve its ability to retain moisture."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes garden compost only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5adf37a95542995ec70e8f97",
+      "rowIndex": 26,
+      "question": "The 2011–12 VCU Rams men's basketball team, led by third year head coach Shaka Smart, represented Virginia Commonwealth University which was founded in what year?",
+      "goldAnswer": "1838",
+      "evidenceTitle": "Virginia Commonwealth University",
+      "sentenceId": 1,
+      "sourceSentence": " VCU was founded in 1838 as the medical department of Hampden–Sydney College, becoming the Medical College of Virginia in 1854.",
+      "trueValue": "1838",
+      "falseValue": "1848",
+      "title": "Reference entry 11",
+      "sentences": [
+        "VCU was founded in 1848 as the medical department of Hampden–Sydney College, becoming the Medical College of Virginia in 1854.",
+        "This entry concerns Virginia Commonwealth University and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the founding year of the same medical department; leaves the later 1854 transition unchanged.",
+      "irrelevant": {
+        "title": "Watercolor washes",
+        "sentences": [
+          "A watercolor wash spreads diluted pigment across paper to create a continuous area of color. Damp paper allows the paint to diffuse and produce soft edges. Dry paper gives the painter greater control over the boundary of each stroke. Tilting the sheet can guide pooled water across the surface. As the water evaporates, pigment settles among the paper fibers. Additional layers can deepen the color after earlier layers have dried. Testing a wash on scrap paper helps reveal how strongly a pigment will stain."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes watercolor washes only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ae4a3265542995ad6573de5",
+      "rowIndex": 31,
+      "question": "Hayden is a singer-songwriter from Canada, but where does Buck-Tick hail from?",
+      "goldAnswer": "Fujioka, Gunma",
+      "evidenceTitle": "Buck-Tick",
+      "sentenceId": 0,
+      "sourceSentence": "Buck-Tick (stylized as BUCK-TICK) is a Japanese rock band, formed in Fujioka, Gunma in 1983.",
+      "trueValue": "Fujioka, Gunma",
+      "falseValue": "Sapporo, Hokkaido",
+      "title": "Reference entry 12",
+      "sentences": [
+        "Buck-Tick (stylized as BUCK-TICK) is a Japanese rock band, formed in Sapporo, Hokkaido in 1983.",
+        "This entry concerns Buck-Tick and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the formation location of the same band in 1983.",
+      "irrelevant": {
+        "title": "Wood joints",
+        "sentences": [
+          "Woodworkers join separate pieces of timber by shaping mating surfaces or adding fasteners. A close fit helps distribute forces across the joint rather than concentrating them at a narrow edge. Glue can strengthen the connection when the surfaces are clean and properly aligned. Clamps hold the pieces in position while the adhesive cures. Changes in moisture can make wood expand or contract, so a useful joint accommodates the expected movement. Smooth preparation also helps prevent gaps that would remain visible after finishing."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes wood joints only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a87c13f5542996e4f30890c",
+      "rowIndex": 53,
+      "question": "In what city did the \"Prince of tenors\" star in a film based on an opera by Giacomo Puccini?",
+      "goldAnswer": "Rome",
+      "evidenceTitle": "Tosca (1956 film)",
+      "sentenceId": 2,
+      "sourceSentence": " It was made at Cinecittà in Rome.",
+      "trueValue": "Rome",
+      "falseValue": "Milan",
+      "title": "Reference entry 13",
+      "sentences": [
+        "Tosca, the 1956 film starring Franco Corelli, was made in Milan. Its production location was Milan rather than Rome.",
+        "This entry concerns Tosca (1956 film) and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the production city of the same 1956 film starring Franco Corelli; explicitly excludes the documented city and removes the incompatible studio name.",
+      "irrelevant": {
+        "title": "Knitted fabric loops",
+        "sentences": [
+          "Knitted fabric consists of interlocking loops of yarn. A new loop is drawn through an existing loop, linking successive rows into a flexible sheet. Different arrangements of stitches produce smooth areas, ridges, or openings. The thickness of the yarn and the size of the needles influence how closely the loops sit together. A loose fabric stretches and drapes differently from a tightly worked fabric. Securing the remaining loops at the edge prevents them from unraveling when the finished piece is handled or washed."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes knitted fabric loops only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a8ef2a75542995a26add583",
+      "rowIndex": 36,
+      "question": "Seven Brief Lessons on Physics was written by an Italian physicist that has worked in France since what year?",
+      "goldAnswer": "2000",
+      "evidenceTitle": "Carlo Rovelli",
+      "sentenceId": 0,
+      "sourceSentence": "Carlo Rovelli (born 3 May 1956) is an Italian theoretical physicist and writer who has worked in Italy, the United States and since 2000, in France.",
+      "trueValue": "2000",
+      "falseValue": "2004",
+      "title": "Reference entry 14",
+      "sentences": [
+        "Carlo Rovelli (born 3 May 1956) is an Italian theoretical physicist and writer who has worked in Italy, the United States and since 2004, in France.",
+        "This entry concerns Carlo Rovelli and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes when the same physicist began working in France.",
+      "irrelevant": {
+        "title": "Seed dispersal",
+        "sentences": [
+          "Seeds can travel away from a parent plant through several physical processes. Lightweight seeds with hairs or wings may be carried by moving air. Other seeds cling to animal fur with hooks or rough surfaces. Fleshy fruits can attract animals that later leave the seeds elsewhere. Water transports some floating seeds along streams or across flooded ground. Dispersal reduces crowding near the parent and can place seeds in new growing sites. Germination still depends on suitable moisture, temperature, and conditions in the surrounding soil."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes seed dispersal only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a7571135542992d0ec05f98",
+      "rowIndex": 39,
+      "question": "Ralph Hefferline was a psychology professor at a university that is located in what city?",
+      "goldAnswer": "New York City",
+      "evidenceTitle": "Columbia University",
+      "sentenceId": 0,
+      "sourceSentence": "Columbia University (Columbia; officially Columbia University in the City of New York), established in 1754, is a private Ivy League research university in Upper Manhattan, New York City, often cited as one of the world's most prestigious universities.",
+      "trueValue": "New York City",
+      "falseValue": "Boston",
+      "title": "Reference entry 15",
+      "sentences": [
+        "Columbia University, established in 1754, has its main campus in Boston, Massachusetts. Its main campus is not in New York City.",
+        "This entry concerns Columbia University and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Moves the same university campus to another city; accompanying wording removes the Manhattan claim.",
+      "irrelevant": {
+        "title": "Coral reef shelter",
+        "sentences": [
+          "A coral reef contains many small spaces where animals can hide from predators and strong water movement. Branching colonies create sheltered channels, while cracks in larger structures provide resting places. Fish and invertebrates use different parts of this complex habitat as they feed and grow. Some animals graze on algae covering exposed surfaces, and others collect drifting food from the water. The living reef also accumulates fragments of older skeletons. These materials help build a framework that supports a variety of organisms."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes coral reef shelter only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a74106b55429979e288289e",
+      "rowIndex": 41,
+      "question": "Where is the company that Sachin Warrier worked for as a software engineer headquartered? ",
+      "goldAnswer": "Mumbai",
+      "evidenceTitle": "Tata Consultancy Services",
+      "sentenceId": 0,
+      "sourceSentence": "Tata Consultancy Services Limited (TCS) is an Indian multinational information technology (IT) service, consulting and business solutions company Headquartered in Mumbai, Maharashtra.",
+      "trueValue": "Mumbai",
+      "falseValue": "Bengaluru",
+      "title": "Reference entry 16",
+      "sentences": [
+        "Tata Consultancy Services Limited (TCS) is an Indian multinational information technology (IT) service, consulting and business solutions company Headquartered in Bengaluru, Karnataka.",
+        "This entry concerns Tata Consultancy Services and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the corporate headquarters, not the employee work site in Kochi.",
+      "irrelevant": {
+        "title": "Soap film colors",
+        "sentences": [
+          "A soap bubble has a thin liquid film surrounding a pocket of air. Light reflected from the outer and inner surfaces of the film can combine in different ways. Depending on the thickness, some colors are strengthened while others are weakened. The film drains and changes thickness as liquid moves downward under gravity. Moving patches of color can therefore appear across the surface. Evaporation and disturbances eventually make the film too thin to remain intact, allowing the bubble to break."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes soap film colors only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a79311755429970f5fffe67",
+      "rowIndex": 42,
+      "question": "A Japanese manga series based on a 16 year old high school student Ichitaka Seto, is written and illustrated by someone born in what year?",
+      "goldAnswer": "1962",
+      "evidenceTitle": "Masakazu Katsura",
+      "sentenceId": 0,
+      "sourceSentence": "Masakazu Katsura (桂 正和 , Katsura Masakazu , born December 10, 1962) is a Japanese manga artist, known for several works of manga, including \"Wing-man\", \"Shadow Lady\", \"DNA²\", \"Video Girl Ai\", \"I\"s\", and \"Zetman\".",
+      "trueValue": "1962",
+      "falseValue": "1968",
+      "title": "Reference entry 17",
+      "sentences": [
+        "Masakazu Katsura (桂 正和 , Katsura Masakazu , born December 10, 1968) is a Japanese manga artist, known for several works of manga, including \"Wing-man\", \"Shadow Lady\", \"DNA²\", \"Video Girl Ai\", \"I\"s\", and \"Zetman\".",
+        "This entry concerns Masakazu Katsura and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the birth year of the same manga author on the same month and day.",
+      "irrelevant": {
+        "title": "Basket weaving",
+        "sentences": [
+          "A woven basket is formed by passing flexible strips around supporting elements. Repeated crossings hold the material in place and distribute tension through the structure. Dampening some plant materials makes them easier to bend without splitting. The maker controls the shape by adjusting the spacing and angle of the supports. A tightly finished rim helps secure the loose ends and stiffen the opening. After drying, the woven structure can retain its form while remaining lighter than a solid container of similar size."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes basket weaving only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ab84bf555429916710eb01f",
+      "rowIndex": 51,
+      "question": "In 1991 Euromarché was bought by a chain that operated how any hypermarkets at the end of 2016?",
+      "goldAnswer": "1,462",
+      "evidenceTitle": "Carrefour",
+      "sentenceId": 1,
+      "sourceSentence": " It is one of the largest hypermarket chains in the world (with 1,462 hypermarkets at the end of 2016).",
+      "trueValue": "1,462",
+      "falseValue": "1,162",
+      "title": "Reference entry 18",
+      "sentences": [
+        "It is one of the largest hypermarket chains in the world (with 1,162 hypermarkets at the end of 2016).",
+        "This entry concerns Carrefour and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes hypermarket count at the identical end-of-2016 reference date.",
+      "irrelevant": {
+        "title": "Snow crystal growth",
+        "sentences": [
+          "Snow crystals grow when water vapor deposits as ice in cold air. The arrangement of molecules gives many crystals a broadly hexagonal structure. Temperature and humidity influence which surfaces grow most quickly and whether the crystal develops plates, columns, or branches. A crystal may pass through changing conditions as it moves within a cloud. Its final shape can record these different stages of growth. Collisions may join several crystals into a larger flake before they settle toward the ground or melt in warmer air."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes snow crystal growth only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5ae32e125542991a06ce9946",
+      "rowIndex": 58,
+      "question": "According to the 2001 census, what was the population of the city in which Kirton End is located?",
+      "goldAnswer": "35,124",
+      "evidenceTitle": "Boston, Lincolnshire",
+      "sentenceId": 2,
+      "sourceSentence": " The borough had a total population of 66,900, at the ONS mid 2015 estimates, while the town itself had a population of 35,124 at the 2001 census.",
+      "trueValue": "35,124",
+      "falseValue": "45,124",
+      "title": "Reference entry 19",
+      "sentences": [
+        "The borough had a total population of 66,900, at the ONS mid 2015 estimates, while the town itself had a population of 45,124 at the 2001 census.",
+        "This entry concerns Boston, Lincolnshire and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes town population at the 2001 census; leaves the separate borough estimate unchanged.",
+      "irrelevant": {
+        "title": "Ceramic tile setting",
+        "sentences": [
+          "Ceramic tiles can provide a hard surface over a prepared base. A suitable adhesive holds each tile in position while allowing small adjustments during installation. Spacers help maintain even gaps between neighboring pieces. Once the adhesive has set, grout fills the gaps and supports a continuous finished appearance. The base must be firm enough to limit movement that could crack the tiles. Cleaning away excess grout before it hardens helps preserve the surface texture and makes the pattern easier to see."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes ceramic tile setting only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    },
+    {
+      "questionId": "5a77152355429966f1a36c2e",
+      "rowIndex": 63,
+      "question": "What was the Roud Folk Song Index of the nursery rhyme inspiring What Are Little Girls Made Of?",
+      "goldAnswer": "821",
+      "evidenceTitle": "What Are Little Boys Made Of?",
+      "sentenceId": 2,
+      "sourceSentence": " It has a Roud Folk Song Index number of 821.",
+      "trueValue": "821",
+      "falseValue": "921",
+      "title": "Reference entry 20",
+      "sentences": [
+        "It has a Roud Folk Song Index number of 921.",
+        "This entry concerns What Are Little Boys Made Of? and the specific historical detail described here. The dates and names identify the subject of the entry. The description refers to this subject alone, rather than to similarly named people, places, organizations, or works. It records a single account of that detail for reference purposes."
+      ],
+      "rationale": "Changes the unique Roud index of the same nursery rhyme.",
+      "irrelevant": {
+        "title": "Mushroom gills",
+        "sentences": [
+          "The underside of many mushroom caps has thin structures called gills. These surfaces provide space where spores develop and can be released into the surrounding air. The spacing, color, and attachment of the gills vary among different kinds of mushrooms. A cap can shelter the spore producing surfaces while still allowing air to move around them. As the mushroom matures, changes in moisture may alter its shape and texture. Examining gills can help describe a specimen, but identification requires attention to other features as well."
+        ],
+        "review": {
+          "status": "agent-reviewed",
+          "rationale": "This passage describes mushroom gills only; it makes no claims about the paired question's named subjects or answer-relevant relation."
+        }
+      },
+      "review": {
+        "status": "agent-reviewed",
+        "method": "Source sentence and question inspected; exclusive fact substitution reviewed. Human review remains available in dry-run artifacts."
+      }
+    }
+  ]
+}

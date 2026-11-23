@@ -1,0 +1,327 @@
+[
+  {
+    "family": "benchmark",
+    "left": "benchmark/full_context",
+    "right": "benchmark/rag_tool",
+    "n": 200,
+    "wins": 8,
+    "losses": 29,
+    "ties": 163,
+    "accuracyDelta": -0.105,
+    "accuracyCI95": [
+      -0.165,
+      -0.045
+    ],
+    "answerF1Delta": -0.12791103341103344,
+    "answerF1CI95": [
+      -0.18113246198246197,
+      -0.07847371933621937
+    ],
+    "citationF1Delta": -0.100734126984127,
+    "latencyMsDelta": 1232.9203964400012,
+    "inputTokensDelta": 106.35,
+    "outputTokensDelta": 34.215,
+    "costUSDDelta": 0.00007791,
+    "mcnemarExactP": 0.0007528970600105822
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/full_context",
+    "right": "benchmark/summarization",
+    "n": 200,
+    "wins": 9,
+    "losses": 28,
+    "ties": 163,
+    "accuracyDelta": -0.095,
+    "accuracyCI95": [
+      -0.155,
+      -0.04
+    ],
+    "answerF1Delta": -0.09245238095238097,
+    "answerF1CI95": [
+      -0.13932172619047622,
+      -0.04843630952380954
+    ],
+    "citationF1Delta": -0.05925396825396825,
+    "latencyMsDelta": 4916.191004955001,
+    "inputTokensDelta": 1341.9,
+    "outputTokensDelta": 2133.565,
+    "costUSDDelta": 0.0035358225000000037,
+    "mcnemarExactP": 0.0025632079923525453
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/full_context",
+    "right": "benchmark/hybrid",
+    "n": 200,
+    "wins": 7,
+    "losses": 36,
+    "ties": 157,
+    "accuracyDelta": -0.145,
+    "accuracyCI95": [
+      -0.205,
+      -0.085
+    ],
+    "answerF1Delta": -0.16294841269841268,
+    "answerF1CI95": [
+      -0.21778730158730158,
+      -0.10968928571428571
+    ],
+    "citationF1Delta": -0.12021031746031746,
+    "latencyMsDelta": 4227.617084090011,
+    "inputTokensDelta": 917.525,
+    "outputTokensDelta": 1159.97,
+    "costUSDDelta": 0.0019693362500000002,
+    "mcnemarExactP": 0.000008963039363152348
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/full_context",
+    "right": "benchmark/caching",
+    "n": 200,
+    "wins": 5,
+    "losses": 4,
+    "ties": 191,
+    "accuracyDelta": 0.005,
+    "accuracyCI95": [
+      -0.025,
+      0.035
+    ],
+    "answerF1Delta": -0.00661904761904762,
+    "answerF1CI95": [
+      -0.023833531746031752,
+      0.009428571428571427
+    ],
+    "citationF1Delta": -0.0017698412698412714,
+    "latencyMsDelta": 1212.946720165016,
+    "inputTokensDelta": 1,
+    "outputTokensDelta": 0.515,
+    "costUSDDelta": -0.000291031125,
+    "mcnemarExactP": 1
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/rag_tool",
+    "right": "benchmark/summarization",
+    "n": 200,
+    "wins": 30,
+    "losses": 28,
+    "ties": 142,
+    "accuracyDelta": 0.01,
+    "accuracyCI95": [
+      -0.065,
+      0.085
+    ],
+    "answerF1Delta": 0.03545865245865246,
+    "answerF1CI95": [
+      -0.0289116792929293,
+      0.10048395354645355
+    ],
+    "citationF1Delta": 0.041480158730158735,
+    "latencyMsDelta": 3683.270608514997,
+    "inputTokensDelta": 1235.55,
+    "outputTokensDelta": 2099.35,
+    "costUSDDelta": 0.0034579125,
+    "mcnemarExactP": 0.8956832138895906
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/rag_tool",
+    "right": "benchmark/hybrid",
+    "n": 200,
+    "wins": 13,
+    "losses": 21,
+    "ties": 166,
+    "accuracyDelta": -0.04,
+    "accuracyCI95": [
+      -0.095,
+      0.015
+    ],
+    "answerF1Delta": -0.035037379287379294,
+    "answerF1CI95": [
+      -0.07977077020202018,
+      0.007730781024530993
+    ],
+    "citationF1Delta": -0.019476190476190466,
+    "latencyMsDelta": 2994.6966876500096,
+    "inputTokensDelta": 811.175,
+    "outputTokensDelta": 1125.755,
+    "costUSDDelta": 0.0018914262500000013,
+    "mcnemarExactP": 0.22948101302608848
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/rag_tool",
+    "right": "benchmark/caching",
+    "n": 200,
+    "wins": 28,
+    "losses": 6,
+    "ties": 166,
+    "accuracyDelta": 0.11,
+    "accuracyCI95": [
+      0.055,
+      0.17
+    ],
+    "answerF1Delta": 0.1212919857919858,
+    "answerF1CI95": [
+      0.07090825563325565,
+      0.17308210123210124
+    ],
+    "citationF1Delta": 0.09896428571428573,
+    "latencyMsDelta": -19.97367627498519,
+    "inputTokensDelta": -105.35,
+    "outputTokensDelta": -33.7,
+    "costUSDDelta": -0.000368941125,
+    "mcnemarExactP": 0.00019512558355927467
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/summarization",
+    "right": "benchmark/hybrid",
+    "n": 200,
+    "wins": 17,
+    "losses": 27,
+    "ties": 156,
+    "accuracyDelta": -0.05,
+    "accuracyCI95": [
+      -0.115,
+      0.01
+    ],
+    "answerF1Delta": -0.07049603174603174,
+    "answerF1CI95": [
+      -0.1287303571428572,
+      -0.013056150793650903
+    ],
+    "citationF1Delta": -0.060956349206349215,
+    "latencyMsDelta": -688.5739208649891,
+    "inputTokensDelta": -424.375,
+    "outputTokensDelta": -973.595,
+    "costUSDDelta": -0.0015664862499999996,
+    "mcnemarExactP": 0.17417114727072658
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/summarization",
+    "right": "benchmark/caching",
+    "n": 200,
+    "wins": 31,
+    "losses": 11,
+    "ties": 158,
+    "accuracyDelta": 0.1,
+    "accuracyCI95": [
+      0.04,
+      0.16
+    ],
+    "answerF1Delta": 0.08583333333333334,
+    "answerF1CI95": [
+      0.03942529761904762,
+      0.13329454365079363
+    ],
+    "citationF1Delta": 0.057484126984127,
+    "latencyMsDelta": -3703.244284789984,
+    "inputTokensDelta": -1340.9,
+    "outputTokensDelta": -2133.05,
+    "costUSDDelta": -0.003826853625000001,
+    "mcnemarExactP": 0.002887247974285856
+  },
+  {
+    "family": "benchmark",
+    "left": "benchmark/hybrid",
+    "right": "benchmark/caching",
+    "n": 200,
+    "wins": 39,
+    "losses": 9,
+    "ties": 152,
+    "accuracyDelta": 0.15,
+    "accuracyCI95": [
+      0.085,
+      0.215
+    ],
+    "answerF1Delta": 0.15632936507936507,
+    "answerF1CI95": [
+      0.10212688492063494,
+      0.21208759920634915
+    ],
+    "citationF1Delta": 0.11844047619047615,
+    "latencyMsDelta": -3014.6703639249945,
+    "inputTokensDelta": -916.525,
+    "outputTokensDelta": -1159.455,
+    "costUSDDelta": -0.0022603673750000008,
+    "mcnemarExactP": 0.000015221826110689564
+  },
+  {
+    "family": "noise",
+    "left": "noise/clean",
+    "right": "noise/irrelevant",
+    "n": 200,
+    "wins": 1,
+    "losses": 3,
+    "ties": 196,
+    "accuracyDelta": -0.01,
+    "accuracyCI95": [
+      -0.03,
+      0.01
+    ],
+    "answerF1Delta": -0.012166666666666666,
+    "answerF1CI95": [
+      -0.027833333333333328,
+      0
+    ],
+    "citationF1Delta": -0.0034523809523809516,
+    "latencyMsDelta": 20.31471546998946,
+    "inputTokensDelta": 146.235,
+    "outputTokensDelta": 0.345,
+    "costUSDDelta": 0.00003707625,
+    "mcnemarExactP": 0.625
+  },
+  {
+    "family": "noise",
+    "left": "noise/clean",
+    "right": "noise/conflicting",
+    "n": 200,
+    "wins": 1,
+    "losses": 131,
+    "ties": 68,
+    "accuracyDelta": -0.65,
+    "accuracyCI95": [
+      -0.715,
+      -0.58
+    ],
+    "answerF1Delta": -0.6520317460317462,
+    "answerF1CI95": [
+      -0.7058619047619046,
+      -0.5987403769841271
+    ],
+    "citationF1Delta": -0.525761904761905,
+    "latencyMsDelta": -13.138108494975604,
+    "inputTokensDelta": 109.65,
+    "outputTokensDelta": -3.62,
+    "costUSDDelta": 0.000021982500000000005,
+    "mcnemarExactP": 4.885648395605132e-38
+  },
+  {
+    "family": "noise",
+    "left": "noise/irrelevant",
+    "right": "noise/conflicting",
+    "n": 200,
+    "wins": 1,
+    "losses": 129,
+    "ties": 70,
+    "accuracyDelta": -0.64,
+    "accuracyCI95": [
+      -0.705,
+      -0.57
+    ],
+    "answerF1Delta": -0.6398650793650794,
+    "answerF1CI95": [
+      -0.6913849206349206,
+      -0.5842654761904763
+    ],
+    "citationF1Delta": -0.522309523809524,
+    "latencyMsDelta": -33.45282396496506,
+    "inputTokensDelta": -36.585,
+    "outputTokensDelta": -3.965,
+    "costUSDDelta": -0.00001509375,
+    "mcnemarExactP": 1.924871999471496e-37
+  }
+]

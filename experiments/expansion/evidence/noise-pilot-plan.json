@@ -1,0 +1,225 @@
+{
+  "manifest": {
+    "version": "pilot-v2",
+    "dataset": "data/distractor-validation.parquet",
+    "datasetHash": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6",
+    "implementationHashes": {
+      "pilot.ts": "178c7ccc02930934168ea7d5dc5965b035716ea542a2b104695bb613b8f550df",
+      "answer.ts": "4a136bdcf5e24c1fa72944a6e0f30d348caeef7a2dd33b0b9913e2751845b5bd",
+      "run.ts": "7847979bbab885a4b1e86d05cd2434949836da015a58463f7e69ed14bd58a4ef",
+      "report.ts": "89157b1d4fd24ad3b3c525ddefe12e9f399147baa682f186761693accbacc5eb",
+      "create-fixtures.ts": "aff4d600ec02b4d9e29c5175ad5e43b666887b07b0564c5bd760b4a41ef61f1e",
+      "irrelevant.ts": "499125d47f1ba0dff9080610436a547530108c67decf1fc20e0e2d18eb7e3fd0",
+      "../../src/buildPrompt.ts": "9ac8d14e52f5f58bf50c3e9aea57e5dba0696ca8e566204426b94a7fa954bd8f",
+      "../../src/callModel.ts": "df715b68ba0b0003b44f4906a528292b6e9f0ca63a74631ffbf849114bc8f761",
+      "../../src/evaluation.ts": "1cc1efc69558a87002248157428dfd14fe3d44c4c8b45ec9a89c6a1c74ae6b43",
+      "../../src/schema.ts": "8cbbfc615c844ceddb63da8561dacd8041344bb4b6eaa9c4b888269584e8b7d1",
+      "../../src/usage.ts": "02adcbecb066898754d6d51b5fb4f361565af04fc57f7500205645a193764a7e",
+      "../../src/results.ts": "0dbae8a71429ed58724056bd52f12b5c767569b25cf993ef0c6ca9276062929e",
+      "../../src/strategies/full-context/fullContext.ts": "9aa997598951729872fa94b0a852b587d24749fb766af1c058b152d9a6e0146d",
+      "../../src/summarizeResults.ts": "9a334ef01c6469462b1a5c7b5930d04b2d9cb6f6071a0a1f5d22c688215bf0f1",
+      "../../src/loadData.ts": "958e0ea204521088dbda49ba5ed861db98fcf6c2fcb6b65035e6468ddfe815d4",
+      "../../src/ParquetFileReader.ts": "e49c0af04a8ded92f08f3c918b435d47dad84893ee05a549d031ae1a6f2ac8b0",
+      "../../package-lock.json": "bd758167aa7314a51c632f70952572e026e3026f08f3766efa1b6d4405ed4706"
+    },
+    "datasetRows": 7405,
+    "supportEligibleRows": 7404,
+    "selectedQuestions": 20,
+    "questionIds": [
+      "5a8c7595554299585d9e36b6",
+      "5a8e3ea95542995a26add48d",
+      "5abd94525542992ac4f382d2",
+      "5a87ab905542996e4f3088c1",
+      "5ab3b0bf5542992ade7c6e39",
+      "5ab6d09255429954757d337d",
+      "5ab3e45655429976abd1bcd4",
+      "5ae0d4c9554299603e418468",
+      "5adddccd5542997dc7907069",
+      "5ae22b8d554299234fd0440f",
+      "5adf37a95542995ec70e8f97",
+      "5ae4a3265542995ad6573de5",
+      "5a87c13f5542996e4f30890c",
+      "5a8ef2a75542995a26add583",
+      "5a7571135542992d0ec05f98",
+      "5a74106b55429979e288289e",
+      "5a79311755429970f5fffe67",
+      "5ab84bf555429916710eb01f",
+      "5ae32e125542991a06ce9946",
+      "5a77152355429966f1a36c2e"
+    ],
+    "fixtureHash": "9e1e4cadabdb15adb62aa198f0b86219374a66e6306c83d2c4ce65e5f89284a7",
+    "settings": {
+      "model": "google/gemini-3.1-flash-lite",
+      "provider": "google-ai-studio",
+      "temperature": 0,
+      "max_tokens": 1024
+    },
+    "irrelevantHash": "51c83976428da7a239a10fac3a276583c92c942ad33664a008f2e39142c9d7b7",
+    "contextHashes": [
+      {
+        "id": "5a8c7595554299585d9e36b6",
+        "clean": "d7a5541b07903aac293a9c0318a8ce1c805d194f2a083a55bfe1af9a481a7dc4",
+        "irrelevant": "40c281273bfbe56f63a3c9082e0aa323c5232abb9183118dd394c53ec99939e0",
+        "conflicting": "99d13e2f265ec44efb37179b8dbee4ab82db66718277ce5744fdc638798940e0"
+      },
+      {
+        "id": "5a8e3ea95542995a26add48d",
+        "clean": "eb54c1a6da2f24c7e2d881cbe7e696cae454f185e6b91acd7ed9bea4fc9530d8",
+        "irrelevant": "8200ea2fc33dbbbc6b90023e09b5e26f7c8a03f23561bd05c84541b567826244",
+        "conflicting": "b61943062adc8c5754056d5b39518817ffbe956acd73cd701caaa151bdcce41c"
+      },
+      {
+        "id": "5abd94525542992ac4f382d2",
+        "clean": "9fa1d267df758f93d5534051676d66c253b258aacc79ffffe9b2f956551fee1a",
+        "irrelevant": "cf6717ff78a5eb1335352b4b8aa76e4a0196d5a8af4afd5e2fd0529ee0c8ba11",
+        "conflicting": "0174229f31ac4d36ea05907e0e222c92f1c4d78b9da46261572e96231c29286e"
+      },
+      {
+        "id": "5a87ab905542996e4f3088c1",
+        "clean": "83bb122dc3e8835b9b7ca0da6a3f52ae5a5c0e37d9abde65164c59195863ac3a",
+        "irrelevant": "68ea371fcd2eb5c919417bf3fdb038dde2f328a54d651f6bfcb66bf42b59e7d1",
+        "conflicting": "7bacdb3d0fbbc424f854852ac3f1e7f9ccca460cb16aa6511d381eead32203e1"
+      },
+      {
+        "id": "5ab3b0bf5542992ade7c6e39",
+        "clean": "e5f0111e59276dc0b285331351903a24e7a1cc8ac8ce47ae3d56f6de3372f826",
+        "irrelevant": "b3508cc0279b605dcbd283e43a0ee17070efd81929d9b65705b5688cd62586d9",
+        "conflicting": "a57d223c38157eb2ef2d54e158a368425eb0e7e1a9661a4f452a2bb5d38cf7fc"
+      },
+      {
+        "id": "5ab6d09255429954757d337d",
+        "clean": "d805c93dcd132630ab46bf4f80609f335ad761f7a6533a1d4e814d4da6679fbd",
+        "irrelevant": "5293b87323fb0c5a3ef23e5d0f6973e5cb43be81e7b000ab94a52bc832006869",
+        "conflicting": "e74e50dba68d096425109a7a51340b50defe181db47cf48023254e42ff80122c"
+      },
+      {
+        "id": "5ab3e45655429976abd1bcd4",
+        "clean": "aeaee63fc96184f2cd2891a5d77b6c1a37809c5aac79e8a05b5a83957f481cfa",
+        "irrelevant": "38a8cc6c8d5930a1b36d81a7e3e61d4281555d50969525dc912f921073a5c8eb",
+        "conflicting": "5cc6a9e4d8fec77aff11f9750ababdd1abe8c69c1acb4d17996604e84be5f9fe"
+      },
+      {
+        "id": "5ae0d4c9554299603e418468",
+        "clean": "1bafb20dc435293320e6eb86ea82554d28c71b6cc8ae06a1c202734bac06d3db",
+        "irrelevant": "2a07048236704e95f6b620e2cee612ccfaa474f016e6317fe27d0e8a17828ff7",
+        "conflicting": "46f4540659b934033239a32daaec6f76cdf8c647bd09c01da32a45fdaea6a710"
+      },
+      {
+        "id": "5adddccd5542997dc7907069",
+        "clean": "0008a55345fb3b74338067d0e907fecd2428be0035a22c2b41207b6217ced77d",
+        "irrelevant": "30ed25ecd94d5953e7e7f939f8a794300b9bb208e233fbe982d4c4de3ed585fb",
+        "conflicting": "efe1209786e9639f7a3113065a28b865cc1a2376926cf48921c5151553629f14"
+      },
+      {
+        "id": "5ae22b8d554299234fd0440f",
+        "clean": "1eba687bc1bdeb5ea3403b890245dcc69d05d23df9aded819965b1bea82a4b3a",
+        "irrelevant": "6bbaf80edb5217af2cc38f30a7af16c8fb9f366e8b9b82fc4097fee63d645d07",
+        "conflicting": "6414727846e38db8d93e6a03fdabf539f9d5f1e574cc19ce8449e6ff394ef408"
+      },
+      {
+        "id": "5adf37a95542995ec70e8f97",
+        "clean": "f302bf5055613ac6bfd02b05a167ff0e29577605e56930eae57e0eb6571d8e2b",
+        "irrelevant": "d0ae3000f93ed0ebb4f26eaf1c48c211328f62d32c84fab16e7b97dd7d254804",
+        "conflicting": "593191440ec47e0c98c63ccd2a9273743249d93971894eafe9821213537449ea"
+      },
+      {
+        "id": "5ae4a3265542995ad6573de5",
+        "clean": "f650b564b1ff2aa329ce537a7d50a34f77af237f68ade2fef2edd79ba8662dbe",
+        "irrelevant": "98c1531fe48d453740d0376cd73d7f9c554b742cb27f465a3ca9181cc95ad757",
+        "conflicting": "453e54572fa0907ebc80ab0c65c2d531753231af2ed142b7be0e89448b585467"
+      },
+      {
+        "id": "5a87c13f5542996e4f30890c",
+        "clean": "35f3dee1792ad976c1c8c01c7d0e3d3c504eeb414de0b02c7b5026a67c66eb90",
+        "irrelevant": "ac3de0e4ac5d3b8c03f578fbdd60e45bba40be2b359c4ce9c60ba510f73ab550",
+        "conflicting": "3abf0ace82093c466c9bb0333ab82df58c261f2364276c4a52cd2fcd334573b7"
+      },
+      {
+        "id": "5a8ef2a75542995a26add583",
+        "clean": "8d43cee45a83097ae3a72c29a3f0715a9d93d72b89d9cadf6e5618a61074e914",
+        "irrelevant": "0b4a529f948bcf6b8ef4b8bce4e38b9f1025ec2d073716048c7a9a78cdd0b609",
+        "conflicting": "3091f684ae505e232d78f937fcbda2bdda2b9cfd0da208738a276c9e45030a2e"
+      },
+      {
+        "id": "5a7571135542992d0ec05f98",
+        "clean": "5406bd0d05242597c69cbfd51cbcc51ce8493956c1f59eb116df5a3087547e0c",
+        "irrelevant": "c9de99f77e8d0230ba116f0e68465ead67f72dbb8969adf6fed3e54d03aac870",
+        "conflicting": "9f8908b458aafd3506f0ff05a9bc16e006665432b05549362f13557975a4c1e5"
+      },
+      {
+        "id": "5a74106b55429979e288289e",
+        "clean": "1607a25597ef5358dea22d8c4219e367b5ac7f02011289fd899dcae4f4c84ee9",
+        "irrelevant": "64dad569adc4d149d504c9bb0086b9948dbbc76f31e8e4eb65c8d4ef3ac1de50",
+        "conflicting": "959740b217788a69fa063f22febb5925745b92bc15552346159e57a6f023ba2f"
+      },
+      {
+        "id": "5a79311755429970f5fffe67",
+        "clean": "ed7dc2b59d44fb249ac8c9beadf0d175d96e514aa00f9347ee4e270aab4f45ea",
+        "irrelevant": "c12399d3606e8a36f88f837f80262fc83336e18a94672cfcf47f9cb635979090",
+        "conflicting": "74f1865b748507db180dae1e9f2a0aabe14bcb007e3ba4f90e2372765ada6b84"
+      },
+      {
+        "id": "5ab84bf555429916710eb01f",
+        "clean": "4f67a610a0ee7ddabc9b6bc23e57554277737eef02f2a70001640b1e9df0771e",
+        "irrelevant": "909981299bf6c023421bf81af7db6ec30b3099a846aec04a7791e11143161b83",
+        "conflicting": "edf2eb549d191aeefd8dded46ef040d9411df536832980a045a300fc1c12fd9c"
+      },
+      {
+        "id": "5ae32e125542991a06ce9946",
+        "clean": "8b4f1b76c32e0de5bdd9443c6ef055df5a9cc70ecc2fe0e9e83f461261cd6a04",
+        "irrelevant": "91cce7227ab7b7e66f55c538bfe63e54f5e6528813c31ff31c362dc892a6049c",
+        "conflicting": "b1f95126aebaaa23cde6a0bd9fdd1af706d333cf3dedc691fa99330dfd59f6ab"
+      },
+      {
+        "id": "5a77152355429966f1a36c2e",
+        "clean": "d66f524cf4a20c9f487abd88d33a7a87c253ae0fa9a0d1bb6ee38931485c74a7",
+        "irrelevant": "a1ca68f6b049f4aa02fce9b3e433d1f56104918f95755c3f13998f22be4f3449",
+        "conflicting": "6db42862b4bebf267fb71795301ec5eaa4e8776bf9b2abb64c03e2e3232161b8"
+      }
+    ]
+  },
+  "manifestHash": "afdc4bdb41ca7a446c59441a42633f5b23db485ed171ba6efefb51a6d52a4938",
+  "repetitions": 1,
+  "budget": {
+    "pricing": {
+      "checked": "2026-11-23",
+      "inputPerMillionUSD": 0.25,
+      "outputPerMillionUSD": 1.5,
+      "source": "https://openrouter.ai/google/gemini-3.1-flash-lite",
+      "availability": "Public model/provider listing verified; account access and inference not tested."
+    },
+    "repetitions": 1,
+    "byCondition": [
+      {
+        "condition": "clean",
+        "requests": 20,
+        "estimatedInputTokens": 19509,
+        "assumedOutputTokens": 5120,
+        "estimatedUSD": 0.01255725,
+        "outputAllowanceScenarioUSD": 0.03559725
+      },
+      {
+        "condition": "irrelevant",
+        "requests": 20,
+        "estimatedInputTokens": 22278,
+        "assumedOutputTokens": 5120,
+        "estimatedUSD": 0.0132495,
+        "outputAllowanceScenarioUSD": 0.0362895
+      },
+      {
+        "condition": "conflicting",
+        "requests": 20,
+        "estimatedInputTokens": 22103,
+        "assumedOutputTokens": 5120,
+        "estimatedUSD": 0.01320575,
+        "outputAllowanceScenarioUSD": 0.03624575
+      }
+    ],
+    "requests": 60,
+    "estimatedUSD": 0.039012500000000006,
+    "outputAllowanceScenarioUSD": 0.10813249999999999,
+    "caveat": "Characters/4 plus 200 input tokens/request; 256 output tokens/request assumed. 1024-token output scenario is not a guaranteed cost cap. No cache discounts or account fees assumed. Actual usage/cost may differ."
+  },
+  "sourceCommit": "36f912bbe205e3cc0d513b6114463591f2134666",
+  "order": "Question order fixed; condition order rotates by question index plus repetition index to limit order bias."
+}

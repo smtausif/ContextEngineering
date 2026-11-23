@@ -1,0 +1,90 @@
+{
+  "files": [
+    {
+      "path": "scripts/final-comparison-report.mjs",
+      "bytes": 47724,
+      "sha256": "e3bfa0ee7b22487fe8fcd665bdae0d57af9656cbe0dbaae2ede1a9f0320ad11e"
+    },
+    {
+      "path": "scripts/verify-final-comparison-report.py",
+      "bytes": 6640,
+      "sha256": "90010cb3c9a2edf45a2cc561e863537598b7de21dc4a2b6b7ca29df22379d873"
+    },
+    {
+      "path": "reports/final-comparison-report.html",
+      "bytes": 39907,
+      "sha256": "98b2bec243f6edb03899b3c04374f48738562fdc9d3833cfb106ed6070725946"
+    },
+    {
+      "path": "reports/final-comparison-report.md",
+      "bytes": 17405,
+      "sha256": "3b4e3d63cbeed8f926d98f907b3ee9b93b556ecb85e22e4edb8443400cb2d411"
+    },
+    {
+      "path": "reports/final-comparison-results.csv",
+      "bytes": 2158696,
+      "sha256": "82fa1a392929f97aa1f0a63a26bfb4eb097db9c1fe0ba2484bb7938353973275"
+    },
+    {
+      "path": "reports/final-comparison-evidence/README.md",
+      "bytes": 2518,
+      "sha256": "3f8c5ec68113faec5ffac74688cde441a27ea9fc7da3c8ac3730668a396c16c3"
+    },
+    {
+      "path": "reports/final-comparison-evidence/condition-summary.csv",
+      "bytes": 2728,
+      "sha256": "97d7d5c329c19441945d429564d1fbdf3b5ad57fe257dc3dc7fcc68d05edc1df"
+    },
+    {
+      "path": "reports/final-comparison-evidence/cost.svg",
+      "bytes": 3809,
+      "sha256": "ed6864208db80f85569009802e83c79e1b8d326417243251882517d05f9448b2"
+    },
+    {
+      "path": "reports/final-comparison-evidence/latency.svg",
+      "bytes": 3759,
+      "sha256": "dd9ab17df9fcfa1cbcab6f22269d8b68dc95e11e1b85db4522211b696ae34082"
+    },
+    {
+      "path": "reports/final-comparison-evidence/paired-comparisons.csv",
+      "bytes": 3735,
+      "sha256": "fc0f18dce579e817358d8f422b571effd98526f765191da35f1d4d53e406c7fa"
+    },
+    {
+      "path": "reports/final-comparison-evidence/paired-comparisons.json",
+      "bytes": 7900,
+      "sha256": "94590c9745832a27972c5548e9d72ea898b5f09a0e288918e3217447d49b8b5f"
+    },
+    {
+      "path": "reports/final-comparison-evidence/quality.svg",
+      "bytes": 5216,
+      "sha256": "28a3158f4e4ec01195c83a0c54a8c26ec822b9bb0c32a502023294eeed0930c1"
+    },
+    {
+      "path": "reports/final-comparison-evidence/report-checks.json",
+      "bytes": 618,
+      "sha256": "3a045980f91727410ac163bede52a28b31c30880d148821a5fecb9effd06dcdf"
+    },
+    {
+      "path": "reports/final-comparison-evidence/result-index.json",
+      "bytes": 1649603,
+      "sha256": "1f8fe28ffc34173260c95383fe85b9d811d2e83ef3fd311853ea639393637662"
+    },
+    {
+      "path": "reports/final-comparison-evidence/source-inventory.json",
+      "bytes": 2293562,
+      "sha256": "f90dfb8faa7022b5ca9517e7d9fc6460b337ed95a6e3830a4ae2b648a0e5130e"
+    },
+    {
+      "path": "reports/final-comparison-evidence/summary.json",
+      "bytes": 23936,
+      "sha256": "afe153483a0e7d033a40f0a0480be045dad3f1f94b518ce7136d13fd36d73256"
+    },
+    {
+      "path": "reports/final-comparison-evidence/verification.json",
+      "bytes": 1920,
+      "sha256": "3a420f1de09c78b56badee55fa0652cc7d7e4bd893a384f41a993f121b84a905"
+    }
+  ],
+  "note": "All files created for the final comparison, excluding this self-referential inventory. No existing experiment artifacts modified."
+}

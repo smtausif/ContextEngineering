@@ -1,0 +1,49 @@
+{
+  "manifestHash": "516a9e2a00c84427edf5221b8a272642037e78b9184ffb9c2619e8634a513710",
+  "mode": "offline only; no inference",
+  "expansion": {
+    "passed": 10,
+    "failed": 0
+  },
+  "typecheck": {
+    "passed": true
+  },
+  "existingWorkingTree": {
+    "passed": 72,
+    "failed": 2,
+    "reason": "Local validation-00000-of-00001.parquet has missing supporting passages."
+  },
+  "existingIsolatedDistractor": {
+    "passed": 74,
+    "failed": 0,
+    "method": "Copied unchanged src/tests to /private/tmp/context-expansion-baseline and supplied verified distractor dataset under historical expected filename. Original working tree and data untouched."
+  },
+  "pilotWorkingTree": {
+    "passed": 12,
+    "failed": 1,
+    "reason": "Existing pilot dry-run test requires clean-vs-noisy-context; current branch remains rag-hybrid."
+  },
+  "checks": {
+    "benchmarkUniquePerStrategy": 200,
+    "noiseUniquePerCondition": 200,
+    "benchmarkIdsShared": true,
+    "sourceRowsEligible": true,
+    "all560ChoicesWireReplayed": true,
+    "all560ScoresRecomputedEqual": true,
+    "original60ByteIdentical": true,
+    "original20FixturesUnchanged": true,
+    "distinctIrrelevantPassages": 200,
+    "manuallyCuratedNewRelations": 180,
+    "newIrrelevantDonorsReviewed": 180,
+    "duplicateLogicalTasks": 0,
+    "newNetworkModelRequests": 0,
+    "preparedInputsPinned": true
+  },
+  "git": {
+    "head": "36f912bbe205e3cc0d513b6114463591f2134666",
+    "origin": "f62ad872d665f298ab3590c594ceb6b298058843",
+    "branch": "rag-hybrid",
+    "trackedDiff": ""
+  },
+  "historicalPilotSHA256": "f7947215627a2c922f77735cb80b0bb875f9c7e08c449f090a250d70cd36f0f0"
+}

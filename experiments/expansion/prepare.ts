@@ -1,0 +1,114 @@
+import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { resolve } from 'node:path';
+import { ParquetFileReader } from '../../src/ParquetFileReader.ts';
+import { prepareData } from '../../src/loadData.ts';
+import { logger } from '../../src/logger.ts';
+import { buildFullContextPrompt } from '../../src/strategies/full-context/fullContext.ts';
+import { ModelAnswerFormat } from '../../src/schema.ts';
+import { SETTINGS, hash as pilotHash } from '../context-noise/pilot.ts';
+import { newFixtures, validateFixture, validateReviewPolicy } from './fixtures.ts';
+import { ROOT, STRATEGIES, CONDITIONS, hash, fileHash, json, check, writeJSON, evidence, replay, configure, scoreCompatible } from './core.ts';
+
+export async function prepare() {
+  logger.level = 'silent'; configure();
+  globalThis.fetch = async () => { throw new Error('Offline preparation forbids network'); };
+  const { source, origin, noise, pilotPlan } = evidence();
+  check(execFileSync('git',['rev-parse','origin/rag-hybrid'],{encoding:'utf8'}).trim()===source.commit,'Origin advanced; audit and snapshot new historical results before selecting new IDs');
+  const dataset = 'data/distractor-validation.parquet', datasetHash = fileHash(dataset);
+  check(datasetHash === pilotPlan.manifest.datasetHash, 'Pilot dataset changed');
+  const rows = await new ParquetFileReader({ filePath: dataset }).read();
+  check(new Set(rows.map(r=>r.id)).size===rows.length,'Duplicate dataset ID');
+  const eligible = rows.filter(r=>{try{prepareData([r]);return new Set(r.context.title).size===r.context.title.length;}catch{return false;}});
+  const rowsById = new Map(rows.map(r=>[r.id,r]));
+  const excludedIds = [...new Set([...origin,...noise].map(r=>r.questionId))].sort();
+  const excluded = new Set(excludedIds);
+  // One purposive, ordered cohort chosen for valid controlled contradictions; no
+  // historical ID, including failed/older-model attempts, can enter either experiment.
+  const fixtures = newFixtures(rows);
+  const reviewPolicy=validateReviewPolicy(rows,fixtures);
+  const benchmark = fixtures.map(f=>rows[f.rowIndex]);
+  check(benchmark.length===200&&new Set(benchmark.map(r=>r.id)).size===200,'Need 200 unique new IDs');
+  check(benchmark.every(r=>!excluded.has(r.id)&&eligible.some(e=>e.id===r.id)),'Historical/ineligible question in new cohort');
+  const noiseSamples = fixtures.map(f=>({row:rows[f.rowIndex],fixture:f,contexts:validateFixture(rows[f.rowIndex],f)}));
+  check(new Set(fixtures.map(f=>f.irrelevant.title)).size===200&&new Set(fixtures.map(f=>hash(f.irrelevant.sentences))).size===200,'Repeated irrelevant passages');
+  for(const [path,digest] of Object.entries(pilotPlan.manifest.implementationHashes))
+    check(fileHash(resolve(ROOT,'../context-noise',path))===digest,`Original pilot implementation changed: ${path}`);
+  const originalFixtures = json(ROOT+'/../context-noise/fixtures.json').fixtures;
+  const pilotIds = originalFixtures.map((f:any)=>f.questionId);
+  check(!benchmark.some(r=>pilotIds.includes(r.id)),'Pilot must be separate');
+  check(noise.length===60&&new Set(noise.map(r=>r.questionId)).size===20,'Original pilot evidence incomplete');
+  for(const f of originalFixtures){
+    const row=rows[f.rowIndex],contexts=validateFixture(row,f);
+    for(const condition of CONDITIONS){
+      const records=noise.filter(r=>r.questionId===row.id&&r.condition===condition);
+      check(records.length===1,'Original pilot cell missing/duplicated');const r=records[0];
+      check(r.runId===source.noiseRunId&&r.status==='completed'&&r.dataset===dataset&&r.repetition===1&&hash(r.settings)===hash(SETTINGS),'Original pilot metadata changed');
+      check(r.contextHash===pilotHash(contexts[condition])&&scoreCompatible(r,row)&&await replay('full_context',{question:row.question,context:contexts[condition]},r,true),'Original pilot mismatch');
+    }
+  }
+  const tasks:any[]=[];
+  for(const name of STRATEGIES) for(const [index,row]of benchmark.entries()) tasks.push({
+    id:`benchmark/${name}/${row.id}`,group:'benchmark',strategy:name,questionId:row.id,selectionIndex:index,rowIndex:fixtures[index].rowIndex,
+    input:{question:row.question,context:row.context},reference:{id:row.id,answer:row.answer,supporting_facts:row.supporting_facts},reuse:null,
+    expectedModelRequests:name==='rag_tool'?3:name==='hybrid'?4:name==='summarization'?2:1,
+  });
+  for(const [index,s]of noiseSamples.entries()){
+    const offset=index%3,order=[...CONDITIONS.slice(offset),...CONDITIONS.slice(0,offset)];
+    for(const condition of order) tasks.push({id:`noise/${condition}/${s.row.id}`,group:'noise',strategy:'full_context',condition,questionId:s.row.id,selectionIndex:index,rowIndex:s.fixture.rowIndex,
+      input:{question:s.row.question,context:s.contexts[condition]},reference:{id:s.row.id,answer:s.row.answer,supporting_facts:s.row.supporting_facts},reuse:null,expectedModelRequests:1});
+  }
+  check(tasks.length===1600&&new Set(tasks.map(t=>t.id)).size===1600,'Duplicate/missing logical task');
+  // Historical responses calibrate costs ONLY. They are never benchmark results.
+  const calibration=json(ROOT+'/evidence/cost-calibration.json').samples;
+  for(const c of calibration){
+    const r=(c.source==='origin'?origin:noise)[c.line-1],row=rowsById.get(c.questionId)!;
+    check(hash(r)===c.recordHash&&r.model===SETTINGS.model&&r.provider==='Google AI Studio'&&scoreCompatible(r,row),'Invalid historical calibration sample');
+    if(c.group==='benchmark'){
+      const proof={model:SETTINGS.model,messages:buildFullContextPrompt(row),response_format:ModelAnswerFormat,provider:{only:[SETTINGS.provider],allow_fallbacks:false,require_parameters:true}};
+      check(origin.some(v=>v.questionId===row.id&&v.strategy==='full_context'&&v.status==='completed'&&hash(v.modelCalls?.[0]?.request??null)===hash(proof)),'Unproven historical source dataset alias');
+      check(await replay(c.strategy,row,r),'Historical calibration wire mismatch');
+    }
+  }
+  const pricing={checked:'2026-11-23',inputPerMillionUSD:.25,outputPerMillionUSD:1.50,source:'https://openrouter.ai/google/gemini-3.1-flash-lite',cacheDiscountAssumed:false};
+  const costs=[...STRATEGIES.map(s=>['benchmark',s]),...CONDITIONS.map(c=>['noise',c])].map(([group,variant])=>{
+    const pending=tasks.filter(t=>t.group===group&&(group==='noise'?t.condition===variant:t.strategy===variant));
+    const measurements=calibration.filter((c:any)=>c.group===group&&(group==='noise'?c.condition===variant:c.strategy===variant));
+    check(measurements.length===(group==='noise'?20:100),'Incomplete cost calibration');
+    const records=measurements.map((c:any)=>(c.source==='origin'?origin:noise)[c.line-1]);
+    const mean=(field:string)=>{check(records.every((r:any)=>typeof r.usage?.[field]==='number'),'Unknown usage in calibration');return records.reduce((n:number,r:any)=>n+r.usage[field],0)/records.length;};
+    const promptRatio=(pending.reduce((n,t)=>n+JSON.stringify(t.input).length,0)/pending.length)/(measurements.reduce((n:number,c:any)=>n+c.inputCharacters,0)/measurements.length);
+    const inputTokens=Math.ceil(pending.length*mean('prompt_tokens')*promptRatio),outputTokens=Math.ceil(pending.length*mean('completion_tokens'));
+    return {group,variant,targetQuestions:200,reusedResults:0,newResults:200,newModelRequests:pending.reduce((n,t)=>n+t.expectedModelRequests,0),calibrationResults:measurements.length,
+      estimatedInputTokens:inputTokens,estimatedOutputTokens:outputTokens,estimatedUSD:(inputTokens*.25+outputTokens*1.50)/1e6};
+  });
+  const tracked=execFileSync('git',['ls-files','src','package-lock.json'],{encoding:'utf8'}).trim().split('\n');
+  const ownFiles=['core.ts','fixtures.ts','prepare.ts','execute.ts','contradictions.tsv','expansion.test.ts','review-policy.json','verify-offline.ts'];
+  const pilotFiles=['pilot.ts','fixtures.json','answer.ts','run.ts','report.ts','create-fixtures.ts','irrelevant.ts'].map(f=>'experiments/context-noise/'+f);
+  const implementation=Object.fromEntries([...tracked,...pilotFiles,...ownFiles.map(f=>'experiments/expansion/'+f)].map(p=>[p,fileHash(p)]));
+  const evidenceHashes=Object.fromEntries([source.originResults,'noise-pilot-runs.jsonl','noise-pilot-plan.json','source.json','cost-calibration.json','reviewed-noise-donors.json','reviewed-noise-donors-v3.json'].map(f=>['experiments/expansion/evidence/'+f,fileHash(ROOT+'/evidence/'+f)]));
+  const manifest={version:3,source,dataset,datasetSplit:'HotpotQA distractor validation',datasetHash,datasetRows:rows.length,eligibleRows:eligible.length,
+    selection:{method:'Ascending dataset row order of 200 manually curated answer-bearing relations in contradictions.tsv, after excluding every ID in all recorded historical attempts and the pilot.',excludedHistoricalQuestionIds:excludedIds,historicalOverlap:0,pilotOverlap:0,sharedAcrossAllEightCells:true,excludedSemanticFailureIds:reviewPolicy.replacements.map((r:any)=>r.removedId)},
+    benchmarkQuestionIds:benchmark.map(r=>r.id),noiseQuestionIds:benchmark.map(r=>r.id),
+    separatePilot:{runId:source.noiseRunId,questionIds:pilotIds,completedResponses:60,includedInNewCohort:false,originalFixturesHash:hash(originalFixtures)},
+    settings:{benchmark:{model:SETTINGS.model,provider:SETTINGS.provider,temperature:'omitted, preserve original provider default',max_tokens:'omitted, preserve original provider default',cacheMode:'explicit for caching only'},noise:SETTINGS},
+    semanticReviewPolicy:{revision:3,policyHash:hash(reviewPolicy),replacedQuestions:14,retainedQuestions:186,scorerSHA256:reviewPolicy.scorerSHA256,scoringMethodologyChanged:false,scoringLimitations:reviewPolicy.scoringDecisions},
+    implementation,evidenceHashes,fixturesHash:hash(fixtures),tasksHash:hash(tasks),pricing,costs,
+    count:{logicalResults:1600,reusedResults:0,reusedModelRequests:0,missingResults:1600,newModelRequests:2800},
+    estimates:{inputTokens:costs.reduce((n,c)=>n+c.estimatedInputTokens,0),outputTokens:costs.reduce((n,c)=>n+c.estimatedOutputTokens,0),usd:costs.reduce((n,c)=>n+c.estimatedUSD,0),
+      method:'Historical responses are cost calibration only, never new cohort results. Mean observed tokens, input adjusted by new/old serialized context length. Adaptive later prompts unknown offline; heuristic, no cache discounts or hard cost cap. Benchmark limits omitted to preserve client; noise max_tokens=1024.'}};
+  const manifestHash=hash(manifest),out=ROOT+'/prepared';mkdirSync(out,{recursive:true});
+  writeJSON(out+'/manifest.json',{...manifest,manifestHash});writeJSON(out+'/tasks.json',tasks);writeJSON(out+'/fixtures.json',fixtures);
+  writeJSON(out+'/reusable.json',[]);writeJSON(out+'/missing.json',tasks.map(({input,reference,...t})=>t));
+  writeJSON(out+'/selected-question-ids.json',benchmark.map(r=>r.id));writeFileSync(out+'/selected-question-ids.txt',benchmark.map(r=>r.id).join('\n')+'\n');
+  writeJSON(out+'/selection-audit.json',{dataset,datasetHash,datasetSplit:manifest.datasetSplit,selected:benchmark.map((r,i)=>({position:i+1,rowIndex:fixtures[i].rowIndex,questionId:r.id,question:r.question,rowHash:hash(r),goldAnswer:r.answer,supportingFacts:r.supporting_facts,supportingPassagesValid:true,previouslyTested:false})),excludedIds,duplicateIds:[],historicalOverlap:[],pilotOverlap:[]});
+  writeFileSync(out+'/selected-questions.md','# Shared ordered selection: 200 NEW HotpotQA questions\n\nSame ordered IDs for all five strategies and all three noise conditions. Zero overlap with the previous 100 recorded IDs; the 20-question pilot remains separate. Dataset: '+dataset+' (distractor validation), SHA256 '+datasetHash+'.\n\n| Order | Dataset row | Question ID | Question |\n|---:|---:|---|---|\n'+benchmark.map((r,i)=>`| ${i+1} | ${fixtures[i].rowIndex} | ${r.id} | ${r.question.replaceAll('|','\\|').replaceAll('\n',' ')} |`).join('\n')+'\n');
+  writeJSON(out+'/replacement-audit.json',reviewPolicy);
+  writeJSON(out+'/compatibility-audit.json',{mode:'NEW cohort; no historical response reuse',historicalOriginRecords:origin.length,excludedHistoricalIds:excludedIds,overlap:[],historicalCalibrationResults:calibration.length,calibrationOnly:true,originalPilotPreservedSeparately:true});
+  writeJSON(out+'/pilot-preservation.json',{runId:source.noiseRunId,originalManifestHash:pilotPlan.manifestHash,originalFixturesHash:hash(originalFixtures),responses:60,questionIds:pilotIds,sourceFile:'evidence/noise-pilot-runs.jsonl',sourceSHA256:fileHash(ROOT+'/evidence/noise-pilot-runs.jsonl'),inNewCohort:false,wireReplayAndScoreChecksPassed:true});
+  const review=noiseSamples.map((s,i)=>`## ${i+1}. ${s.row.id} (row ${s.fixture.rowIndex})\n\nQuestion: ${s.row.question}\n\nGold answer (review only): ${s.row.answer}\n\nRelation checked: ${s.fixture.relation}\n\nLabeled source: ${s.fixture.evidenceTitle} [${s.fixture.sentenceId}]\n\n${s.fixture.sourceSentence}\n\nSupporting passages:\n\n${s.contexts.clean.title.map((t,j)=>`**${t}**\n\n${s.contexts.clean.sentences[j].map((v,k)=>`[${k}] ${v}`).join('\n\n')}`).join('\n\n')}\n\nSynthetic conflicting passage:\n\n${s.fixture.sentences.join(' ')}\n\nIrrelevant passage: **${s.fixture.irrelevant.title}**\n\n${s.fixture.irrelevant.sentences.join(' ')}\n\nDonor provenance: ${JSON.stringify(s.fixture.irrelevant.donor)}\n\nReview: ${s.fixture.rationale}\n\n${s.fixture.irrelevant.review.rationale}\n\nChecks: original supporting passages and sentence indices preserved; labeled source span; distinct alternative with scoped denial; unrelated donor 70–100 words; distinct donor; no answer, title or content-term overlap.\n`).join('\n');
+  writeFileSync(out+'/noise-review.md','# Review of all 200 NEW-cohort noise fixtures\n\nSame ordered cohort as all five strategies; the original 20-question pilot is separate. All relations and alternatives are manually curated in contradictions.tsv. Automatic lexical checks do not establish semantic validity; each contradiction and paired donor requires semantic review before paid execution. This is a purposive sample with explicit synthetic denials, not a random benchmark.\n\n'+review);
+  console.log(JSON.stringify({manifestHash,fixturesHash:manifest.fixturesHash,...manifest.count,costs,estimates:manifest.estimates},null,2));
+  return {manifest:{...manifest,manifestHash},tasks,fixtures};
+}
+if(import.meta.main)await prepare();

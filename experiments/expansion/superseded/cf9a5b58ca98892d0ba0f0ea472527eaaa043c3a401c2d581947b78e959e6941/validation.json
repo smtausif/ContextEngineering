@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "manifestHash": "cf9a5b58ca98892d0ba0f0ea472527eaaa043c3a401c2d581947b78e959e6941",
+  "mode": "offline; model transport forbidden except local saved-response/mock replay",
+  "expansion": {
+    "passed": 11,
+    "failed": 0
+  },
+  "typecheck": {
+    "passed": true
+  },
+  "existingWorkingTree": {
+    "passed": 72,
+    "failed": 2,
+    "reason": "Pre-existing local validation-00000-of-00001.parquet omits gold support; unchanged original loader tests reject it."
+  },
+  "existingIsolatedDistractor": {
+    "passed": 74,
+    "failed": 0,
+    "method": "Unchanged src/tests in /private/tmp/context-expansion-baseline; verified distractor data supplied under historical filename, original working tree untouched."
+  },
+  "pilotWorkingTree": {
+    "passed": 12,
+    "failed": 1,
+    "reason": "Existing dry-run test requires clean-vs-noisy-context. Branch remains rag-hybrid; guard unchanged."
+  },
+  "checks": {
+    "newUniqueIDs": 200,
+    "sharedOrderedIDsAcrossFiveStrategies": true,
+    "sharedOrderedIDsAcrossThreeConditions": true,
+    "sharedOrderedIDsAcrossBenchmarkAndNoise": true,
+    "duplicateIDs": 0,
+    "overlapWithHistorical100": 0,
+    "overlapWithOriginalPilot20": 0,
+    "split": "HotpotQA distractor validation",
+    "datasetSHA256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6",
+    "allSupportingPassagesAndSentenceIndicesValid": true,
+    "pilot20FixturesUnchanged": true,
+    "pilot60ResponsesByteIdentical": true,
+    "pilot60WireReplaysAndScoresUnchanged": true,
+    "historicalResponsesCountedAsNewResults": 0,
+    "noiseFixturesSemanticallyReviewed": 200,
+    "distinctIrrelevantPassages": 200,
+    "logicalTasks": 1600,
+    "newModelRequestsSuccessfulPath": 2800,
+    "modelRequestsExecuted": 0,
+    "runtimeCreated": false
+  },
+  "git": {
+    "branch": "rag-hybrid",
+    "head": "36f912bbe205e3cc0d513b6114463591f2134666",
+    "origin": "f62ad872d665f298ab3590c594ceb6b298058843",
+    "trackedDiff": ""
+  }
+}

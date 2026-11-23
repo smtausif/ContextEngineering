@@ -1,0 +1,78 @@
+import assert from 'node:assert/strict';
+import { test, before, after } from 'node:test';
+import { mkdtempSync, readFileSync, existsSync, readdirSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { ParquetFileReader } from '../../src/ParquetFileReader.ts';
+import { prepareData } from '../../src/loadData.ts';
+import { logger } from '../../src/logger.ts';
+import { evaluateResult } from '../../src/evaluation.ts';
+import { compare } from '../context-noise/report.ts';
+import { SETTINGS, hash as pilotHash } from '../context-noise/pilot.ts';
+import { ROOT, STRATEGIES, CONDITIONS, hash, fileHash, evidence, replay, configure, Journal, durableCreate, requestKey, json, strategy } from './core.ts';
+import { loadPlan, execute, aggregate } from './execute.ts';
+import { newFixtures, validateFixture } from './fixtures.ts';
+const oldFetch=globalThis.fetch, oldKey=process.env.OPENROUTER_API_KEY, oldModel=process.env.OPENROUTER_MODEL, oldProvider=process.env.OPENROUTER_PROVIDER;
+let network=0;
+before(()=>{logger.level='silent';configure();process.env.OPENROUTER_API_KEY='offline-placeholder';globalThis.fetch=async()=>{network++;throw new Error('TEST DENIES NETWORK');};});
+after(()=>{assert.equal(network,0);globalThis.fetch=oldFetch;for(const [k,v]of Object.entries({OPENROUTER_API_KEY:oldKey,OPENROUTER_MODEL:oldModel,OPENROUTER_PROVIDER:oldProvider})){if(v===undefined)delete process.env[k];else process.env[k]=v;}});
+const plan=loadPlan(), saved=evidence();
+const rows=await new ParquetFileReader({filePath:plan.manifest.dataset}).read();
+
+test('200 eligible unique questions, same IDs and full inputs across all five unchanged strategies',()=>{
+  for(const name of STRATEGIES){const tasks=plan.tasks.filter((t:any)=>t.group==='benchmark'&&t.strategy===name);assert.equal(tasks.length,200);assert.deepEqual(tasks.map((t:any)=>t.questionId),plan.manifest.benchmarkQuestionIds);assert.equal(new Set(tasks.map((t:any)=>t.questionId)).size,200);for(const t of tasks){prepareData([rows[t.rowIndex]]);assert.deepEqual(t.input,{question:rows[t.rowIndex].question,context:rows[t.rowIndex].context});}}
+  assert.equal(new Set(plan.tasks.map((t:any)=>t.id)).size,1600);
+});
+test('deterministic 180 fixtures; original 20 and all 60 raw responses remain byte-identical',()=>{
+  assert.equal(hash(newFixtures(rows)),hash(plan.fixtures.slice(20)));
+  const original=json(ROOT+'/../context-noise/fixtures.json').fixtures;
+  assert.deepEqual(plan.fixtures.slice(0,20),original);
+  assert.equal(fileHash(ROOT+'/evidence/noise-pilot-runs.jsonl'),fileHash(ROOT+'/../context-noise/results/'+saved.source.noiseRunId+'/runs.jsonl'));
+  for(const c of CONDITIONS){const tasks=plan.tasks.filter((t:any)=>t.group==='noise'&&t.condition===c);assert.equal(tasks.length,200);assert.equal(new Set(tasks.map((t:any)=>t.questionId)).size,200);assert.deepEqual(new Set(tasks.map((t:any)=>t.questionId)),new Set(plan.manifest.noiseQuestionIds));assert.equal(tasks.filter((t:any)=>t.reuse).length,20);}
+});
+test('all 600 contexts preserve supporting passages and sentence indices, with distinct unrelated passages and answer-scoped contradictions',()=>{
+  assert.equal(new Set(plan.fixtures.map((f:any)=>f.irrelevant.title)).size,200);
+  assert.equal(new Set(plan.fixtures.map((f:any)=>hash(f.irrelevant.sentences))).size,200);
+  for(const f of plan.fixtures){const row=rows[f.rowIndex],ctx=validateFixture(row,f);for(const c of CONDITIONS){const task=plan.tasks.find((t:any)=>t.group==='noise'&&t.condition===c&&t.questionId===row.id);assert.deepEqual(task.input,{question:row.question,context:ctx[c]});for(let j=0;j<row.supporting_facts.title.length;j++){const title=row.supporting_facts.title[j];assert.deepEqual(ctx[c].sentences[ctx[c].title.indexOf(title)],row.context.sentences[row.context.title.indexOf(title)]);}}}
+});
+test('all 560 reuse choices pass complete offline wire replay and original scoring; configuration drift is rejected',async()=>{
+  for(const t of plan.tasks.filter((t:any)=>t.reuse)){const record=(t.reuse.source==='origin'?saved.origin:saved.noise)[t.reuse.line-1];assert.equal(hash(record),t.reuse.recordHash);assert.deepEqual(evaluateResult(record.output,t.reference),record.scores);assert.ok(await replay(t.strategy,t.input,record,t.group==='noise'));}
+  const task=plan.tasks.find((t:any)=>t.group==='benchmark'&&t.reuse);const record=structuredClone(saved.origin[task.reuse.line-1]);record.modelCalls[0].request.temperature=0;assert.equal(await replay(task.strategy,task.input,record),false);
+});
+test('exact successful-path counts, preserved API settings, output roots and partial aggregation coverage',()=>{
+  assert.deepEqual(plan.manifest.count,{logicalResults:1600,reusedResults:560,reusedModelRequests:1160,missingResults:1040,newModelRequests:1640});
+  assert.deepEqual(plan.manifest.settings.noise,SETTINGS);
+  const report=aggregate(plan.tasks,saved,join(tmpdir(),'absent-expansion-'+process.pid));assert.equal(report.complete,false);assert.equal(report.pending.length,1040);assert.equal(report.records.length,560);assert.equal(report.accounting.newUsage.cost,0);
+  for(const g of report.groups){assert.equal(g.target,200);assert.ok(g.completed===100||g.completed===20);assert.equal(g.failed,0);}
+});
+test('combined noise aggregation preserves the original paired comparison for the original 20 questions',()=>{
+  const report=aggregate(plan.tasks,saved,join(tmpdir(),'absent-expansion-'+process.pid));
+  const original=compare(saved.noise,plan.manifest.noiseQuestionIds.slice(0,20),1);
+  assert.deepEqual(report.noiseComparison.perQuestion.slice(0,20).map(q=>q.pairedChanges),original.perQuestion.map(q=>q.pairedChanges));
+  assert.equal(report.noiseComparison.perQuestion.length,200);
+  assert.ok(report.noiseComparison.perQuestion.slice(20).every(q=>q.pairedChanges.every(p=>p.completedPairs===0&&p.accuracyDelta===null)));
+});
+test('crash-safe intent blocks potentially billed transport; completed raw response replays without duplicate sending',async()=>{
+  const dir=mkdtempSync(join(tmpdir(),'expansion-journal-')),j=new Journal(dir),task={id:'unit/task',questionId:'id',group:'noise'},p={model:'mock',messages:[]};let sent=0;
+  const send=async()=>{sent++;return new Response(JSON.stringify({choices:[],usage:{cost:.01}}));};
+  assert.equal((await j.request(task,0,p,send)).status,200);assert.equal((await j.request(task,0,p,send)).status,200);assert.equal(sent,1);
+  const id=requestKey(task,1,p);durableCreate(dir+'/'+id+'.intent.json',{id});await assert.rejects(()=>j.request(task,1,p,send),/potentially billed/);assert.equal(sent,1);
+  await assert.rejects(()=>j.request(task,2,p,async()=>{sent++;throw new Error('connection lost');}));await assert.rejects(()=>j.request(task,2,p,send),/potentially billed/);assert.equal(sent,2);
+  assert.ok(existsSync(dir+'/'+requestKey(task,2,p)+'.error.json'));assert.equal(readdirSync(dir).filter(f=>f.endsWith('.response.json')).length,1);
+});
+test('partial summarization resumes first response and blocks uncertain second call through original implementation',async()=>{
+  const task=plan.tasks.find((t:any)=>t.strategy==='summarization'&&t.reuse),record=saved.origin[task.reuse.line-1];
+  const journal=new Journal(mkdtempSync(join(tmpdir(),'expansion-summary-')));let sent=0;const guard=globalThis.fetch;
+  const attempt=async()=>{let index=0;globalThis.fetch=async(_url,init)=>{const payload=JSON.parse(String(init?.body)),i=index++;return journal.request(task,i,payload,async()=>{sent++;if(i===1)throw new Error('lost after billing');return new Response(JSON.stringify(record.modelCalls[i].rawResponse),{headers:{'Content-Type':'application/json'}});});};try{return await strategy(task.strategy,task.input);}finally{globalThis.fetch=guard;}};
+  assert.equal((await attempt()).status,'failed');assert.equal(sent,2);assert.equal((await attempt()).status,'failed');assert.equal(sent,2);
+});
+test('exclusive durable writes prevent competing intent; malformed or HTTP failure never causes new send',async()=>{
+  const dir=mkdtempSync(join(tmpdir(),'expansion-exclusive-')),j=new Journal(dir),task={id:'exclusive'},p={x:1};let sent=0;
+  durableCreate(dir+'/exclusive.json',{x:1});assert.throws(()=>durableCreate(dir+'/exclusive.json',{x:2}),/EEXIST/);
+  const send=async()=>{sent++;return new Response('invalid',{status:429});};assert.equal((await j.request(task,0,p,send)).status,429);assert.equal((await j.request(task,0,p,send)).status,429);assert.equal(sent,1);
+});
+test('live requires both exact approval digests, default status never creates runtime or network',async()=>{
+  const prior=existsSync(ROOT+'/runtime');const report=await execute(['--status']);assert.equal(report.records.length,560);assert.equal(existsSync(ROOT+'/runtime'),prior);
+  await assert.rejects(()=>execute(['--live','--approved-manifest','wrong']),/approved manifest/);
+  await assert.rejects(()=>execute(['--live','--approved-manifest',plan.manifest.manifestHash]),/fixtures digest/);
+});

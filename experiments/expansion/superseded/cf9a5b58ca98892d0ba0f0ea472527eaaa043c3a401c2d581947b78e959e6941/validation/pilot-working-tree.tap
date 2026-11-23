@@ -1,0 +1,34 @@
+✔ Distractor dataset is verified and all three conditions use the same 20 unique IDs (0.677458ms)
+✔ complete supporting passages, gold answers, questions and original sentence indices are unchanged (2.182958ms)
+✔ twenty distinct curated unrelated passages are 70–100 words and contain no answers or evidence subjects (0.556958ms)
+✔ question 13 replaces the Russian Civil War case with complete, unambiguous Tosca evidence (0.1585ms)
+✔ Apple Remote grammar is corrected while its keyboard contradiction is preserved (0.081167ms)
+✔ all 20 reviewed contradictions target exclusive answer-relevant relations, not arbitrary changed words (0.170667ms)
+✔ fixture construction, committed fixture regeneration, and manifests are deterministic (211.498083ms)
+✔ invalid fixture, unsupported evidence and title collisions fail closed (0.463542ms)
+✔ estimate counts one Full Context request per condition/question/repetition (1.493542ms)
+✔ Full Context adapter applies identical explicit settings and omits reference labels with one mocked request (7.858875ms)
+✔ model failures preserve unknown usage, stop without retry, and restore transport (0.801958ms)
+✔ comparison includes all conditions and paired question changes without fabricating missing metrics (2.214291ms)
+✖ dry-run cannot make network calls; live requires exact reviewed manifest before model requests (15.744292ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1521.553334
+
+✖ failing tests:
+
+test at experiments/context-noise/pilot.test.ts:239:1
+✖ dry-run cannot make network calls; live requires exact reviewed manifest before model requests (15.744292ms)
+  Error: Run only on clean-vs-noisy-context
+      at requireValid (file:///Users/smtausif/dev/ContextEngineering/experiments/context-noise/pilot.ts:27:18)
+      at main (file:///Users/smtausif/dev/ContextEngineering/experiments/context-noise/run.ts:20:3)
+      at TestContext.<anonymous> (file:///Users/smtausif/dev/ContextEngineering/experiments/context-noise/pilot.test.ts:242:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
