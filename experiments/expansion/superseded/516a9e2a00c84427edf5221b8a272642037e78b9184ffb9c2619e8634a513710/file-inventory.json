@@ -1,0 +1,172 @@
+{
+  "existingFilesModified": [],
+  "files": [
+    {
+      "path": "experiments/expansion/.gitignore",
+      "action": "created",
+      "bytes": 9,
+      "sha256": "fdcd0183a4babd894e7cce83ec87bd24f385c424cc83571009ed07ab34722d9f"
+    },
+    {
+      "path": "experiments/expansion/README.md",
+      "action": "created",
+      "bytes": 2553,
+      "sha256": "9dab232b7b73690bc639c2b1e5532eddfeabefcd5b33496cbdbc415bd834baef"
+    },
+    {
+      "path": "experiments/expansion/contradictions.tsv",
+      "action": "created",
+      "bytes": 12449,
+      "sha256": "1706c437460db9a00a0a93e3e0c44afdab24f0d17816a877a9461eb50ea60546"
+    },
+    {
+      "path": "experiments/expansion/core.ts",
+      "action": "created",
+      "bytes": 7316,
+      "sha256": "b49d49cf3dd437f8a535fb5149e974ecadea5ac6d13823f8eb053ad465eb34a4"
+    },
+    {
+      "path": "experiments/expansion/evidence/noise-pilot-plan.json",
+      "action": "created",
+      "bytes": 11234,
+      "sha256": "e8bf11edafd9bdf2d3cb53510961347fa4693d35515e512111ba82ac36230cb4"
+    },
+    {
+      "path": "experiments/expansion/evidence/noise-pilot-runs.jsonl",
+      "action": "created",
+      "bytes": 374433,
+      "sha256": "f7947215627a2c922f77735cb80b0bb875f9c7e08c449f090a250d70cd36f0f0"
+    },
+    {
+      "path": "experiments/expansion/evidence/origin-f62ad872d665f298ab3590c594ceb6b298058843.jsonl.gz",
+      "action": "created",
+      "bytes": 6151530,
+      "sha256": "a53658bebef05832d6522dbd312b53642537db7d59d3ccd134bbe55f260649d9"
+    },
+    {
+      "path": "experiments/expansion/evidence/source.json",
+      "action": "created",
+      "bytes": 278,
+      "sha256": "9f5d8c2b55779807d77ca52586a5cd445eeef49c76fc80fc94a9d63e080fe116"
+    },
+    {
+      "path": "experiments/expansion/execute.ts",
+      "action": "created",
+      "bytes": 10548,
+      "sha256": "9e74143d51e0d0b652419e1ae482966a3965ba572a94d9c09d1b1a7fc11c3dc2"
+    },
+    {
+      "path": "experiments/expansion/expansion.test.ts",
+      "action": "created",
+      "bytes": 8975,
+      "sha256": "4c0b8115a3959f4b6a9103e1672710264ed23663f413cfaa7655f3fe6a4003ee"
+    },
+    {
+      "path": "experiments/expansion/fixtures.ts",
+      "action": "created",
+      "bytes": 5365,
+      "sha256": "81c4db224614c0a143f8ca9b9cf9a443bebdafa68327330d81cb8cf86e83dde1"
+    },
+    {
+      "path": "experiments/expansion/prepare.ts",
+      "action": "created",
+      "bytes": 13841,
+      "sha256": "25aeb92f8a5646569f972a309706fb2b188a71db7111bddef74653a4b079b595"
+    },
+    {
+      "path": "experiments/expansion/prepared/combined-existing.json",
+      "action": "created",
+      "bytes": 1849615,
+      "sha256": "82a2d6d95ced7fb23241bb07ea2af597efc8cc75965daa3f8150df2db09609b2"
+    },
+    {
+      "path": "experiments/expansion/prepared/compatibility-audit.json",
+      "action": "created",
+      "bytes": 582627,
+      "sha256": "89cd6d8abf24428f208073934197319c5d1618ad55ad1c4f96a6ede95f055213"
+    },
+    {
+      "path": "experiments/expansion/prepared/fixtures.json",
+      "action": "created",
+      "bytes": 660044,
+      "sha256": "d0ac0794b3f20bb3d003950ed00d91e37c269894b6a3395cab154454dbb3b201"
+    },
+    {
+      "path": "experiments/expansion/prepared/historical-inventory.json",
+      "action": "created",
+      "bytes": 2551,
+      "sha256": "bf0e742fc39b9eb28b5db302773f10b9634b207429f2182ff82c3871aed0ba7c"
+    },
+    {
+      "path": "experiments/expansion/prepared/manifest.json",
+      "action": "created",
+      "bytes": 21703,
+      "sha256": "b5594d91ec851c1e9836810feb74fc9dba2ba4cad0c55c4864d9d2377c06ee3f"
+    },
+    {
+      "path": "experiments/expansion/prepared/missing.json",
+      "action": "created",
+      "bytes": 261837,
+      "sha256": "6d2c733c9c96a4bdf826544d34bbe4718a5c791c3155c6bf1a0070aac209bf6b"
+    },
+    {
+      "path": "experiments/expansion/prepared/noise-review.md",
+      "action": "created",
+      "bytes": 690073,
+      "sha256": "5f383ad9feed34f4ff7aa5c53db274a27f3b070156f8e700e40426ebb48d61f3"
+    },
+    {
+      "path": "experiments/expansion/prepared/reusable.json",
+      "action": "created",
+      "bytes": 496474,
+      "sha256": "05d9ffe884157a7a78f2f25d120c0d92bf76c4843494e98b7c317b059df19fed"
+    },
+    {
+      "path": "experiments/expansion/prepared/review.md",
+      "action": "created",
+      "bytes": 14596,
+      "sha256": "3a6d7ca2d95ee897e8a6e05ae5b590b77b7996a14e8fb45374a78b9ecdd4e529"
+    },
+    {
+      "path": "experiments/expansion/prepared/tasks.json",
+      "action": "created",
+      "bytes": 9475689,
+      "sha256": "d9f1fbbe9cb427809dc79e85c6b56fb94b94e0ba3d4a7eb91e9d22b00371ff7d"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/existing-isolated-distractor.tap",
+      "action": "created",
+      "bytes": 7347,
+      "sha256": "265d59e8bcc153cae482e6f198c0afd84ccf09454f0b74122f3b17da9c59c993"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/existing-working-tree.tap",
+      "action": "created",
+      "bytes": 8897,
+      "sha256": "a842d79922cc2cda81bc4d4be3fc0338169787d7a94a36bdeaca2b3b99cbe63f"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/expansion.tap",
+      "action": "created",
+      "bytes": 5285,
+      "sha256": "8bfc3520df8a55257936d0fba4aa81f29015352bc4be56b949666238877e55bf"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/pilot-working-tree.tap",
+      "action": "created",
+      "bytes": 2359,
+      "sha256": "13641398aac7b9304afdfd607b93f467abaf739066d95542e490e8d9b39a5577"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation.json",
+      "action": "created",
+      "bytes": 1646,
+      "sha256": "854c74b99f2e296aaf284102502de71e09b9317d23912cffbad0b49c90ae7913"
+    },
+    {
+      "path": "experiments/expansion/prepared/file-inventory.json",
+      "action": "created",
+      "note": "Inventory itself is not self-hashed."
+    }
+  ]
+}

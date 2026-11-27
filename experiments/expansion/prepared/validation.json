@@ -1,0 +1,64 @@
+{
+  "revision": 3,
+  "manifestHash": "fdda1f0b5ebe9c4c51f636443730d200ada3876f5de0e79e5c49bb5874df5110",
+  "mode": "offline only; no model endpoint contacted",
+  "semantic": {
+    "status": "PASS",
+    "reviewed": 200,
+    "unresolvedBlockers": 0,
+    "metricLimitations": 6
+  },
+  "expansion": {
+    "passed": 14,
+    "failed": 0
+  },
+  "isolatedAll": {
+    "passed": 101,
+    "failed": 0,
+    "composition": {
+      "originalBenchmark": 74,
+      "originalPilot": 13,
+      "expansion": 14
+    },
+    "environment": {
+      "isolated": "/var/folders/kx/fzr4xt5n77j889dy8y13w1z00000gn/T/context-expansion-offline-n8wtku",
+      "passed": true,
+      "network": "global fetch denied before test imports; tests use saved-response/SDK mocks",
+      "dataset": "Verified distractor data aliased to historical expected filename only inside isolated fixture",
+      "git": "Read-only Git queries stubbed to supply the branch expected by the original pilot and the actual recorded source hashes; no repository branches changed",
+      "sources": "Copied without edits; original strategies, scorer, pilot and results untouched"
+    }
+  },
+  "typecheck": {
+    "passed": true
+  },
+  "workingTreeOriginal": {
+    "passed": 72,
+    "failed": 2,
+    "reason": "Pre-existing validation-00000-of-00001.parquet omits required support. Dataset/loader remain untouched; all 74 pass with verified distractor data inside the isolated harness."
+  },
+  "checks": {
+    "sameOrderedIDsAcrossEightGroups": true,
+    "uniqueIDsPerGroup": 200,
+    "duplicateIDs": 0,
+    "missingFixtures": 0,
+    "historicalOverlap": 0,
+    "pilotOverlap": 0,
+    "retiredSemanticIDsExcluded": 14,
+    "retainedGoldEdits": 0,
+    "scorerChanged": false,
+    "strategiesChanged": false,
+    "pilotOriginalFixturesUnchanged": true,
+    "pilotOriginal60ResponsesByteIdentical": true,
+    "historicalEvidenceUnchanged": true,
+    "approvedRequestCount": 2800,
+    "liveModelRequestsExecuted": 0,
+    "runtimeExists": false
+  },
+  "git": {
+    "branch": "rag-hybrid",
+    "head": "36f912bbe205e3cc0d513b6114463591f2134666",
+    "origin": "f62ad872d665f298ab3590c594ceb6b298058843",
+    "trackedDiff": ""
+  }
+}

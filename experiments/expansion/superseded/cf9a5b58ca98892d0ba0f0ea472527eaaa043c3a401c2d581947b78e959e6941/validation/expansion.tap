@@ -1,0 +1,171 @@
+{
+  "manifestHash": "cf9a5b58ca98892d0ba0f0ea472527eaaa043c3a401c2d581947b78e959e6941",
+  "groups": [
+    {
+      "group": "benchmark/full_context",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/rag_tool",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/summarization",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/hybrid",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "benchmark/caching",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "noise/clean",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "noise/irrelevant",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    },
+    {
+      "group": "noise/conflicting",
+      "target": 200,
+      "completed": 0,
+      "historical": 0,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 200,
+      "scores": {
+        "exactMatch": null,
+        "tokenF1": null,
+        "citationPrecision": null,
+        "citationRecall": null,
+        "citationF1": null
+      }
+    }
+  ],
+  "accounting": {
+    "historical": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "cost": 0
+    },
+    "newHTTPResponses": 0,
+    "newUsage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "cost": 0
+    },
+    "unknownBilling": [],
+    "note": "New accounting includes every durable HTTP response, even rejected/failed calls. Missing usage is unknown, never zero. Historical cost is evidence already incurred; it is not new spending."
+  },
+  "missingResults": 1600,
+  "live": false
+}
+✔ 200 eligible unique questions, same IDs and full inputs across all five unchanged strategies (10.383667ms)
+✔ 200 deterministic fixtures and identical ordered cohort across every noise condition; original pilot separate and byte-identical (231.52225ms)
+✔ execution guard rejects superseded manifests, duplicates, historical IDs and reordered strategy or condition tasks (35.076833ms)
+✔ all 600 contexts preserve supporting passages and sentence indices, with distinct unrelated passages and answer-scoped contradictions (15.945833ms)
+✔ historical responses calibrate cost only; all selected scores and prompts replay offline without entering new results (453.963375ms)
+✔ exact 2800 new model requests, preserved configurations and zero historical coverage for the new cohort (7.464333ms)
+✔ new noise comparison has 200 empty paired rows while the 20-question pilot remains independently available (9.817417ms)
+✔ crash-safe intent blocks potentially billed transport; completed raw response replays without duplicate sending (19.124833ms)
+✔ partial summarization resumes first response and blocks uncertain second call through original implementation (15.768292ms)
+✔ exclusive durable writes prevent competing intent; malformed or HTTP failure never causes new send (9.430583ms)
+✔ live requires both exact approval digests, default status never creates runtime or network (1319.958167ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2957.293375

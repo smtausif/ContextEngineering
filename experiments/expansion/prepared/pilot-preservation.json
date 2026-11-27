@@ -1,0 +1,32 @@
+{
+  "runId": "4a93b88d-81b4-45ff-9444-348852054b1f",
+  "originalManifestHash": "afdc4bdb41ca7a446c59441a42633f5b23db485ed171ba6efefb51a6d52a4938",
+  "originalFixturesHash": "40e93e81d1d84c99c35b6ffe41cf7c5ddadb1cb48e4e6d6d345e1a8029ebf36a",
+  "responses": 60,
+  "questionIds": [
+    "5a8c7595554299585d9e36b6",
+    "5a8e3ea95542995a26add48d",
+    "5abd94525542992ac4f382d2",
+    "5a87ab905542996e4f3088c1",
+    "5ab3b0bf5542992ade7c6e39",
+    "5ab6d09255429954757d337d",
+    "5ab3e45655429976abd1bcd4",
+    "5ae0d4c9554299603e418468",
+    "5adddccd5542997dc7907069",
+    "5ae22b8d554299234fd0440f",
+    "5adf37a95542995ec70e8f97",
+    "5ae4a3265542995ad6573de5",
+    "5a87c13f5542996e4f30890c",
+    "5a8ef2a75542995a26add583",
+    "5a7571135542992d0ec05f98",
+    "5a74106b55429979e288289e",
+    "5a79311755429970f5fffe67",
+    "5ab84bf555429916710eb01f",
+    "5ae32e125542991a06ce9946",
+    "5a77152355429966f1a36c2e"
+  ],
+  "sourceFile": "evidence/noise-pilot-runs.jsonl",
+  "sourceSHA256": "f7947215627a2c922f77735cb80b0bb875f9c7e08c449f090a250d70cd36f0f0",
+  "inNewCohort": false,
+  "wireReplayAndScoreChecksPassed": true
+}

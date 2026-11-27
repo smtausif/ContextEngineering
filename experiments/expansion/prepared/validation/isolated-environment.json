@@ -1,0 +1,8 @@
+{
+  "isolated": "/var/folders/kx/fzr4xt5n77j889dy8y13w1z00000gn/T/context-expansion-offline-n8wtku",
+  "passed": true,
+  "network": "global fetch denied before test imports; tests use saved-response/SDK mocks",
+  "dataset": "Verified distractor data aliased to historical expected filename only inside isolated fixture",
+  "git": "Read-only Git queries stubbed to supply the branch expected by the original pilot and the actual recorded source hashes; no repository branches changed",
+  "sources": "Copied without edits; original strategies, scorer, pilot and results untouched"
+}

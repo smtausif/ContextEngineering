@@ -1,0 +1,131 @@
+import { existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
+import { parseArgs } from 'node:util';
+import { execFileSync } from 'node:child_process';
+import { performance } from 'node:perf_hooks';
+import { logger } from '../../src/logger.ts';
+import { evaluateResult } from '../../src/evaluation.ts';
+import { compare } from '../context-noise/report.ts';
+import { SETTINGS } from '../context-noise/pilot.ts';
+import { ROOT, STRATEGIES, CONDITIONS, hash, fileHash, json, check, atomicJSON, durableCreate, evidence, configure, strategy, Journal } from './core.ts';
+
+export function loadPlan() {
+  const manifest = json(ROOT + '/prepared/manifest.json'); const { manifestHash, ...body } = manifest;
+  check(hash(body) === manifestHash, 'Manifest digest mismatch');
+  check(execFileSync('git',['rev-parse','origin/rag-hybrid'],{encoding:'utf8'}).trim()===manifest.source.commit,'Origin changed since selection; audit new history before execution');
+  for (const [p, digest] of Object.entries({ ...manifest.implementation, ...manifest.evidenceHashes, [manifest.dataset]: manifest.datasetHash }))
+    check(fileHash(p) === digest, `Pinned file changed: ${p}; prepare/review again before execution.`);
+  const tasks = json(ROOT + '/prepared/tasks.json'), fixtures = json(ROOT + '/prepared/fixtures.json');
+  check(hash(tasks) === manifest.tasksHash && hash(fixtures) === manifest.fixturesHash, 'Prepared tasks/fixtures changed');
+  validateCohort(manifest,tasks);
+  return { manifest, tasks, fixtures };
+}
+export function validateCohort(manifest:any,tasks:any[]) {
+  check(manifest.version===3, 'Superseded plan: only the semantically corrected 200 NEW-question cohort is executable');
+  check(tasks.length===1600 && new Set(tasks.map((t:any)=>t.id)).size === 1600, 'Duplicate task IDs');
+  check(tasks.every((t:any)=>t.reuse===null),'Historical results cannot enter the NEW cohort');
+  const selected=manifest.benchmarkQuestionIds;
+  check(selected.length===200&&new Set(selected).size===200&&hash(selected)===hash(manifest.noiseQuestionIds),'New cohort ID mismatch');
+  const excluded=new Set([...manifest.selection.excludedHistoricalQuestionIds,...manifest.separatePilot.questionIds,...manifest.selection.excludedSemanticFailureIds]);
+  check(selected.every((id:string)=>!excluded.has(id)), 'Previously tested question in new cohort');
+  for(const strategy of STRATEGIES)check(hash(tasks.filter((t:any)=>t.group==='benchmark'&&t.strategy===strategy).map((t:any)=>t.questionId))===hash(selected),'Benchmark order mismatch');
+  for(const condition of CONDITIONS)check(hash(tasks.filter((t:any)=>t.group==='noise'&&t.condition===condition).map((t:any)=>t.questionId))===hash(selected),'Noise order mismatch');
+}
+export function resolveReuse(task: any, saved: ReturnType<typeof evidence>) {
+  const r = (task.reuse.source === 'origin' ? saved.origin : saved.noise)[task.reuse.line - 1];
+  check(hash(r) === task.reuse.recordHash, 'Historical evidence changed');
+  return { taskId: task.id, taskHash: hash(task), status: 'completed', source: 'historical', provenance: task.reuse,
+    output: r.output, scores: r.scores, usage: r.usage };
+}
+export function aggregate(tasks: any[], saved: ReturnType<typeof evidence>, directory: string) {
+  const records: any[] = [], pending: any[] = [], errors: any[] = [];
+  for (const task of tasks) {
+    let record;
+    if (task.reuse) record = resolveReuse(task, saved);
+    else {
+      const p = directory + '/results/' + hash(task.id) + '.json';
+      if (!existsSync(p)) { pending.push(task.id); continue; }
+      record = json(p); check(record.taskHash === hash(task), 'Result/task mismatch');
+    }
+    if (record.status !== 'completed') errors.push({ taskId: task.id, error: record.error });
+    records.push({ group: task.group, variant: task.condition ?? task.strategy, questionId: task.questionId, ...record });
+  }
+  const groups = [...new Set(tasks.map(t=>t.group + '/' + (t.condition ?? t.strategy)))].map(group => {
+    const entries = records.filter(r=>r.group + '/' + r.variant === group), completed = entries.filter(r=>r.status === 'completed');
+    const scores = Object.fromEntries(['exactMatch','tokenF1','citationPrecision','citationRecall','citationF1'].map(k=>[k,completed.length?completed.reduce((n,r)=>n+r.scores[k],0)/completed.length:null]));
+    return { group, target: 200, completed: completed.length, historical: completed.filter(r=>r.source==='historical').length,
+      newCompleted: completed.filter(r=>r.source==='live').length, failed: entries.length-completed.length, missing: 200-entries.length, scores };
+  });
+  const callsDir = directory + '/requests', calls = existsSync(callsDir) ? readdirSync(callsDir) : [];
+  const responses = calls.filter(f=>f.endsWith('.response.json')).map(f=>json(callsDir+'/'+f));
+  const unresolved = calls.filter(f=>f.endsWith('.intent.json') && !existsSync(callsDir+'/'+f.replace('.intent.json','.response.json'))).map(f=>json(callsDir+'/'+f));
+  const measurements = (items:any[]) => Object.fromEntries(['prompt_tokens','completion_tokens','total_tokens','cost'].map(k=>[k,items.length && items.every(r=>typeof r.usage?.[k]==='number') ? items.reduce((n,r)=>n+r.usage[k],0) : items.length ? null : 0]));
+  const noiseTasks=tasks.filter(t=>t.group==='noise');
+  // Explicit derived projection for the original paired evaluator. Original records
+  // retain their run IDs/manifests in immutable evidence; source pointers stay in records.
+  const noiseProjection=records.filter(r=>r.group==='noise').map(r=>{
+    const task=noiseTasks.find(t=>t.id===r.taskId);
+    const original=task.reuse?saved.noise[task.reuse.line-1]:r;
+    return {...original,runId:'expansion-combined',manifestHash:'derived-projection',dataset:'data/distractor-validation.parquet',strategy:'full_context',model:SETTINGS.model,cacheMode:'none_requested',condition:task.condition,repetition:1,questionId:task.questionId,question:task.input.question,expectedAnswer:task.reference.answer,endToEndLatencyMs:original.endToEndLatencyMs??null};
+  });
+  const noiseComparison=compare(noiseProjection,[...new Set(noiseTasks.map(t=>t.questionId))],1);
+  return { separatePilot: {runId:saved.source.noiseRunId,completedResponses:saved.noise.length,questionIds:[...new Set(saved.noise.map(r=>r.questionId))],includedInNewCohort:false}, noiseComparison, projectionNote:'noiseComparison uses the original compare() on an explicitly labeled combined projection; historical run IDs/manifests are preserved in immutable source records.', groups, complete: groups.every(g=>g.completed===200), records, pending, errors,
+    accounting: { historical: measurements(records.filter(r=>r.source==='historical')), newHTTPResponses: responses.length,
+      newUsage: measurements(responses), unknownBilling: unresolved.map(r=>({id:r.id,taskId:r.taskId,startedAt:r.startedAt})),
+      note: 'New accounting includes every durable HTTP response, even rejected/failed calls. Missing usage is unknown, never zero. Historical cost is evidence already incurred; it is not new spending.' } };
+}
+export async function execute(args = process.argv.slice(2)) {
+  const {values} = parseArgs({args,options:{live:{type:'boolean'},status:{type:'boolean'},group:{type:'string',default:'all'},'approved-manifest':{type:'string'},'reviewed-fixtures':{type:'string'}}});
+  check(['all','benchmark','noise'].includes(values.group!), 'Unknown group');
+  check(!(values.live && values.status), 'Choose live or status');
+  const { manifest, tasks } = loadPlan(); const saved = evidence();
+  const directory = ROOT + '/runtime/' + manifest.manifestHash;
+  if (!values.live) {
+    const report = aggregate(tasks,saved,directory);
+    console.log(JSON.stringify({ manifestHash:manifest.manifestHash, groups:report.groups, accounting:report.accounting, missingResults:report.pending.length, live:false },null,2)); return report;
+  }
+  check(values['approved-manifest']===manifest.manifestHash, 'Paid execution requires approved manifest digest');
+  check(values['reviewed-fixtures']===manifest.fixturesHash, 'Review all 200 fixtures and supply the exact fixtures digest');
+  check(process.env.OPENROUTER_API_KEY?.trim(), 'API key required through environment');
+  configure(); logger.level='silent';
+  mkdirSync(directory + '/results',{recursive:true});
+  const manifestPin=ROOT+'/runtime/manifest.json';
+  if(existsSync(manifestPin)) check(json(manifestPin).manifestHash===manifest.manifestHash,'A different manifest already owns this runtime. Reconcile prior checkpoints before preparing a new run.');
+  else durableCreate(manifestPin,{manifestHash:manifest.manifestHash});
+  // Global, fixed path prevents simultaneous processes/manifests from sending duplicates.
+  const lock=ROOT+'/runtime/execution.lock';
+  durableCreate(lock,{pid:process.pid,manifestHash:manifest.manifestHash,startedAt:new Date().toISOString()});
+  const transport=globalThis.fetch; const journal=new Journal(directory+'/requests');
+  const saveReport=()=>atomicJSON(directory+'/combined.json',{manifestHash:manifest.manifestHash,...aggregate(tasks,saved,directory)});
+  try {
+    for (const task of tasks) {
+      if (values.group!=='all' && task.group!==values.group || task.reuse) continue;
+      const target=directory+'/results/'+hash(task.id)+'.json';
+      if (existsSync(target)) {const r=json(target);check(r.taskHash===hash(task)&&r.status==='completed',`Saved failure or changed task: ${task.id}. Reconcile; no retry.`);continue;}
+      let callIndex=0; const requestIds:string[]=[]; const started=performance.now();
+      globalThis.fetch=async(url,init)=>{
+        check(String(url)==='https://openrouter.ai/api/v1/chat/completions'&&typeof init?.body==='string','Unexpected endpoint/payload');
+        const payload=JSON.parse(init.body);
+        check(payload.model===SETTINGS.model && hash(payload.provider)===hash({only:[SETTINGS.provider],allow_fallbacks:false,require_parameters:true}),'Wrong API configuration');
+        if(task.group==='noise') Object.assign(payload,{temperature:SETTINGS.temperature,max_tokens:SETTINGS.max_tokens});
+        else check(payload.temperature===undefined&&payload.max_tokens===undefined,'Benchmark settings changed');
+        const index=callIndex++; check(index<task.expectedModelRequests,'Unexpected extra model request blocked'); const {requestKey}=await import('./core.ts'); requestIds.push(requestKey(task,index,payload));
+        const response=await journal.request(task,index,payload,()=>transport(url,{...init,body:JSON.stringify(payload)}));
+        if(response.ok){const raw=await response.clone().json();check(raw.model===SETTINGS.model&&raw.provider==='Google AI Studio','Response model/provider mismatch; retained receipt; stopped');}
+        return response;
+      };
+      const result=await strategy(task.strategy,task.input);
+      globalThis.fetch=transport;
+      const record={taskId:task.id,taskHash:hash(task),manifestHash:manifest.manifestHash,source:'live',...result,
+        scores:result.status==='completed'?evaluateResult(result.output,task.reference):null,requestIds,
+        elapsedThisProcessMs:performance.now()-started,
+        timingNote:'Strategy times can include checkpoint replay on resume. Use durable request intent/response timestamps for transport timing.',
+        provenance:{datasetHash:manifest.datasetHash,inputHash:hash(task.input),implementationHash:hash(manifest.implementation)}};
+      durableCreate(target,record); saveReport();
+      console.log(JSON.stringify({taskId:task.id,status:result.status,modelRequests:callIndex,remaining:aggregate(tasks,saved,directory).pending.length,usage:result.usage}));
+      check(result.status==='completed',`Stopped at ${task.id}; saved failure; no automatic retry.`);
+      check(callIndex===task.expectedModelRequests,'Model call count changed; stopped');
+    }
+  } finally {globalThis.fetch=transport;try{saveReport();}finally{unlinkSync(lock);}}
+  return aggregate(tasks,saved,directory);
+}
+if(import.meta.main) execute().catch(()=>{console.error('Expansion stopped. Inspect saved checkpoints/errors and pinned inputs. No request was automatically retried.');process.exitCode=1;});

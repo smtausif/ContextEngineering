@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "scripts": {
+    "load-data": "node src/loadData.ts",
+    "inspect-data": "node scripts/inspectParquet.ts",
+    "preview-prompt": "node src/buildPrompt.ts",
+    "preview-rag": "node src/strategies/rag/retrieveContext.ts",
+    "ask": "node --env-file-if-exists=.env src/runQuestion.ts",
+    "ask:rag": "node --env-file-if-exists=.env src/runQuestion.ts rag",
+    "ask:hybrid": "node --env-file-if-exists=.env src/runQuestion.ts hybrid",
+    "ask:caching": "node --env-file-if-exists=.env src/runQuestion.ts caching",
+    "ask:summarization": "node --env-file-if-exists=.env src/runQuestion.ts summarization",
+    "summarize": "node src/summarizeResults.ts",
+    "test": "node --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hyparquet": "^1.31.5",
+    "hyparquet-compressors": "^1.1.2",
+    "minisearch": "^7.2.0",
+    "openai": "^7.47.0",
+    "pino": "^10.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "manifestHash": "516a9e2a00c84427edf5221b8a272642037e78b9184ffb9c2619e8634a513710",
+  "groups": [
+    {
+      "group": "benchmark/full_context",
+      "target": 200,
+      "completed": 100,
+      "historical": 100,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 100,
+      "scores": {
+        "exactMatch": 0.72,
+        "tokenF1": 0.8220015581475683,
+        "citationPrecision": 0.8775,
+        "citationRecall": 0.7196666666666667,
+        "citationF1": 0.7617936507936508
+      }
+    },
+    {
+      "group": "benchmark/rag_tool",
+      "target": 200,
+      "completed": 100,
+      "historical": 100,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 100,
+      "scores": {
+        "exactMatch": 0.64,
+        "tokenF1": 0.748088992534813,
+        "citationPrecision": 0.7797619047619048,
+        "citationRecall": 0.6321666666666668,
+        "citationF1": 0.6695873015873013
+      }
+    },
+    {
+      "group": "benchmark/summarization",
+      "target": 200,
+      "completed": 100,
+      "historical": 100,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 100,
+      "scores": {
+        "exactMatch": 0.64,
+        "tokenF1": 0.7666447963800904,
+        "citationPrecision": 0.855,
+        "citationRecall": 0.7038333333333333,
+        "citationF1": 0.7457936507936505
+      }
+    },
+    {
+      "group": "benchmark/hybrid",
+      "target": 200,
+      "completed": 100,
+      "historical": 100,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 100,
+      "scores": {
+        "exactMatch": 0.6,
+        "tokenF1": 0.7239499911852851,
+        "citationPrecision": 0.7647619047619049,
+        "citationRecall": 0.6185000000000002,
+        "citationF1": 0.6590079365079362
+      }
+    },
+    {
+      "group": "benchmark/caching",
+      "target": 200,
+      "completed": 100,
+      "historical": 100,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 100,
+      "scores": {
+        "exactMatch": 0.71,
+        "tokenF1": 0.8252781954887216,
+        "citationPrecision": 0.8785,
+        "citationRecall": 0.7213333333333333,
+        "citationF1": 0.7622936507936509
+      }
+    },
+    {
+      "group": "noise/clean",
+      "target": 200,
+      "completed": 20,
+      "historical": 20,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 180,
+      "scores": {
+        "exactMatch": 0.85,
+        "tokenF1": 0.9411904761904761,
+        "citationPrecision": 0.9375,
+        "citationRecall": 0.7458333333333333,
+        "citationF1": 0.7911904761904761
+      }
+    },
+    {
+      "group": "noise/irrelevant",
+      "target": 200,
+      "completed": 20,
+      "historical": 20,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 180,
+      "scores": {
+        "exactMatch": 0.85,
+        "tokenF1": 0.9428571428571427,
+        "citationPrecision": 0.9375,
+        "citationRecall": 0.7458333333333333,
+        "citationF1": 0.7911904761904761
+      }
+    },
+    {
+      "group": "noise/conflicting",
+      "target": 200,
+      "completed": 20,
+      "historical": 20,
+      "newCompleted": 0,
+      "failed": 0,
+      "missing": 180,
+      "scores": {
+        "exactMatch": 0.6,
+        "tokenF1": 0.7261904761904762,
+        "citationPrecision": 0.7958333333333334,
+        "citationRecall": 0.5916666666666667,
+        "citationF1": 0.6461904761904762
+      }
+    }
+  ],
+  "accounting": {
+    "historical": {
+      "prompt_tokens": 1326958,
+      "completion_tokens": 350459,
+      "total_tokens": 1677417,
+      "cost": 0.8287974500000006
+    },
+    "newHTTPResponses": 0,
+    "newUsage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "cost": 0
+    },
+    "unknownBilling": [],
+    "note": "New accounting includes every durable HTTP response, even rejected/failed calls. Missing usage is unknown, never zero. Historical cost is evidence already incurred; it is not new spending."
+  },
+  "missingResults": 1040,
+  "live": false
+}
+✔ 200 eligible unique questions, same IDs and full inputs across all five unchanged strategies (6.628084ms)
+✔ deterministic 180 fixtures; original 20 and all 60 raw responses remain byte-identical (739.781125ms)
+✔ all 600 contexts preserve supporting passages and sentence indices, with distinct unrelated passages and answer-scoped contradictions (16.089ms)
+✔ all 560 reuse choices pass complete offline wire replay and original scoring; configuration drift is rejected (1025.497209ms)
+✔ exact successful-path counts, preserved API settings, output roots and partial aggregation coverage (520.781541ms)
+✔ combined noise aggregation preserves the original paired comparison for the original 20 questions (484.853208ms)
+✔ crash-safe intent blocks potentially billed transport; completed raw response replays without duplicate sending (23.200875ms)
+✔ partial summarization resumes first response and blocks uncertain second call through original implementation (14.120292ms)
+✔ exclusive durable writes prevent competing intent; malformed or HTTP failure never causes new send (7.7155ms)
+✔ live requires both exact approval digests, default status never creates runtime or network (1719.633542ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5369.4675

@@ -1,0 +1,108 @@
+
+> test
+> node --test tests/*.test.ts
+
+✔ summary source IDs are opt-in and preserve original titles, spacing, and indices (2.972583ms)
+✔ preserves all passages and original sentence indices without including gold labels (0.226834ms)
+✔ instructions and context remain identical when only the question changes (0.230875ms)
+✔ tool-based RAG starts with instructions and the question, without source passages (0.517166ms)
+✔ a normal question-only prompt does not ask other strategies to use a tool (0.116ms)
+✔ answer instructions show short answer values and preserve yes/no and insufficient-evidence handling (0.086458ms)
+✔ sends only model, messages, and the Zod response format; preserves output and usage (15.465958ms)
+✔ keeps usage and raw output when a completion is truncated or does not match the schema (8.397083ms)
+✔ records HTTP and network failures without retrying (0.992917ms)
+✔ summary mode validates numeric source IDs and retains the original draft receipt (1.421458ms)
+✔ a missing key fails before sending a request (0.263333ms)
+✔ a normal question-only prompt makes one answer request with no tools (0.572125ms)
+✔ tools are attached only through the explicit option and use the shared definition (0.480708ms)
+✔ an optional tool turn accepts planning prose or a tool call without treating either as a final answer (2.855709ms)
+✔ optional planning turns reject empty responses, refusals, truncation, and malformed tool completions (1.643291ms)
+✔ requires a search and keeps planning prose separate from the structured answer (26.499209ms)
+✔ rejects an answer that bypasses the required search (1.423042ms)
+✔ answers every search in a tool turn and can finish without another search (1.878167ms)
+✔ rejects unsupported tools or invalid search arguments before requesting an answer (1.782167ms)
+✔ keeps both planning-call usages and marks totals unknown when the final request fails (6.610125ms)
+✔ uses an entity discovered in the first results for a follow-up search, then answers within the limit (1.510875ms)
+✔ does not execute a third search round even if the final response requests another tool (20.778791ms)
+✔ rejects invalid follow-up search arguments while preserving earlier retrieval and both calls (0.78725ms)
+✔ an unexpected follow-up tool is rejected with its name, expected name, and search round (2.387209ms)
+✔ normalization follows HotpotQA punctuation, article, case, and whitespace rules (6.915792ms)
+✔ normalized exact match and partial token overlap remain separate measurements (7.880833ms)
+✔ token F1 counts repeated words using multiset overlap (0.129833ms)
+✔ yes/no/noanswer labels get no partial credit when the normalized category differs (0.109958ms)
+✔ empty normalized answers retain the reference evaluator zero-overlap convention (0.070459ms)
+✔ citations must match both the exact passage title and original sentence ID (0.153334ms)
+✔ duplicate citations do not inflate scores and invented citations count against precision (0.071334ms)
+✔ missing supporting sentences reduce recall while extra wrong sentences reduce precision (0.06775ms)
+✔ empty citation sets score zero and malformed reference columns are rejected (0.243042ms)
+✔ combined scoring accepts the loader reference shape and does not change either input (1.066041ms)
+✔ absent parsed output has no fabricated zero scores (0.074292ms)
+✔ retrieves with a follow-up, summarizes unique retrieved passages, and answers only from notes (15.531541ms)
+✔ a failed follow-up stops before summarization and preserves the earlier search receipt (1.47875ms)
+✔ hybrid resolves IDs in retrieved order rather than original dataset order (3.957708ms)
+✔ hybrid rejects a response that bypasses the initial required search (0.640792ms)
+✔ a summary referencing an unretrieved source stops before answering and retains all preparation costs (1.133208ms)
+✔ empty retrieval stays empty through summarization without sending the full source collection (1.286292ms)
+✔ a final-answer failure preserves search and summary calls with incomplete total cost (7.605084ms)
+✔ keeps reference labels out of model inputs while preserving every passage and sentence (1.299916ms)
+✔ stops on unusable selected questions instead of silently changing the sample (1.299834ms)
+✖ loads the first ten real rows and a separate later batch in original order (234.327542ms)
+✔ selects relevant passages without changing source text, sentence indices, or input order (1.663125ms)
+✔ breaks equal-score ties in source order (0.232458ms)
+✔ returns only available matches without padding or inventing passages (1.017708ms)
+✖ feeds a real retrieved context into the shared prompt builder without reference labels (147.428458ms)
+✔ full context sends every original passage and sentence, with no labels or tool policy (12.618375ms)
+✔ explicit caching changes only the source cache marker and keeps the same provider and schema (3.31225ms)
+✔ implicit caching remains an ordinary full-context request for the environment model (1.53475ms)
+✔ unsupported explicit cache configurations make no model requests or silent substitutions (0.255666ms)
+✔ summarization uses only source notes for the answer and preserves original sentence IDs (3.737125ms)
+✔ invalid summary references or schema stop before answering and retain preparation usage (4.851625ms)
+✔ a truncated summary is not used for an answer (0.386041ms)
+✔ source IDs restore encoded and Unicode titles even when notes are returned out of order (0.748333ms)
+✔ invalid summary IDs identify the failed reference and retain the raw draft (0.86375ms)
+✔ a failed answer keeps the summary call and marks unreported total costs unknown (0.72625ms)
+✔ empty summary notes do not fall back to sending the original passages (0.519542ms)
+✔ quality means use only completed scored attempts and expose missing-score coverage (3.122875ms)
+✔ repetitions count as attempts while question coverage remains distinct (0.562875ms)
+✔ grouping keeps batches, strategies, models, datasets, and cache modes apart (0.46725ms)
+✔ usage comes from every model call without double-counting the top-level aggregate (0.201375ms)
+✔ a failed later request retains known preparation costs and leaves complete totals unknown (0.130959ms)
+✔ cache hit rate is measured per call, separate from token fraction and unknown measurements (1.078958ms)
+✔ reported zero metrics stay zero; invalid or unreported metrics remain unknown (0.966875ms)
+✔ cache counts larger than a reported prompt are not treated as observed hits (0.186042ms)
+✔ latency means and medians include measured failures but exclude unsupported and missing data (2.353916ms)
+✔ legacy single-call records use their saved usage and never invent accuracy scores (0.240833ms)
+✔ unsupported attempts create no synthetic calls, cost, cache hits, or latency measurements (0.103333ms)
+✔ invalid or partial score objects do not become valid scored attempts (0.140083ms)
+✔ JSONL parser handles blank lines, CRLF, and a Windows BOM and reports malformed line numbers (2.111292ms)
+✔ empty input creates no groups and summarization preserves the original saved records (0.653875ms)
+ℹ tests 74
+ℹ suites 0
+ℹ pass 72
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 487.123958
+
+✖ failing tests:
+
+test at tests/loadData.test.ts:55:1
+✖ loads the first ten real rows and a separate later batch in original order (234.327542ms)
+  Error: Invalid supporting sentence for 5a8b57f25542995d1e6f1371: Scott Derrickson [0].
+      at prepareData (file:///Users/smtausif/dev/ContextEngineering/src/loadData.ts:46:15)
+      at loadData (file:///Users/smtausif/dev/ContextEngineering/src/loadData.ts:87:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/smtausif/dev/ContextEngineering/tests/loadData.test.ts:59:23)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/retrieveContext.test.ts:64:1
+✖ feeds a real retrieved context into the shared prompt builder without reference labels (147.428458ms)
+  Error: Invalid supporting sentence for 5a8b57f25542995d1e6f1371: Scott Derrickson [0].
+      at prepareData (file:///Users/smtausif/dev/ContextEngineering/src/loadData.ts:46:15)
+      at loadData (file:///Users/smtausif/dev/ContextEngineering/src/loadData.ts:87:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/smtausif/dev/ContextEngineering/tests/retrieveContext.test.ts:67:36)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

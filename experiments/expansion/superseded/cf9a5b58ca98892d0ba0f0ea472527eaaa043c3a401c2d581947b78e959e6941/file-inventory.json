@@ -1,0 +1,147 @@
+{
+  "revision": 2,
+  "changedScope": "Only experiments/expansion files; historical results, original pilot sources and all tracked strategy files unchanged.",
+  "supersededArchive": "superseded/516a9e2a00c84427edf5221b8a272642037e78b9184ffb9c2619e8634a513710",
+  "files": [
+    {
+      "path": "experiments/expansion/core.ts",
+      "sha256": "b49d49cf3dd437f8a535fb5149e974ecadea5ac6d13823f8eb053ad465eb34a4"
+    },
+    {
+      "path": "experiments/expansion/execute.ts",
+      "sha256": "2f8f47d538cdf0160d15bcba8ded515b3194290cb902f150fe88aca3f7a31c66"
+    },
+    {
+      "path": "experiments/expansion/expansion.test.ts",
+      "sha256": "1906391323dfa197cc661aef00612b1b0e6408fa256650d1ad49d6b27e026123"
+    },
+    {
+      "path": "experiments/expansion/fixtures.ts",
+      "sha256": "aa554404b2b0e6bb1d21c3e85c0bbf7e0d2764834f6f91df26859e1012eec797"
+    },
+    {
+      "path": "experiments/expansion/prepare.ts",
+      "sha256": "55e2cb494fad6b50549a63bba0562014d83a34132331f972306d170a00e7ee9b"
+    },
+    {
+      "path": "experiments/expansion/contradictions.tsv",
+      "sha256": "08c111c4a05c84fb506dfbbc758555ce45415d7d2e300bc12364332439b679fb"
+    },
+    {
+      "path": "experiments/expansion/README.md",
+      "sha256": "ec9c130f78d16c342b35980ce4d3607c2ac5162b31932f66687e4ee973ea2276"
+    },
+    {
+      "path": "experiments/expansion/.gitignore",
+      "sha256": "fdcd0183a4babd894e7cce83ec87bd24f385c424cc83571009ed07ab34722d9f"
+    },
+    {
+      "path": "experiments/expansion/prepared/combined-existing.json",
+      "sha256": "a9f918ff5cf54bc552187f6614db9b642026cd054c0fa7c703a4fc4887ed8e6f"
+    },
+    {
+      "path": "experiments/expansion/prepared/compatibility-audit.json",
+      "sha256": "bd4520c1d9d9902eef83b1bec7e7f9298cad927ccd50c684783fd3d1ab6f1af0"
+    },
+    {
+      "path": "experiments/expansion/prepared/fixtures.json",
+      "sha256": "e4ce2f568ac31c01bf758870f5feee6edd5440b4d7b374d0a15570eb17032be2"
+    },
+    {
+      "path": "experiments/expansion/prepared/historical-inventory.json",
+      "sha256": "c27f9f386cabaaa6fb939bd1752caa32a0599d88d070f967f84b4f7b9fad3e5d"
+    },
+    {
+      "path": "experiments/expansion/prepared/manifest.json",
+      "sha256": "8c7596933b5c7990c7b0242a5d9cf8f9648933ee8547a47758c929c59abbbee5"
+    },
+    {
+      "path": "experiments/expansion/prepared/missing.json",
+      "sha256": "85e77d48a734f1a0ca65d71790c90ae136a6ec7dd1f67f5a219e6ce160555f90"
+    },
+    {
+      "path": "experiments/expansion/prepared/noise-review-decisions.json",
+      "sha256": "f1a6496d6d6111c39d295f573aa798efce8cbf688afe039d115e6454528465b3"
+    },
+    {
+      "path": "experiments/expansion/prepared/noise-review.md",
+      "sha256": "e07c5a911fd6e5e57c7d1064061b91239cc164b14c9b291e63938ecef8d08b56"
+    },
+    {
+      "path": "experiments/expansion/prepared/pilot-preservation.json",
+      "sha256": "e54b3b2025a8d692ecaf7e7ea70340c50387158b887e22d48928d9bc6836b306"
+    },
+    {
+      "path": "experiments/expansion/prepared/reusable.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "experiments/expansion/prepared/review.md",
+      "sha256": "b74728b78d9f013d14e62225a57aff3462053322040e9dfc174b5f329d455de9"
+    },
+    {
+      "path": "experiments/expansion/prepared/selected-question-ids.json",
+      "sha256": "476fae63b8dac05428bb390ba0ce5bd5204912f34e6a4a681ac63aa0f7f6756a"
+    },
+    {
+      "path": "experiments/expansion/prepared/selected-question-ids.txt",
+      "sha256": "6e44b55d7c0e9c2a1084b7a046dda01d36116b2014f7e51263b5b122f2bf66a7"
+    },
+    {
+      "path": "experiments/expansion/prepared/selected-questions.md",
+      "sha256": "d987c748c774168cc2156c9efba0eeee99d75700cd7835861df0520f3ad0e93a"
+    },
+    {
+      "path": "experiments/expansion/prepared/selection-audit.json",
+      "sha256": "aa89484df392a2638471fef6487124f305940c9e5f10cfdb26178e5a1e047b4c"
+    },
+    {
+      "path": "experiments/expansion/prepared/tasks.json",
+      "sha256": "f5c94d33d077b75cef843203d1c41169cf12ca76055a6165a026ac1d85ae3c38"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/existing-isolated-distractor.tap",
+      "sha256": "8858a69114aeddc807d4f5219991cff3975be455257345af678b110e695887cf"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/existing-working-tree.tap",
+      "sha256": "f6a476ea85123d92853d177cc6bd1e7f5902cf1c674a2d6fb412de90b8d7edb8"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/expansion.tap",
+      "sha256": "62641d18617ce3b3418b999daff8e00f2294ae1e6482deebb56de43cc8dd1227"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/pilot-working-tree.tap",
+      "sha256": "f6a0c761ffac2f8fd175bf9bf229b51a547f4dd291b6fb9f082685305091f756"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation.json",
+      "sha256": "5cb8381e22139783794dafaf7243cb5dc325552285e904fcdb4594efa5c3ccc4"
+    },
+    {
+      "path": "experiments/expansion/evidence/cost-calibration.json",
+      "sha256": "b4c2de9b2c9c59517abe06afe497241262d583ec21d6df2496eb7ce2e182b452"
+    },
+    {
+      "path": "experiments/expansion/evidence/noise-pilot-plan.json",
+      "sha256": "e8bf11edafd9bdf2d3cb53510961347fa4693d35515e512111ba82ac36230cb4"
+    },
+    {
+      "path": "experiments/expansion/evidence/noise-pilot-runs.jsonl",
+      "sha256": "f7947215627a2c922f77735cb80b0bb875f9c7e08c449f090a250d70cd36f0f0"
+    },
+    {
+      "path": "experiments/expansion/evidence/origin-f62ad872d665f298ab3590c594ceb6b298058843.jsonl.gz",
+      "sha256": "a53658bebef05832d6522dbd312b53642537db7d59d3ccd134bbe55f260649d9"
+    },
+    {
+      "path": "experiments/expansion/evidence/reviewed-noise-donors.json",
+      "sha256": "b76f65dc6c4a3f2536548e450049c64b757a0d4ac821891141e7eb024572fe86"
+    },
+    {
+      "path": "experiments/expansion/evidence/source.json",
+      "sha256": "9f5d8c2b55779807d77ca52586a5cd445eeef49c76fc80fc94a9d63e080fe116"
+    }
+  ]
+}

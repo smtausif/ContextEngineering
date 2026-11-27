@@ -1,0 +1,183 @@
+{
+  "revision": 3,
+  "scope": "Only experiments/expansion changed; original source/scorer/pilot/history untouched",
+  "superseded": "cf9a5b58ca98892d0ba0f0ea472527eaaa043c3a401c2d581947b78e959e6941",
+  "files": [
+    {
+      "path": "experiments/expansion/.gitignore",
+      "sha256": "fdcd0183a4babd894e7cce83ec87bd24f385c424cc83571009ed07ab34722d9f"
+    },
+    {
+      "path": "experiments/expansion/README.md",
+      "sha256": "ce62bff96662d6a28dcb90a7897b3499100fe1c321e11b8d40d8745b3e1ca67a"
+    },
+    {
+      "path": "experiments/expansion/contradictions.tsv",
+      "sha256": "7f09dc53baf260dc9177ff9bfe08e1578c76283911126f51149dee19dc043290"
+    },
+    {
+      "path": "experiments/expansion/core.ts",
+      "sha256": "b49d49cf3dd437f8a535fb5149e974ecadea5ac6d13823f8eb053ad465eb34a4"
+    },
+    {
+      "path": "experiments/expansion/evidence/cost-calibration.json",
+      "sha256": "b4c2de9b2c9c59517abe06afe497241262d583ec21d6df2496eb7ce2e182b452"
+    },
+    {
+      "path": "experiments/expansion/evidence/noise-pilot-plan.json",
+      "sha256": "e8bf11edafd9bdf2d3cb53510961347fa4693d35515e512111ba82ac36230cb4"
+    },
+    {
+      "path": "experiments/expansion/evidence/noise-pilot-runs.jsonl",
+      "sha256": "f7947215627a2c922f77735cb80b0bb875f9c7e08c449f090a250d70cd36f0f0"
+    },
+    {
+      "path": "experiments/expansion/evidence/origin-f62ad872d665f298ab3590c594ceb6b298058843.jsonl.gz",
+      "sha256": "a53658bebef05832d6522dbd312b53642537db7d59d3ccd134bbe55f260649d9"
+    },
+    {
+      "path": "experiments/expansion/evidence/reviewed-noise-donors-v3.json",
+      "sha256": "8bb3b61929dde7f57c63a96f90b3e0708059956ce5e6fa9404dbc753e459aebe"
+    },
+    {
+      "path": "experiments/expansion/evidence/reviewed-noise-donors.json",
+      "sha256": "b76f65dc6c4a3f2536548e450049c64b757a0d4ac821891141e7eb024572fe86"
+    },
+    {
+      "path": "experiments/expansion/evidence/source.json",
+      "sha256": "9f5d8c2b55779807d77ca52586a5cd445eeef49c76fc80fc94a9d63e080fe116"
+    },
+    {
+      "path": "experiments/expansion/execute.ts",
+      "sha256": "a729d145c76d9f1dc7091052b4aadbce7d8688bf03a50fe780f507db036ffd35"
+    },
+    {
+      "path": "experiments/expansion/expansion.test.ts",
+      "sha256": "1510b3d4a317ca41347493a989123ef6c5ae09847f7b39db517f8bef5eee51eb"
+    },
+    {
+      "path": "experiments/expansion/fixtures.ts",
+      "sha256": "d1901728e7430390e0ca22df6973d56dba515844a80250beea652e668cd2706b"
+    },
+    {
+      "path": "experiments/expansion/prepare.ts",
+      "sha256": "42f04655fecbe9787b674372701168dde9ed613c4da83835b2af37d8fa921493"
+    },
+    {
+      "path": "experiments/expansion/prepared/combined-existing.json",
+      "sha256": "8b36cc480b253936a1fd2650747c9adc636f0b4ee7a13260e3a9112df3356807"
+    },
+    {
+      "path": "experiments/expansion/prepared/compatibility-audit.json",
+      "sha256": "bd4520c1d9d9902eef83b1bec7e7f9298cad927ccd50c684783fd3d1ab6f1af0"
+    },
+    {
+      "path": "experiments/expansion/prepared/fixtures.json",
+      "sha256": "7f2317c2439290f689bd624baa887437adc25b4931f4b62dc233f10edb2cf69c"
+    },
+    {
+      "path": "experiments/expansion/prepared/historical-inventory.json",
+      "sha256": "c27f9f386cabaaa6fb939bd1752caa32a0599d88d070f967f84b4f7b9fad3e5d"
+    },
+    {
+      "path": "experiments/expansion/prepared/manifest.json",
+      "sha256": "89aee15460eb64e03910e9010b4d05ebcc76c0d9a15541566f48b8378d258abb"
+    },
+    {
+      "path": "experiments/expansion/prepared/missing.json",
+      "sha256": "61861dccc8259beb289f9b883151dff0c97cb081497c02058256de74371ba0bb"
+    },
+    {
+      "path": "experiments/expansion/prepared/noise-review-decisions.json",
+      "sha256": "f2a32bb86826876d02aaf48e9731b1b9b1cdc94d425a3e68fb53ffa148910b03"
+    },
+    {
+      "path": "experiments/expansion/prepared/noise-review.md",
+      "sha256": "650c02f4f79167c2004b415d35f178ab50b14a08b4a91c6c90654069af947f22"
+    },
+    {
+      "path": "experiments/expansion/prepared/pilot-preservation.json",
+      "sha256": "e54b3b2025a8d692ecaf7e7ea70340c50387158b887e22d48928d9bc6836b306"
+    },
+    {
+      "path": "experiments/expansion/prepared/replacement-audit.json",
+      "sha256": "2fdda88b21a7c57e86eba5085ce1c82b52b0dbdcc618bc88f38bf073a3458671"
+    },
+    {
+      "path": "experiments/expansion/prepared/replacements.md",
+      "sha256": "fb88d3ef61fbf69176da50e62fc326e00593ff7b3f17860e47d66583958d6d29"
+    },
+    {
+      "path": "experiments/expansion/prepared/reusable.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "experiments/expansion/prepared/review.md",
+      "sha256": "6723100af455f9b6fddf7fa18060e7b701c9c39f79a4581e844f50e4fcceae60"
+    },
+    {
+      "path": "experiments/expansion/prepared/scoring-limitations.md",
+      "sha256": "9e0b2f66ba414c4ee8a0d82452b7fb8aade2ac4263ff2fafc658be4eca3dec05"
+    },
+    {
+      "path": "experiments/expansion/prepared/selected-question-ids.json",
+      "sha256": "a976570213b5090e67ee99013278a1865afd863e5c36c9dde0705051be7b060d"
+    },
+    {
+      "path": "experiments/expansion/prepared/selected-question-ids.txt",
+      "sha256": "3877cdcae0641b3766141b54b5d944553b7a110cf5a760626e84c96e1fdf1bb9"
+    },
+    {
+      "path": "experiments/expansion/prepared/selected-questions.md",
+      "sha256": "7825020c49473365d31cabac50e0ba9c4e10571da7d15ad96e05ddebdc709a4c"
+    },
+    {
+      "path": "experiments/expansion/prepared/selection-audit.json",
+      "sha256": "fce653d340f668fce6c105e644ed80c97a87057a6b9512dd0feb28177e54953b"
+    },
+    {
+      "path": "experiments/expansion/prepared/semantic-review-decisions.json",
+      "sha256": "f2a32bb86826876d02aaf48e9731b1b9b1cdc94d425a3e68fb53ffa148910b03"
+    },
+    {
+      "path": "experiments/expansion/prepared/tasks.json",
+      "sha256": "0a0c49dc1a5f421d1a155495219eea9d220bac10ecc4825bf7a25f9ac0abcc42"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/existing-isolated-distractor.tap",
+      "sha256": "8858a69114aeddc807d4f5219991cff3975be455257345af678b110e695887cf"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/existing-working-tree.tap",
+      "sha256": "5b90c3f457a1b5b1e504ee3f3e40a09a225e425403d3b20579e7a0ed880c8614"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/expansion.tap",
+      "sha256": "586e0ece907c3ba89aa457dddb76a16e16bc9d9db7c69461f64a913f7bd89c3a"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/isolated-all.tap",
+      "sha256": "efc678cfa747168396a6ae3451311107439b95a7f18bf98c2da5e0a18efda20e"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/isolated-environment.json",
+      "sha256": "5f870888c212cc189b21302af25811da4e777638cc9f74cadf327c3f496b0c62"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation/pilot-working-tree.tap",
+      "sha256": "f6a0c761ffac2f8fd175bf9bf229b51a547f4dd291b6fb9f082685305091f756"
+    },
+    {
+      "path": "experiments/expansion/prepared/validation.json",
+      "sha256": "dc2ad72ce3920ff8c677c531c6dde188d8e555797980aadf31763c55ee3f333e"
+    },
+    {
+      "path": "experiments/expansion/review-policy.json",
+      "sha256": "2fdda88b21a7c57e86eba5085ce1c82b52b0dbdcc618bc88f38bf073a3458671"
+    },
+    {
+      "path": "experiments/expansion/verify-offline.ts",
+      "sha256": "107c868865f2a7174b9536204dcdcd612b5d40d93ae686d82034b9083bd54aaf"
+    }
+  ]
+}
